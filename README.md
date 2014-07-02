@@ -1,4 +1,6 @@
 # rnfse
+[![TravisCI Build Status](https://travis-ci.org/aitherios/rnfse.png?branch=master)](https://travis-ci.org/aitherios/rnfse)
+[![Dependency Status](https://gemnasium.com/aitherios/rnfse.svg)](https://gemnasium.com/aitherios/rnfse)
 
 Biblioteca para integração com as várias implementações
 municipais de Nota Fiscal de Serviços eletrônica (NFS-e) que utilizam uma 
