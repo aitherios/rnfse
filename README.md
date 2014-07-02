@@ -8,7 +8,7 @@ das versões ou variações dos padrões
 [ABRASF](http://www.abrasf.org.br/paginas_multiplas_detalhes.php?cod_pagina=1).
 
 > O grande problema do nosso sistema democrático é que permite fazer coisas nada democráticas democraticamente.
-> [José Saramago](http://www.citador.pt/frases/o-grande-problema-do-nosso-sistema-democratico-e-jose-de-sousa-saramago-20398)
+> [José Saramago](http://pt.wikipedia.org/wiki/Jos%C3%A9_Saramago)
 
 ## Instalação
 
