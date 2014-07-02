@@ -29,3 +29,7 @@ Antes do tudo, **obrigado** por querer ajudar!
 5. Faça um commit das suas mudanças - `git commit -am "Adicionei mais magia"`
 6. Faça um push do branch para o Github - `git push origin mais_magia`
 7. Envie um [pull request](https://help.github.com/articles/using-pull-requests)! :heart: :sparkling_heart: :heart:
+
+## Licença
+
+Duplamente licenciado por GPL-3 e MIT. Veja [LICENSE.md](LICENSE.md) para mais detalhes.
