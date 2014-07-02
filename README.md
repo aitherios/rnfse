@@ -1,5 +1,10 @@
 # rnfse
 
+Biblioteca para integração com as várias implementações
+municipais de Nota Fiscal de Serviços eletrônica (NFS-e) que utilizam uma 
+das versões ou variações dos padrões
+[ABRASF](http://www.abrasf.org.br/paginas_multiplas_detalhes.php?cod_pagina=1).
+
 ## Instalação
 
 ## Uso
