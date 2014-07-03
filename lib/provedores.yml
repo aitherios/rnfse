@@ -1,0 +1,9 @@
+producao:
+  iss_net:
+    namespace: 'http://www.issnetonline.com.br/webservice/nfd'
+    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/%{municipio}/servicos.asmx'
+
+homologacao:
+  iss_net:
+    namespace: 'http://www.issnetonline.com.br/webservice/nfd'
+    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx'
