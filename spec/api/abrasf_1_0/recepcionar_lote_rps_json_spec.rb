@@ -21,6 +21,34 @@ describe "abrasf_1_0/recepcionar_lote_rps.json" do
                  "identificacaoRps": { "numero": 2, "serie": "8", "tipo": 1 },
                  "dataEmissao": "1960-04-21T21:42:42-03:00",
                  "naturezaOperacao": 1,
+                 "optanteSimplesNacional": false,
+                 "incentivadorCultural": false,
+                 "status": 1,
+                 "servico": {
+                   "valores": {
+                     "valorServicos": 10.42,
+                     "issRetido": false,
+                     "baseCalculo": 9.32
+                   },
+                   "itemListaServico": "00001",
+                   "discriminacao": "Borealis",
+                   "codigoMunicipio": 5300108
+                 },
+                 "prestador": {
+                   "cnpj": "44.141.526/0001-67",
+                   "inscricaoMunicipal": "12345678"
+                 },
+                 "tomador": {
+                   "identificacaoTomador": {
+                     "cnpj": "38.421.846/0001-78",
+                     "inscricaoMunicipal": "12345679"
+                   }
+                 }
+               },
+               {
+                 "identificacaoRps": { "numero": 2, "serie": "8", "tipo": 1 },
+                 "dataEmissao": "1960-04-21T21:42:42-03:00",
+                 "naturezaOperacao": 1,
                  "regimeEspecialTributacao": 1,
                  "optanteSimplesNacional": false,
                  "incentivadorCultural": false,
@@ -44,7 +72,12 @@ describe "abrasf_1_0/recepcionar_lote_rps.json" do
                      "valorIssRetido": 1.1,
                      "descontoCondicionado": 0.9,
                      "descontoIncondicionado": 1
-                   }
+                   },
+                   "itemListaServico": "00001",
+                   "codigoCnae": "0000-0/00",
+                   "codigoTributacaoMunicipio": "00001",
+                   "discriminacao": "Borealis",
+                   "codigoMunicipio": 5300108
                  },
                  "prestador": {
                    "cnpj": "44.141.526/0001-67",
@@ -54,7 +87,30 @@ describe "abrasf_1_0/recepcionar_lote_rps.json" do
                    "identificacaoTomador": {
                      "cnpj": "38.421.846/0001-78",
                      "inscricaoMunicipal": "12345679"
+                   },
+                   "razaoSocial": "Aperture Science Enrichment Center",
+                   "endereco": {
+                      "endereco": "Rua Vital Apparatus Vent",
+                      "numero": "42",
+                      "complemento": "Morality Core",
+                      "bairro": "GLaDOS",
+                      "codigoMunicipio": 5300108,
+                      "uf": "DF",
+                      "cep": "70000-000"
+                   },
+                   "contato": {
+                     "telefone": "61 80000000",
+                     "email": "glados@aperture.com"
                    }
+                 },
+                 "intermediarioServico": {
+                   "razaoSocial": "Black Mesa Research Facility",
+                   "cnpj": "62.894.995/0001-39",
+                   "inscricaoMunicipal": "12345670"
+                 },
+                 "construcaoCivil": {
+                   "codigoObra": "1008",
+                   "art": "3000-D CAU/BR"
                  }
                }
              ]

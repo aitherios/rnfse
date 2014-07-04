@@ -263,9 +263,14 @@
         },
         "required": ["valorServicos", "issRetido", "baseCalculo"],
         "additionalProperties": false
-      }
+      },
+      "itemListaServico": { "$ref": "#/itemListaServico" },
+      "codigoCnae": { "$ref": "#/codigoCnae" },
+      "codigoTributacaoMunicipio": { "$ref": "#/codigoTributacao" },
+      "discriminacao": { "$ref": "#/discriminacao" },
+      "codigoMunicipio": { "$ref": "#/codigoMunicipioIbge" }
     },
-    "required": ["valores"],
+    "required": ["valores", "itemListaServico", "discriminacao", "codigoMunicipio"],
     "additionalProperties": false
   },
   "identificacaoPrestador": {
@@ -282,8 +287,12 @@
     "description": "Representa dados do tomador de serviço",
     "type": "object",
     "properties": {
-      "identificacaoTomador": { "$ref": "#/identificacaoTomador" }
-    }
+      "identificacaoTomador": { "$ref": "#/identificacaoTomador" },
+      "razaoSocial": { "$ref": "#/razaoSocial" },
+      "endereco": { "$ref": "#/enderecoCompleto" },
+      "contato": { "$ref": "#/contato" }
+    },
+    "additionalProperties": false
   },
   "identificacaoTomador": {
     "description": "Representa dados para identificação do tomador de serviço",
@@ -304,5 +313,62 @@
         "additionalProperties": false
       }
     ]
+  },
+  "enderecoCompleto": {
+    "description": "Representação completa do endereço.",
+    "type": "object",
+    "properties": {
+      "endereco": { "$ref": "#/endereco" },
+      "numero": { "$ref": "#/numeroEndereco" },
+      "complemento": { "$ref": "#/complementoEndereco" },
+      "bairro": { "$ref": "#/bairro" },
+      "codigoMunicipio": { "$ref": "#/codigoMunicipioIbge" },
+      "uf": { "$ref": "#/uf" },
+      "cep": { "$ref": "#/cep" }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "contato": {
+    "description": "Representa forma de contato com a pessoa (física/jurídica)",
+    "type": "object",
+    "properties": {
+      "telefone": { "$ref": "#/telefone" },
+      "email": { "$ref": "#/email" }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "identificacaoIntermediarioServico": {
+    "description": "Representa dados para identificação de intermediário do serviço",
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "razaoSocial": { "$ref": "#/razaoSocial" },
+          "cnpj": { "$ref": "#/cnpj" },
+          "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" }
+        },
+        "required": ["razaoSocial", "cnpj"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "cpf": { "$ref": "#/cpf" }
+        },
+        "required": ["cpf"],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "dadosConstrucaoCivil": {
+    "description": "Representa dados para identificação de intermediário do serviço",
+    "properties": {
+      "codigoObra": { "$ref": "#/codigoObra" },
+      "art": { "$ref": "#/art" }
+    },
+    "required": [],
+    "additionalProperties": false
   }
 }

@@ -27,9 +27,11 @@
               "rpsSubstituido": { "$ref": "definitions.json#/identificacaoRps" },
               "servico": { "$ref": "definitions.json#/dadosServico" },
               "prestador": { "$ref": "definitions.json#/identificacaoPrestador" },
-              "tomador": { "$ref": "definitions.json#/dadosTomador" }
+              "tomador": { "$ref": "definitions.json#/dadosTomador" },
+              "intermediarioServico": { "$ref": "definitions.json#/identificacaoIntermediarioServico" },
+              "construcaoCivil": { "$ref": "definitions.json#/dadosConstrucaoCivil" }
             },
-            "required": ["identificacaoRps", "dataEmissao", "naturezaOperacao"],
+            "required": ["identificacaoRps", "dataEmissao", "naturezaOperacao", "optanteSimplesNacional", "incentivadorCultural", "status", "servico", "prestador", "tomador"],
             "additionalProperties": false
           },
           "minItems": 1
