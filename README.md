@@ -13,21 +13,21 @@ das versões ou variações dos padrões
 ## Instalação
 
 Usando o rubygems.org rode:
+```
+$ gem install rnfse
+```
+**Ou** usando o repositório git rode:
+```
+$ gem build rnfse.gemspec
+$ gem install rnfse-X.X.X.gem
+```
+**Ou** usando o bundler, adicione o Rnfse ao seu Gemfile:
 
-    $ gem install rnfse
+```ruby
+gem 'rnfse'
+```
 
-Ou usando o repositório git rode:
-
-    $ gem build rnfse.gemspec
-    $ gem install rnfse-X.X.X.gem
-
-Ou usando o bundler, adicione o Rnfse ao seu Gemfile:
-
-    gem 'nfse'
-
-E rode
-
-    $ bundle install
+E rode `$ bundle install`
 
 ## Uso
 

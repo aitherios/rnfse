@@ -12,7 +12,7 @@ describe "abrasf_1_0/recepcionar_lote_rps.json" do
       expect(JSON::Validator.fully_validate(file, <<-'JSON')).to be_empty
         {
           "loteRps": {
-             "numeroLote": 10,
+             "numeroLote": 2,
              "cnpj": "44.141.526/0001-67",
              "inscricaoMunicipal": "12345678",
              "quantidadeRps": 1,
