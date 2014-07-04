@@ -1,0 +1,44 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Recepção de Lote de RPS",
+  "description": "Esse serviço compreende a recepção do Lote de RPS, a resposta com o número do protocolo gerado para esta transação e o processamento do lote. Quando efetuada a recepção, o Lote entrará na fila para processamento posterior onde serão feitas as validações necessárias e geração das NFS-e. ",
+
+  "type": "object",
+  "properties": {
+    "loteRps": {
+      "type": "object",
+      "properties": {
+        "numeroLote": { "$ref": "definitions.json#/numeroLote"},
+        "cnpj": { "$ref": "definitions.json#/cnpj"},
+        "inscricaoMunicipal": { "$ref": "definitions.json#/inscricaoMunicipal" },
+        "quantidadeRps": { "$ref": "definitions.json#/quantidadeRps" },
+        "listaRps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "identificacaoRps": { "$ref": "definitions.json#/identificacaoRps" },
+              "dataEmissao": { "type": "string", "format": "date-time" },
+              "naturezaOperacao": { "$ref": "definitions.json#/naturezaOperacao" },
+              "regimeEspecialTributacao": { "$ref": "definitions.json#/regimeEspecialTributacao" },
+              "optanteSimplesNacional": { "type": "boolean" },
+              "incentivadorCultural": { "type": "boolean" },
+              "status": { "$ref": "definitions.json#/statusRps" },
+              "rpsSubstituido": { "$ref": "definitions.json#/identificacaoRps" },
+              "servico": { "$ref": "definitions.json#/dadosServico" },
+              "prestador": { "$ref": "definitions.json#/identificacaoPrestador" },
+              "tomador": { "$ref": "definitions.json#/dadosTomador" }
+            },
+            "required": ["identificacaoRps", "dataEmissao", "naturezaOperacao"],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["numeroLote", "cnpj", "inscricaoMunicipal", "quantidadeRps", "listaRps"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["loteRps"],
+  "additionalProperties": false
+}

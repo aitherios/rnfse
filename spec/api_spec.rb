@@ -9,6 +9,7 @@ describe Rnfse::API do
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx') }
+      its(:api) { should eq('abrasf_1_0') }
     end
 
     context 'ao passar um provedor em homologação' do
@@ -16,17 +17,19 @@ describe Rnfse::API do
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx') }
+      its(:api) { should eq('abrasf_1_0') }
     end
 
     context 'ao passar o padrão abrasf, namespace e endpoint' do
       subject do
-        Rnfse::API.new(padrao: :abrasf_1, 
+        Rnfse::API.new(padrao: :abrasf_1_0, 
                        namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx' )
       end
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx') }
+      its(:api) { should eq('abrasf_1_0') }
     end
 
     context 'ao não passar informações válidas' do

@@ -1,0 +1,308 @@
+{
+  "numeroNfse": {
+    "description": "Número da Nota Fiscal de Serviço Eletrônica, formado pelo ano com 04 (quatro) dígitos e um número seqüencial com 11 posições – Formato AAAANNNNNNNNNNN.",
+    "type": "integer",
+    "minimum": 199000000000000,
+    "maximum": 220099999999999
+  },
+   "codigoVerificacao": {
+    "description": "Código de verificação do número da nota",
+    "type": "string",
+    "maxLength": 9
+  },
+  "statusRps": {
+    "description": "Código de status do RPS 1 – Normal ; 2 – Cancelado",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 2
+  },
+  "statusNfse": {
+    "description": "Código de status da NFS-e 1 – Normal ; 2 – Cancelado",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 2
+  },
+  "naturezaOperacao": {
+    "description": "Código de natureza da operação 1 – Tributação no município ; 2 - Tributação fora do município ; 3 - Isenção ; 4 - Imune ; 5 – Exigibilidade suspensa por decisão judicial ; 6 – Exigibilidade suspensa por procedimento administrativo ",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 6
+  },
+  "regimeEspecialTributacao": {
+    "description": "Código de natureza da operação 1 – Tributação no município ; 2 - Tributação fora do município ; 3 - Isenção ; 4 - Imune ; 5 – Exigibilidade suspensa por decisão judicial ; 6 – Exigibilidade suspensa por procedimento administrativo ",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 6
+  },
+  "simNao": {
+    "type": "boolean"
+  },
+  "quantidadeRps": {
+    "description": "Quantidade de RPS do Lote",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 9999
+  },
+  "numeroRps": {
+    "description": "Número do RPS",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 999999999999999
+  },
+  "serieRps": {
+    "description": "Número de série do RPS",
+    "type": "string",
+    "maxLength": 5
+  },
+  "tipoRps": {
+    "description": "Código de tipo de RPS 1 - RPS ; 2 – Nota Fiscal Conjugada (Mista) ; 3 – Cupom",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 3
+  },
+  "outrasInformacoes": {
+    "description": "Informações adicionais ao documento",
+    "type": "string",
+    "maxLength": 255
+  },
+  "valor": {
+    "description": "Valor monetário. Formato: 0.00 (ponto separando casa decimal) Ex: 1.234,56 = 1234.56 ; 1.000,00 = 1000.00 ; 1.000,00 = 1000",
+    "type": "number",
+    "minimum": 0.01,
+    "maximum": 9999999999999.99
+  },
+  "itemListaServico": {
+    "description": "Código de item da lista de serviço",
+    "type": "string",
+    "maxLength": 5
+  },
+  "codigoCnae": {
+    "description": "Código CNAE. Formato: 0000-0/00",
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{1}/[0-9]{2}$"
+  },
+  "codigoTributacao": {
+    "description": "Código de Tributação",
+    "type": "string",
+    "maxLength": 20
+  },
+  "aliquota": {
+    "description": "Alíquota. Valor percentual. Formato: 0.0000 Ex: 1% = 0.01 ; 25,5% = 0.255 ; 100% = 1.0000 ou 1",
+    "type": "numeric",
+    "minimum": 0,
+    "maximum": 1
+  },
+  "discriminacao": {
+    "description": "Discriminação do conteúdo da NFS-e",
+    "type": "string",
+    "maxLength": 2000
+  },
+  "codigoMunicipioIbge": {
+    "description": "Código de identificação do município conforme tabela do IBGE",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 9999999
+  },
+  "inscricaoMunicipal": {
+    "description": "Número de inscrição municipal",
+    "type": "string",
+    "maxLength": 15
+  },
+  "razaoSocial": {
+    "description": "Razão Social do contribuinte",
+    "type": "string",
+    "maxLength": 115
+  },
+  "nomeFantasia": {
+    "description": "Nome fantasia",
+    "type": "string",
+    "maxLength": 60
+  },
+  "cnpj": {
+    "description": "Número CNPJ. Formato: 00.000.000/0000-00",
+    "type": "string",
+    "pattern": "^[0-9]{2}\.[0-9]{3}\.[0-9]{3}/[0-9]{4}-[0-9]{2}$"
+  },
+  "endereco": {
+    "description": "Endereço",
+    "type": "string",
+    "maxLength": 125
+  },
+  "numeroEndereco": {
+    "description": "Número do endereço",
+    "type": "string",
+    "maxLength": 10
+  },
+  "complementoEndereco": {
+    "description": "Número do endereço",
+    "type": "string",
+    "maxLength": 60
+  },
+  "bairro": {
+    "description": "Bairro",
+    "type": "string",
+    "maxLength": 60
+  },
+  "uf": {
+    "description": "Sigla da unidade federativa",
+    "type": "string",
+    "enum": ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
+  },
+  "cep": {
+    "description": "Número do CEP. Formato: 00000-000",
+    "type": "string",
+    "pattern": "^[0-9]{5}-[0-9]{3}$"
+  },
+  "email": {
+    "description": "E-mail",
+    "type": "string",
+    "format": "email"
+  },
+  "telefone": {
+    "description": "Telefone",
+    "type": "string",
+    "maxLength": 11
+  },
+  "cpf": {
+    "description": "Número de CPF. Formato: 000.000.000-00",
+    "type": "string",
+    "pattern": "^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$"
+  },
+  "indicacaoCpfCnpj": {
+    "description": "Indicador de uso de CPF ou CNPJ 1 – CPF ; 2 – CNPJ ; 3 – Não Informado",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 3
+  },
+  "codigoObra": {
+    "description": "Código de Obra",
+    "type": "string",
+    "maxLength": 15
+  },
+  "art": {
+    "description": "Código ART",
+    "type": "string",
+    "maxLength": 15
+  },
+  "numeroLote": {
+    "description": "Número do Lote de RPS",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 999999999999999
+  },
+  "numeroProtocolo": {
+    "description": "Número do protocolo de recebimento do RPS",
+    "maxLength": 50
+  },
+  "situacaoLoteRps": {
+    "description": "Código de situação de lote de RPS 1 – Não Recebido ; 2 – Não Processado ; 3 – Processado com Erro ; 4 – Processado com Sucesso",
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 4
+  },
+  "codigoMensagemAlerta": {
+    "description": "Código de mensagem de retorno de serviço",
+    "type": "string",
+    "maxLength": 4
+  },
+  "descricaoMensagemAlerta": {
+    "description": "Descrição da mensagem de retorno de serviço",
+    "type": "string",
+    "maxLength": 200
+  },
+  "codigoCancelamentoNfse": {
+    "description": "Código de cancelamento com base na tabela de Erros e alertas",
+    "type": "string",
+    "maxLength": 4
+  },
+  "idTag": {
+    "description": "Atributo de identificação da tag a ser assinada no documento XML",
+    "type": "string",
+    "maxLength": 255
+  },
+  "identificacaoRps": {
+    "description": "Dados de identificação do RPS",
+    "type": "object",
+    "properties": {
+      "numero": { "$ref": "#/numeroRps" },
+      "serie": { "$ref": "#/serieRps" },
+      "tipo": { "$ref": "#/tipoRps" }
+    },
+    "required": ["numero", "serie", "tipo"],
+    "additionalProperties": false
+  },
+  "dadosServico": {
+    "description": "Representa dados que compõe o serviço prestado",
+    "type": "object",
+    "properties": {
+      "valores": {
+        "type": "object",
+        "properties": {
+          "valorServicos": { "$ref": "#/valor" },
+          "valorDeducoes": { "$ref": "#/valor" },
+          "valorPis": { "$ref": "#/valor" },
+          "valorCofins": { "$ref": "#/valor" },
+          "valorInss": { "$ref": "#/valor" },
+          "valorIr": { "$ref": "#/valor" },
+          "valorCsll": { "$ref": "#/valor" },
+          "issRetido": { "type": "boolean" },
+          "valorIss": { "$ref": "#/valor" },
+          "outrasRetencoes": { "$ref": "#/valor" },
+          "baseCalculo": {
+            "description": "(Valor dos serviços - Valor das deduções - descontos incondicionados)",
+            "$ref": "#/valor" 
+          },
+          "aliquota": { "$ref": "#/aliquota" },
+          "valorLiquidoNfse": { 
+            "description": "(ValorServicos - ValorPIS - ValorCOFINS - ValorINSS - ValorIR - ValorCSLL - OutrasRetençoes - ValorISSRetido - DescontoIncondicionado - DescontoCondicionado)",
+            "$ref": "#/valor" 
+          },
+          "valorIssRetido": { "$ref": "#/valor" },
+          "descontoCondicionado": { "$ref": "#/valor" },
+          "descontoIncondicionado": { "$ref": "#/valor" }
+        },
+        "required": ["valorServicos", "issRetido", "baseCalculo"],
+        "additionalProperties": false
+      }
+    },
+    "required": ["valores"],
+    "additionalProperties": false
+  },
+  "identificacaoPrestador": {
+    "description": "Representa dados para identificação do prestador de serviço",
+    "type": "object",
+    "properties": {
+      "cnpj": { "$ref": "#/cnpj" },
+      "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" }
+    },
+    "required": ["cnpj"],
+    "additionalProperties": false
+  },
+  "dadosTomador": {
+    "description": "Representa dados do tomador de serviço",
+    "type": "object",
+    "properties": {
+      "identificacaoTomador": { "$ref": "#/identificacaoTomador" }
+    }
+  },
+  "identificacaoTomador": {
+    "description": "Representa dados para identificação do tomador de serviço",
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" },
+          "cnpj": { "$ref": "#/cnpj" }
+        },
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "cpf": { "$ref": "#/cpf" }
+        },
+        "additionalProperties": false
+      }
+    ]
+  }
+}

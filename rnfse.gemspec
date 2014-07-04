@@ -28,6 +28,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.rubyforge_project = '[none]'
 
+  s.add_dependency 'json-schema',               '~> 2.0'
+
   s.add_development_dependency 'bundler',       '~> 1.3'
   s.add_development_dependency 'rake',          '~> 10.0'
   s.add_development_dependency 'rdoc',          '~> 4.0'
@@ -40,4 +42,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec',   '~> 4.2.0'
   s.add_development_dependency 'guard-bundler', '~> 2.0.0'
   s.add_development_dependency 'foreman',       '~> 0.74.0'
+  s.add_development_dependency 'pry',           '~> 0.10'
+  s.add_development_dependency 'pry-byebug',    '~> 1.0'
 end
