@@ -43,5 +43,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-bundler', '~> 2.0.0'
   s.add_development_dependency 'foreman',       '~> 0.74.0'
   s.add_development_dependency 'pry',           '~> 0.10'
-  s.add_development_dependency 'pry-byebug',    '~> 1.0'
+  if RUBY_VERSION.to_i < 2
+    s.add_development_dependency 'pry-debugger','~> 0.2'
+  else
+    s.add_development_dependency 'pry-byebug',  '~> 1.0'
+  end
+
 end

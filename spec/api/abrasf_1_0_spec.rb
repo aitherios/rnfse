@@ -9,18 +9,7 @@ describe Rnfse::API::Abrasf_1_0 do
   end
 
 
-  describe '#recepcionar_lote_rps' do
-    subject do
-      client.recepcionar_lote_rps(
-        lote_rps: {
-          numero_lote: 1
-        }
-      )
-    end
-
-    it { should_not be_nil }
-  end
-
+  describe '#recepcionar_lote_rps'
   describe '#consulta_situacao_lote_rps'
   describe '#consultar_nfse_por_rps'
   describe '#consultar_nfse'
