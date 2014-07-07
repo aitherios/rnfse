@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio
+    xmlns="http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd"
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+  <LoteRps>
+    <tc:NumeroLote>2</tc:NumeroLote>
+    <tc:Cnpj>44141526000167</tc:Cnpj>
+    <tc:InscricaoMunicipal>12345678</tc:InscricaoMunicipal>
+    <tc:QuantidadeRps>1</tc:QuantidadeRps>
+    <tc:ListaRps>
+      <tc:Rps>
+        <tc:InfRps>
+          <tc:IdentificacaoRps>
+            <tc:Numero>2</tc:Numero>
+            <tc:Serie>8</tc:Serie>
+            <tc:Tipo>1</tc:Tipo>
+          </tc:IdentificacaoRps>
+          <tc:DataEmissao>1960-04-22T00:42:42</tc:DataEmissao>
+          <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+          <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+          <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+          <tc:Status>1</tc:Status>
+          <tc:Servico>
+            <tc:Valores>
+              <tc:ValorServicos>10.42</tc:ValorServicos>
+              <tc:IssRetido>2</tc:IssRetido>
+              <tc:BaseCalculo>10.42</tc:BaseCalculo>
+            </tc:Valores>
+            <tc:ItemListaServico>00001</tc:ItemListaServico>
+            <tc:CodigoMunicipio>5300108</tc:CodigoMunicipio>
+            <tc:Discriminacao>Borealis</tc:Discriminacao>
+          </tc:Servico>
+          <tc:Prestador>
+            <tc:Cnpj>44141526000167</tc:Cnpj>
+            <tc:InscricaoMunicipal>12345678</tc:InscricaoMunicipal>
+          </tc:Prestador>
+          <tc:Tomador>
+            <tc:IdentificacaoTomador>
+              <tc:Cnpj>38421846000178</tc:Cnpj>
+              <tc:InscricaoMunicipal>12345679</tc:InscricaoMunicipal>
+            </tc:IdentificacaoTomador>
+          </tc:Tomador>
+        </tc:InfRps>
+      </tc:Rps>
+    </tc:ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

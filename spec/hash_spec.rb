@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+require 'spec_helper'
+
+describe Rnfse::Hash do
+  describe '::transform_keys' do
+
+    context 'com um hash simples,' do
+      let(:hash) { { name: 'Rob', age: '28' } }
+      let(:transformed_hash) { { 'NAME' => 'Rob', 'AGE' => '28' } }
+      it { expect(Rnfse::Hash.transform_keys(hash){ |key| key.to_s.upcase}).to eq(transformed_hash) }
+    end
+
+    context 'com um hash dentro de outro,' do
+      let(:hash) { { name: { first: 'Rob', last: 'Zombie' } } }
+      let(:transformed_hash) { { 'NAME' => { 'FIRST' => 'Rob', 'LAST' => 'Zombie' } } }
+      it { expect(Rnfse::Hash.transform_keys(hash){ |key| key.to_s.upcase}).to eq(transformed_hash) }
+    end
+
+    context 'com um array com outros objetos,' do
+      let(:hash) { { names: [ { first: 'Glados' }, { first: 'Wheatley' } ] } }
+      let(:transformed_hash) { { 'NAMES' => [ { 'FIRST' => 'Glados' }, { 'FIRST' => 'Wheatley' } ] } }
+      it { expect(Rnfse::Hash.transform_keys(hash){ |key| key.to_s.upcase}).to eq(transformed_hash) }
+    end
+  end
+
+  describe '::symbolize_keys' do
+    let(:hash) { { 'name' => 'Rob', 'age' => '28' } }
+    let(:transformed_hash) { { name: 'Rob', age: '28' } }
+    it { expect(Rnfse::Hash.symbolize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '::stringify_keys' do
+    let(:hash) { { name: 'Rob', age: '28' } }
+    let(:transformed_hash) { { 'name' => 'Rob', 'age' => '28' } }
+    it { expect(Rnfse::Hash.stringify_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '::camelize_and_symbolize_keys' do
+    let(:hash) { { 'first_name' => 'Rob', 'current_age' => '28' } }
+    let(:transformed_hash) { { FirstName: 'Rob', CurrentAge: '28' } }
+    it { expect(Rnfse::Hash.camelize_and_symbolize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '::transform_values' do
+    context 'com um hash simples,' do
+      let(:hash) { { name: 'Rob', age: '28' } }
+      let(:transformed_hash) { { name: 'ROB', age: '28' } }
+      it { expect(
+        Rnfse::Hash.transform_values(hash, :name) { |val| 
+          val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um hash dentro de outro,' do
+      let(:hash) { { name: { first: 'Rob', last: 'Zombie' } } }
+      let(:transformed_hash) { { name: { first: 'Rob', last: 'ZOMBIE' } } }
+      it { expect(
+        Rnfse::Hash.transform_values(hash, :last) { |val| 
+          val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um hash e array com outros objetos,' do
+      let(:hash) { { first: 'Aperture', names: [ { first: 'Glados' } ] } }
+      let(:transformed_hash) { { first: 'APERTURE', names: [ { first: 'GLADOS' } ] } }
+      it { expect(
+        Rnfse::Hash.transform_values(hash, :first) { |val| 
+          val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um array com outros objetos,' do
+      let(:hash) { { names: [ { first: 'Glados' }, { first: 'Wheatley' } ] } }
+      let(:transformed_hash) { { names: [ { first: 'GLADOS' }, { first: 'WHEATLEY' } ] } }
+      it { expect(
+        Rnfse::Hash.transform_values(hash, :first) { |val| 
+          val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um regex como valor' do
+      let(:hash) { { names: [ { first_name: 'Glados' }, { first: 'Wheatley' } ] } }
+      let(:transformed_hash) { { names: [ { first_name: 'GLADOS' }, { first: 'Wheatley' } ] } }
+      it { expect(
+        Rnfse::Hash.transform_values(hash, /first_/) { |val| 
+          val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+  end
+
+end

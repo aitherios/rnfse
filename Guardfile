@@ -5,6 +5,7 @@ guard :rspec do
   watch(%r{^lib/rnfse/(.+)\.rb$})     { |m| "spec/#{m[1]}_spec.rb" }
   watch(%r{^lib/rnfse/api/(.+)\.rb$}) { |m| "spec/api/#{m[1]}_spec.rb" }
   watch(%r{^lib/rnfse/api/(.+)/(.+)\.rb$}) { |m| "spec/api/#{m[1]}/#{m[2]}_spec.rb" }
+  watch(%r{^lib/rnfse/xml_builder/(.+)/(.+)\.rb$}) { |m| "spec/xml_builder/#{m[1]}/#{m[2]}_spec.rb" }   
   watch(%r{^lib/rnfse/api/(.+)/(.+)\.json$}) { |m| "spec/api/#{m[1]}/#{m[2]}_json_spec.rb" }
 end
 

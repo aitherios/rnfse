@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-require 'yaml'
-require 'pathname'
 
 module Rnfse
   class API
@@ -10,27 +8,30 @@ module Rnfse
     attr_accessor :api
     
     def initialize(options)
-      options = options.inject({}) { |hash,(x,y)| hash[x.to_s] = y.to_s; hash }
+      options = Hash.stringify_keys(options)
+      
       file = Pathname.new(File.expand_path('../..', __FILE__))
       provedores = YAML.load_file(file.join('provedores.yml'))
-        
+      
       case
       when has_options(options, 'provedor', 'homologacao')
-        provedor = provedores['homologacao'][options['provedor']]
+        provedor = provedores['homologacao'][options['provedor'].to_s]
         raise ArgumentError, 'provedor de homologação inexistente', caller if provedor.nil?
-        self.namespace, self.endpoint = [provedor['namespace'], provedor['endpoint']]
+        self.namespace = provedor['namespace']
+        self.endpoint = provedor['endpoint']
         self.api = provedor['api']
 
       when has_options(options, 'provedor', 'municipio')
-        provedor = provedores['producao'][options['provedor']]
+        provedor = provedores['producao'][options['provedor'].to_s]
         raise ArgumentError, 'provedor inexistente', caller if provedor.nil?
         self.namespace = provedor['namespace']
         self.endpoint = provedor['endpoint'] % { municipio: options['municipio'] }
         self.api = provedor['api']
 
       when has_options(options, 'padrao', 'namespace', 'endpoint')
-        self.namespace, self.endpoint = [options['namespace'], options['endpoint']]
-        self.api = options['padrao']
+        self.namespace = options['namespace'].to_s
+        self.endpoint = options['endpoint'].to_s
+        self.api = options['padrao'].to_s
 
       else
         raise ArgumentError, 'opções inválidas', caller

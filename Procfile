@@ -1,1 +1,1 @@
-guard: bundle exec guard start -i
+guard: bundle exec guard start
