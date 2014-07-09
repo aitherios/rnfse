@@ -37,7 +37,7 @@ module Rnfse
         raise ArgumentError, 'opções inválidas', caller
       end
 
-      extend self.class.const_get(self.api.capitalize)
+      extend self.class.const_get(String.camelize(self.api))
     end
 
     private

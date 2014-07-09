@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio
+    xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd"
+    xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+  <LoteRps>
+    <tc:NumeroLote>1</tc:NumeroLote>
+    <tc:CpfCnpj>
+      <tc:Cnpj>11006269000100</tc:Cnpj>
+    </tc:CpfCnpj>
+    <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+    <tc:QuantidadeRps>1</tc:QuantidadeRps>
+    <tc:ListaRps>
+      <tc:Rps>
+        <tc:InfRps>
+          <tc:IdentificacaoRps>
+            <tc:Numero>215</tc:Numero>
+            <tc:Serie>10</tc:Serie>
+            <tc:Tipo>1</tc:Tipo>
+          </tc:IdentificacaoRps>
+          <tc:DataEmissao>2009-07-24T10:00:00</tc:DataEmissao>
+          <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+          <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+          <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+          <tc:Status>1</tc:Status>
+          <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+          <tc:Servico>
+            <tc:Valores>
+              <tc:ValorServicos>1100</tc:ValorServicos>
+              <tc:ValorPis>10</tc:ValorPis>
+              <tc:ValorCofins>20</tc:ValorCofins>
+              <tc:ValorInss>30</tc:ValorInss>
+              <tc:ValorIr>40</tc:ValorIr>
+              <tc:ValorCsll>50</tc:ValorCsll>
+              <tc:IssRetido>2</tc:IssRetido>
+              <tc:ValorIss>50</tc:ValorIss>
+              <tc:BaseCalculo>1000</tc:BaseCalculo>
+              <tc:Aliquota>5.0</tc:Aliquota>
+              <tc:ValorLiquidoNfse>850</tc:ValorLiquidoNfse>
+              <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
+              <tc:DescontoCondicionado>0</tc:DescontoCondicionado>
+            </tc:Valores>
+            <tc:ItemListaServico>12</tc:ItemListaServico>
+            <tc:CodigoCnae>6311900</tc:CodigoCnae>
+            <tc:CodigoTributacaoMunicipio>45217023</tc:CodigoTributacaoMunicipio>
+            <tc:Discriminacao>Discriminação da RPS</tc:Discriminacao>
+            <tc:MunicipioPrestacaoServico>999</tc:MunicipioPrestacaoServico>
+          </tc:Servico>
+          <tc:Prestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>11006269000100</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+          </tc:Prestador>
+          <tc:Tomador>
+            <tc:IdentificacaoTomador>
+              <tc:CpfCnpj>
+                <tc:Cnpj>38693524000188</tc:Cnpj>
+              </tc:CpfCnpj>
+            </tc:IdentificacaoTomador>
+            <tc:RazaoSocial>Empresa do Recife</tc:RazaoSocial>
+            <tc:Endereco>
+              <tc:Endereco>R dos Navegantes 123, 321</tc:Endereco>
+              <tc:Numero>123</tc:Numero>
+              <tc:Complemento>321</tc:Complemento>
+              <tc:Bairro>Boa Viagem</tc:Bairro>
+              <tc:Cidade>261160</tc:Cidade>
+              <tc:Estado>PE</tc:Estado>
+              <tc:Cep>51021010</tc:Cep>
+            </tc:Endereco>
+          </tc:Tomador>
+        </tc:InfRps>
+      </tc:Rps>
+    </tc:ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

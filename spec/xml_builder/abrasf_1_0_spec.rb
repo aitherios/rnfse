@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::XMLBuilder::Abrasf_1_0 do
+describe Rnfse::XMLBuilder::Abrasf10 do
 
   let(:builder) { Rnfse::XMLBuilder.new(padrao: :abrasf_1_0) }
 

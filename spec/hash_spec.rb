@@ -82,12 +82,65 @@ describe Rnfse::Hash do
       }
     end
 
-    context 'com um regex como valor' do
+    context 'com um regex como valor,' do
       let(:hash) { { names: [ { first_name: 'Glados' }, { first: 'Wheatley' } ] } }
       let(:transformed_hash) { { names: [ { first_name: 'GLADOS' }, { first: 'Wheatley' } ] } }
       it { expect(
         Rnfse::Hash.transform_values(hash, /first_/) { |val| 
           val.to_s.upcase 
+        }).to eq(transformed_hash) 
+      }
+    end
+  end
+
+  describe '::replace_key_values' do
+    context 'com um hash simples,' do
+      let(:hash) { { name: 'Rob', age: '28' } }
+      let(:transformed_hash) { { first: { name: 'Rob' }, age: '28' } }
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, :name) { |key, value| 
+          { first: { key => value } }
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um hash dentro de outro,' do
+      let(:hash) { { name: { first: 'Rob', last: 'Zombie' } } }
+      let(:transformed_hash) { { name: { strong: { first: 'Rob' }, last: 'Zombie' } } }
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, :first) { |key, value| 
+          { strong: { key => value } }
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um array com outros objetos,' do
+      let(:hash) { { names: [ { first: 'Glados' }, { second: 'Wheatley' } ] } }
+      let(:transformed_hash) { { names: [ { strong: { first: 'Glados' } }, { second: 'Wheatley' } ] } }
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, :first) { |key, value| 
+          { strong: { key => value } }
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um regex como valor,' do
+      let(:hash) { { names: [ { first_name: 'Glados' }, { second: 'Wheatley' } ] } }
+      let(:transformed_hash) { { names: [ { strong: { first_name: 'Glados' } }, { second: 'Wheatley' } ] } }
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, /first/) { |key, value| 
+          { strong: { key => value } }
+        }).to eq(transformed_hash) 
+      }
+    end
+
+    context 'com um escopo de tag definido' do
+      let(:hash) { { names: { first: 'Glados' }, nicknames: { first: 'Wheatley' } } }
+      let(:transformed_hash) { { names: { first: 'GLADOS' }, nicknames: { first: 'Wheatley' } } }
+
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, 'names/first') { |key, value| 
+          { key => value.upcase }
         }).to eq(transformed_hash) 
       }
     end

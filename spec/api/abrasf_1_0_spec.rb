@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::API::Abrasf_1_0 do
+describe Rnfse::API::Abrasf10 do
   let(:client) do
     Rnfse::API.new(padrao: :abrasf_1_0, 
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
