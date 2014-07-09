@@ -89,7 +89,7 @@ module Rnfse::XMLBuilder::Abrasf10
   end
 
   def self.included(base)
-    base.include(ClassMethods)
+    base.send(:include, ClassMethods)
   end
 
 end
