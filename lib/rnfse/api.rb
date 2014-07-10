@@ -6,6 +6,8 @@ module Rnfse
     attr_accessor :namespace
     attr_accessor :endpoint
     attr_accessor :api
+    attr_accessor :certificate
+    attr_accessor :key
     attr_accessor :xml_builder
     
     def initialize(options)
@@ -38,9 +40,20 @@ module Rnfse
         raise ArgumentError, 'opções inválidas', caller
       end
 
+      if has_options(options, 'certificate', 'key')
+        self.certificate = options['certificate']
+        self.key = options['key']
+      else
+        raise ArgumentError, 'opções de certificado faltando', caller
+      end
+
+      self.xml_builder = has_options(options, 'xml_builder') ? 
+                           options['xml_builder'] : XMLBuilder.new(padrao: self.api)
+
       extend self.class.const_get(String.camelize(self.api))
-      self.xml_builder = XMLBuilder.new(padrao: self.api)
     end
+
+    
 
     private
 

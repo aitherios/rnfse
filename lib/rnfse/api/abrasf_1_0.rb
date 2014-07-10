@@ -11,6 +11,7 @@ module Rnfse::API::Abrasf10
       errors = JSON::Validator.fully_validate(file, json)
       if errors.empty?
         xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
+        xml.sign!(certificate: self.certificate, key: self.key)
       else
         raise ArgumentError, errors, caller
       end

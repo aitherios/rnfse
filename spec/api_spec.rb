@@ -4,8 +4,17 @@ require 'spec_helper'
 describe Rnfse::API do
   describe '::new' do
 
+    let(:certificate) { File.read(File.join($ROOT, 'spec', 'fixtures', 'certificate.pem')) }
+    let(:key) { File.read(File.join($ROOT, 'spec', 'fixtures', 'key.pem')) }
+
     context 'ao passar um provedor e município,' do
-      subject { Rnfse::API.new(provedor: :iss_net, municipio: :cuiaba) }
+      subject do
+        Rnfse::API.new(provedor: :iss_net, 
+                       municipio: :cuiaba, 
+                       certificate: certificate,
+                       key: key)
+      end
+
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx') }
@@ -13,7 +22,13 @@ describe Rnfse::API do
     end
 
     context 'ao passar um provedor em homologação,' do
-      subject { Rnfse::API.new(provedor: :iss_net, homologacao: true) }
+      subject do
+        Rnfse::API.new(provedor: :iss_net, 
+                       homologacao: true,
+                       certificate: certificate,
+                       key: key)
+      end
+
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx') }
@@ -24,7 +39,9 @@ describe Rnfse::API do
       subject do
         Rnfse::API.new(padrao: :abrasf_1_0, 
                        namespace: 'http://www.issnetonline.com.br/webservice/nfd',
-                       endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx' )
+                       endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
+                       certificate: certificate,
+                       key: key)
       end
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
@@ -41,5 +58,6 @@ describe Rnfse::API do
         it { expect { Rnfse::API.new(provedor: :none, homologacao: true) }.to raise_error(ArgumentError) }
       end
     end
+
   end
 end
