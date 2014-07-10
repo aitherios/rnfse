@@ -15,8 +15,8 @@ describe Rnfse::XMLBuilder::Abrasf10 do
       )
     end
 
-    it 'deveria construir o xml com um lote válido' do
-      expect(builder.build_recepcionar_lote_rps_xml({
+    subject do
+      builder.build_recepcionar_lote_rps_xml({
         lote_rps: {
           numero_lote: 2,
           cnpj: "44.141.526/0001-67",
@@ -53,8 +53,11 @@ describe Rnfse::XMLBuilder::Abrasf10 do
             }
           ]
         }
-      })).to be_equivalent_to(xml)
+      })
     end
+
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
 end

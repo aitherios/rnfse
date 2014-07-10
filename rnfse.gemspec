@@ -28,8 +28,9 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.rubyforge_project = '[none]'
 
+  s.add_dependency 'json',                       '~> 1.0'
   s.add_dependency 'json-schema',                '~> 2.0'
-  s.add_dependency 'gyoku',                      '~> 1.1'
+  s.add_dependency 'gyoku',                      '~> 1.0'
 
   s.add_development_dependency 'bundler',        '~> 1.3'
   s.add_development_dependency 'rake',           '~> 10.0'

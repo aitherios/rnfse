@@ -6,6 +6,7 @@ module Rnfse
     attr_accessor :namespace
     attr_accessor :endpoint
     attr_accessor :api
+    attr_accessor :xml_builder
     
     def initialize(options)
       options = Hash.stringify_keys(options)
@@ -38,6 +39,7 @@ module Rnfse
       end
 
       extend self.class.const_get(String.camelize(self.api))
+      self.xml_builder = XMLBuilder.new(padrao: self.api)
     end
 
     private

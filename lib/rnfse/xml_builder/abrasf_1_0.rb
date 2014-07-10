@@ -25,7 +25,7 @@ module Rnfse::XMLBuilder::Abrasf10
     
     # converte booleanos para 1 ou 2
     def fix_booleans(hash)
-      regex = /(IssRetido|OptanteSimplesNacional|IncentivadorCultural|RegimeEspecialTributacao)\Z/
+      regex = /(IssRetido|OptanteSimplesNacional|IncentivadorCultural)\Z/
       Rnfse::Hash.transform_values(hash, regex) do |val|
         val ? 1 : 2
       end

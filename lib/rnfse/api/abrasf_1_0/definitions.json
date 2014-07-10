@@ -68,7 +68,7 @@
   "valor": {
     "description": "Valor monetário. Formato: 0.00 (ponto separando casa decimal) Ex: 1.234,56 = 1234.56 ; 1.000,00 = 1000.00 ; 1.000,00 = 1000",
     "type": "number",
-    "minimum": 0.01,
+    "minimum": 0,
     "maximum": 9999999999999.99
   },
   "itemListaServico": {

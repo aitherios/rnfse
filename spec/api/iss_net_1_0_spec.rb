@@ -1,22 +1,23 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::XMLBuilder::IssNet10 do
+describe Rnfse::API::IssNet10 do
+  let(:client) do
+    Rnfse::API.new(padrao: :iss_net_1_0, 
+                   namespace: 'http://www.issnetonline.com.br/webservice/nfd',
+                   endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
+  end
 
-  let(:builder) { Rnfse::XMLBuilder.new(padrao: :iss_net_1_0) }
 
-  describe "#build_recepcionar_lote_rps_xml" do
-    let(:xml) do 
-      Nokogiri::XML(
-        File.read(
-          File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0', 
-              'enviar_lote_rps_envio.xml')
-        )
-      )
+  describe '#recepcionar_lote_rps' do
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.recepcionar_lote_rps(bogus: :data) }.to raise_error(ArgumentError) }
     end
 
+    it { expect(client).to respond_to(:recepcionar_lote_rps) }
+
     subject do
-      builder.build_recepcionar_lote_rps_xml({
+      client.recepcionar_lote_rps({
         lote_rps: {
           numero_lote: 1,
           cnpj: "11.006.269/0001-00",
@@ -78,9 +79,14 @@ describe Rnfse::XMLBuilder::IssNet10 do
         }
       })
     end
-    
-    it { should be_equivalent_to(xml) }
-    it { should be_kind_of(Nokogiri::XML::Document) }
-  end
 
+    it { should_not be_nil }
+
+  end
+  describe '#cancelar_nfse'
+  describe '#consultar_nfse_por_rps'
+  describe '#consulta_situacao_lote_rps'
+  describe '#consultar_url_visualizacao_nfse'
+  describe '#consultar_url_visualizacao_nfse_serie'
 end
+

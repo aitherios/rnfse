@@ -17,8 +17,16 @@ module Rnfse::XMLBuilder::IssNet10
     hash = add_municipio_prestacao_servico(hash)
     hash = add_estado(hash)
     hash = add_cidade(hash)
+    hash = alter_aliquota(hash)
 
     hash
+  end
+
+  # alterar o formato da aliquota de 0 a 1 para 0 a 100
+  def alter_aliquota(hash)
+    Rnfse::Hash.transform_values(hash, 'tc:Aliquota') do |val|
+      "%.2f" % (val * 100)
+    end
   end
 
   # troca a tag Endereco/CodigoMunicipio por Cidade

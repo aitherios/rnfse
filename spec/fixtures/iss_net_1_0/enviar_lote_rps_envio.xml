@@ -34,7 +34,7 @@
               <tc:IssRetido>2</tc:IssRetido>
               <tc:ValorIss>50</tc:ValorIss>
               <tc:BaseCalculo>1000</tc:BaseCalculo>
-              <tc:Aliquota>5.0</tc:Aliquota>
+              <tc:Aliquota>5.00</tc:Aliquota>
               <tc:ValorLiquidoNfse>850</tc:ValorLiquidoNfse>
               <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
               <tc:DescontoCondicionado>0</tc:DescontoCondicionado>

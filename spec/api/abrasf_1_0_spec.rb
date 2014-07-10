@@ -9,7 +9,10 @@ describe Rnfse::API::Abrasf10 do
   end
 
 
-  describe '#recepcionar_lote_rps'
+  describe '#recepcionar_lote_rps' do
+    it { expect(client).to respond_to(:recepcionar_lote_rps) }
+  end
+
   describe '#consulta_situacao_lote_rps'
   describe '#consultar_nfse_por_rps'
   describe '#consultar_nfse'
