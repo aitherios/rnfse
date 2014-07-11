@@ -1,7 +1,8 @@
 # rnfse
-[![Dependency Status](https://gemnasium.com/aitherios/rnfse.svg)](https://gemnasium.com/aitherios/rnfse)
-[![TravisCI Build Status](https://travis-ci.org/aitherios/rnfse.svg?branch=master)](https://travis-ci.org/aitherios/rnfse)
-[![Coverage](https://img.shields.io/codeclimate/coverage/github/aitherios/rnfse.svg)](https://codeclimate.com/github/aitherios/rnfse)
+[![Gem Version](http://img.shields.io/gem/v/rnfse.svg?style=flat)](http://rubygems.org/gems/rnfse)
+[![Dependency Status](https://img.shields.io/gemnasium/aitherios/rnfse.svg?style=flat)](https://gemnasium.com/aitherios/rnfse)
+[![Build Status](https://img.shields.io/travis/aitherios/rnfse.svg?style=flat)](https://travis-ci.org/aitherios/rnfse)
+[![Coverage](https://img.shields.io/codeclimate/coverage/github/aitherios/rnfse.svg?style=flat)](https://codeclimate.com/github/aitherios/rnfse)
 
 Biblioteca para integração com as várias implementações
 municipais de Nota Fiscal de Serviços eletrônica (NFS-e) que utilizam uma 
