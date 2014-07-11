@@ -49,9 +49,9 @@ module Rnfse
         raise ArgumentError, 'opções de assinatura digital faltando', caller
       end
 
+      self.verbose = options['verbose'] || false
       self.xml_builder = options['xml_builder'] || XMLBuilder.new(padrao: self.api)
       self.soap_client = options['soap_client'] || savon_client
-      self.verbose = options['verbose'] || false
 
       extend self.class.const_get(String.camelize(self.api))
     end
@@ -70,11 +70,11 @@ module Rnfse
         namespace: self.namespace
       }
 
-      savor_hash.merge!({
+      savon_hash = savon_hash.merge(
         log: true,
         log_level: :debug,
         pretty_print_xml: true
-      }) if self.verbose
+      ) if self.verbose
 
       Savon.client(savon_hash)
     end
