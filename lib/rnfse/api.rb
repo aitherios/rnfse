@@ -12,8 +12,8 @@ module Rnfse
     attr_accessor :soap_client
     attr_accessor :verbose
 
-    def initialize(options)
-      options = Hash.stringify_keys(options)
+    def initialize(options = {})
+      options = load_options(options)
       
       file = Pathname.new(File.expand_path('../..', __FILE__))
       provedores = YAML.load_file(file.join('provedores.yml'))
@@ -81,6 +81,20 @@ module Rnfse
 
     def has_options(hash, *options)
       options.each { |option| return false if hash[option].nil? }
+    end
+
+    def load_options(hash)
+      hash = Rnfse::Hash.new(hash)
+      hash = hash.stringify_keys
+      config = Rnfse::Configuration.instance
+
+      attrs = ['provedor', 'municipio', 'namespace', 'endpoint',
+               'verbose', 'api', 'certificate', 'key', 'xml_builder',
+               'soap_client', 'verbose', 'homologacao']
+      attrs.each do |attr|
+        hash[attr] = config.send(attr) if hash[attr].nil?
+      end
+      hash
     end
 
   end

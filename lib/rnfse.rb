@@ -7,7 +7,9 @@ require 'gyoku'
 require 'nokogiri-xmlsec1'
 require 'savon'
 
+require 'rnfse/core'
 require 'rnfse/version'
+require 'rnfse/configuration'
 require 'rnfse/hash'
 require 'rnfse/string'
 
