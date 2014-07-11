@@ -5,6 +5,7 @@ require 'json'
 require 'json-schema'
 require 'gyoku'
 require 'nokogiri-xmlsec1'
+require 'savon'
 
 require 'rnfse/version'
 require 'rnfse/hash'

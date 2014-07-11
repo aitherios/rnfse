@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe Rnfse::API::Abrasf10 do
-  let(:certificate) { File.read(File.join($ROOT, 'spec', 'fixtures', 'certificate.pem')) }
-  let(:key) { File.read(File.join($ROOT, 'spec', 'fixtures', 'key.pem')) }
+  let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
+  let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
 
   let(:client) do
     Rnfse::API.new(padrao: :abrasf_1_0, 

@@ -3,18 +3,59 @@
 module Rnfse
   class Hash < ::Hash
 
+    def initialize(constructor = {})
+      if constructor.is_a?(::Hash)
+        super()
+        update(constructor)
+      else
+        super(constructor)
+      end
+    end
+
+    def update(other_hash)
+      if other_hash.is_a?(Hash)
+        super(other_hash)
+      else
+        other_hash.to_hash.each_pair do |key, value|
+          self[key] = value
+        end
+      end
+    end
+
     def self.stringify_keys(obj)
       self.transform_keys(obj) { |key| key.to_s rescue key }
+    end
+    
+    def stringify_keys
+      self.class.stringify_keys(self)
     end
 
     def self.symbolize_keys(obj)
       self.transform_keys(obj) { |key| key.to_sym rescue key }
+    end
+    
+    def symbolize_keys
+      self.class.symbolize_keys(self)
     end
 
     def self.camelize_and_symbolize_keys(obj, uppercase_first_letter = true)
       self.transform_keys(obj) do |key|
         String.camelize(key.to_s, uppercase_first_letter).to_sym rescue key
       end
+    end
+
+    def camelize_and_symbolize_keys(uppercase_first_letter = true)
+      self.class.camelize_and_symbolize_keys(self, uppercase_first_letter)
+    end
+
+    def self.underscore_and_symbolize_keys(obj)
+      self.transform_keys(obj) do |key|
+        String.underscore(key.to_s).to_sym rescue key
+      end
+    end
+
+    def underscore_and_symbolize_keys
+      self.class.underscore_and_symbolize_keys(self)
     end
     
     def self.transform_keys(obj, &block)
@@ -34,6 +75,10 @@ module Rnfse
       else
         obj
       end
+    end
+
+    def transform_keys(&block)
+      self.class.transform_keys(self, &block)
     end
 
     def self.transform_values(obj, key, &block)
@@ -59,6 +104,10 @@ module Rnfse
       else
         obj
       end
+    end
+
+    def transform_values(key, &block)
+      self.class.transform_values(self, key, &block)
     end
 
     def self.replace_key_values(obj, key, &block)
@@ -89,6 +138,10 @@ module Rnfse
       else
         obj
       end
+    end
+
+    def replace_key_values(key, &block)
+      self.class.replace_key_values(self, key, &block)
     end
 
   end

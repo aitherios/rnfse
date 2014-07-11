@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe Rnfse::Hash do
-  describe '::transform_keys' do
 
+  describe '::transform_keys' do
     context 'com um hash simples,' do
       let(:hash) { { name: 'Rob', age: '28' } }
       let(:transformed_hash) { { 'NAME' => 'Rob', 'AGE' => '28' } }
@@ -23,10 +23,22 @@ describe Rnfse::Hash do
     end
   end
 
+  describe '#transform_keys' do
+    let(:hash) { Rnfse::Hash.new({ name: 'Rob', age: '28' }) }
+    let(:transformed_hash) { { 'NAME' => 'Rob', 'AGE' => '28' } }
+    it { expect(hash.transform_keys { |key| key.to_s.upcase}).to eq(transformed_hash) }
+  end
+
   describe '::symbolize_keys' do
     let(:hash) { { 'name' => 'Rob', 'age' => '28' } }
     let(:transformed_hash) { { name: 'Rob', age: '28' } }
     it { expect(Rnfse::Hash.symbolize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '#symbolize_keys' do
+    let(:hash) { Rnfse::Hash.new({ 'name' => 'Rob', 'age' => '28' }) }
+    let(:transformed_hash) { { name: 'Rob', age: '28' } }
+    it { expect(hash.symbolize_keys).to eq(transformed_hash) }
   end
 
   describe '::stringify_keys' do
@@ -35,10 +47,34 @@ describe Rnfse::Hash do
     it { expect(Rnfse::Hash.stringify_keys(hash)).to eq(transformed_hash) }
   end
 
+  describe '#stringify_keys' do
+    let(:hash) { Rnfse::Hash.new({ name: 'Rob', age: '28' }) }
+    let(:transformed_hash) { { 'name' => 'Rob', 'age' => '28' } }
+    it { expect(hash.stringify_keys).to eq(transformed_hash) }
+  end
+
   describe '::camelize_and_symbolize_keys' do
     let(:hash) { { 'first_name' => 'Rob', 'current_age' => '28' } }
     let(:transformed_hash) { { FirstName: 'Rob', CurrentAge: '28' } }
     it { expect(Rnfse::Hash.camelize_and_symbolize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '#camelize_and_symbolize_keys' do
+    let(:hash) { Rnfse::Hash.new({ 'first_name' => 'Rob', 'current_age' => '28' }) }
+    let(:transformed_hash) { { FirstName: 'Rob', CurrentAge: '28' } }
+    it { expect(hash.camelize_and_symbolize_keys).to eq(transformed_hash) }
+  end
+
+  describe '::underscore_and_symbolize_keys' do
+    let(:hash) { { 'first_name' => 'Rob', 'currentAge' => '28' } }
+    let(:transformed_hash) { { first_name: 'Rob', current_age: '28' } }
+    it { expect(Rnfse::Hash.underscore_and_symbolize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '#underscore_and_symbolize_keys' do
+    let(:hash) { Rnfse::Hash.new({ 'first_name' => 'Rob', 'currentAge' => '28' }) }
+    let(:transformed_hash) { { first_name: 'Rob', current_age: '28' } }
+    it { expect(hash.underscore_and_symbolize_keys).to eq(transformed_hash) }
   end
 
   describe '::transform_values' do
@@ -93,6 +129,16 @@ describe Rnfse::Hash do
     end
   end
 
+  describe '#transform_values' do
+    let(:hash) { Rnfse::Hash.new({ name: 'Rob', age: '28' }) }
+    let(:transformed_hash) { { name: 'ROB', age: '28' } }
+    it { expect(
+      hash.transform_values(:name) { |val| 
+        val.to_s.upcase 
+      }).to eq(transformed_hash) 
+    }
+  end
+
   describe '::replace_key_values' do
     context 'com um hash simples,' do
       let(:hash) { { name: 'Rob', age: '28' } }
@@ -144,6 +190,16 @@ describe Rnfse::Hash do
         }).to eq(transformed_hash) 
       }
     end
+  end
+
+  describe '#replace_key_values' do
+    let(:hash) { Rnfse::Hash.new({ name: 'Rob', age: '28' }) }
+    let(:transformed_hash) { { first: { name: 'Rob' }, age: '28' } }
+    it { expect(
+      hash.replace_key_values(:name) { |key, value| 
+        { first: { key => value } }
+      }).to eq(transformed_hash) 
+    }
   end
 
 end

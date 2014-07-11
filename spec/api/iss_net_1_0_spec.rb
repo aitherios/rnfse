@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe Rnfse::API::IssNet10 do
-  let(:certificate) { File.read(File.join($ROOT, 'spec', 'fixtures', 'certificate.pem')) }
-  let(:key) { File.read(File.join($ROOT, 'spec', 'fixtures', 'key.pem')) }
+  let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
+  let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
 
   let(:client) do
     Rnfse::API.new(padrao: :iss_net_1_0, 
@@ -86,12 +86,12 @@ describe Rnfse::API::IssNet10 do
     end
 
     it { should_not be_nil }
-
+    it { should be_kind_of(Hash) }
   end
+
   describe '#cancelar_nfse'
   describe '#consultar_nfse_por_rps'
   describe '#consulta_situacao_lote_rps'
   describe '#consultar_url_visualizacao_nfse'
   describe '#consultar_url_visualizacao_nfse_serie'
 end
-
