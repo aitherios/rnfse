@@ -1,0 +1,214 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.issnetonline.com.br/webservice/nfd" xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><RecepcionarLoteRps><xml><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+        <EnviarLoteRpsEnvio xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd" xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+          <LoteRps>
+            <tc:NumeroLote>1</tc:NumeroLote>
+            <tc:CpfCnpj>
+              <tc:Cnpj>14576582000163</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+            <tc:QuantidadeRps>1</tc:QuantidadeRps>
+            <tc:ListaRps>
+              <tc:Rps>
+                <tc:InfRps>
+                  <tc:IdentificacaoRps>
+                    <tc:Numero>15</tc:Numero>
+                    <tc:Serie>8</tc:Serie>
+                    <tc:Tipo>1</tc:Tipo>
+                  </tc:IdentificacaoRps>
+                  <tc:DataEmissao>2014-06-24T10:00:00</tc:DataEmissao>
+                  <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+                  <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+                  <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+                  <tc:Status>1</tc:Status>
+                  <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+                  <tc:Servico>
+                    <tc:Valores>
+                      <tc:ValorServicos>35</tc:ValorServicos>
+                      <tc:ValorPis>0</tc:ValorPis>
+                      <tc:ValorCofins>0</tc:ValorCofins>
+                      <tc:ValorInss>0</tc:ValorInss>
+                      <tc:ValorIr>0</tc:ValorIr>
+                      <tc:ValorCsll>0</tc:ValorCsll>
+                      <tc:IssRetido>2</tc:IssRetido>
+                      <tc:ValorIss>0</tc:ValorIss>
+                      <tc:BaseCalculo>35</tc:BaseCalculo>
+                      <tc:Aliquota>5.00</tc:Aliquota>
+                      <tc:ValorLiquidoNfse>35</tc:ValorLiquidoNfse>
+                      <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
+                      <tc:DescontoCondicionado>0</tc:DescontoCondicionado>
+                    </tc:Valores>
+                    <tc:ItemListaServico>8</tc:ItemListaServico>
+                    <tc:CodigoCnae>6399200</tc:CodigoCnae>
+                    <tc:Discriminacao>Discriminação da RPS</tc:Discriminacao>
+                    <tc:CodigoTributacaoMunicipio>50000024</tc:CodigoTributacaoMunicipio>
+                    <tc:MunicipioPrestacaoServico>999</tc:MunicipioPrestacaoServico>
+                  </tc:Servico>
+                  <tc:Prestador>
+                    <tc:CpfCnpj>
+                      <tc:Cnpj>11006269000100</tc:Cnpj>
+                    </tc:CpfCnpj>
+                    <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
+                  </tc:Prestador>
+                  <tc:Tomador>
+                    <tc:IdentificacaoTomador>
+                      <tc:CpfCnpj>
+                        <tc:Cpf>93565968834</tc:Cpf>
+                      </tc:CpfCnpj>
+                    </tc:IdentificacaoTomador>
+                    <tc:RazaoSocial>José Serra</tc:RazaoSocial>
+                    <tc:Endereco>
+                      <tc:Endereco>R dos Navegantes 123, 321</tc:Endereco>
+                      <tc:Numero>123</tc:Numero>
+                      <tc:Complemento>321</tc:Complemento>
+                      <tc:Bairro>Boa Viagem</tc:Bairro>
+                      <tc:Cidade>1</tc:Cidade>
+                      <tc:Estado>PE</tc:Estado>
+                      <tc:Cep>51021010</tc:Cep>
+                    </tc:Endereco>
+                  </tc:Tomador>
+                </tc:InfRps>
+              </tc:Rps>
+            </tc:ListaRps>
+          </LoteRps>
+          <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+        <Reference>
+        <Transforms>
+        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>wBKH90N6CSrgbPo134OwY7xPFX8=</DigestValue>
+        </Reference>
+        </SignedInfo>
+        <SignatureValue>EkvAUi/aZQ8CjfDr3Iys33HJ0Gkd2Iu0vVGQ3OL68OX6XDHAZhVF++GNYqfvla5j
+        z9jFsTLUetNGyMwQZXB//0RPff3nL4SEQ1qypM0SECu1aTtRlra2crCjv12wghde
+        pa0C//DXGkqX52LOsIbDZtHf0l+56JMaIVS9YW79aQfJq0XxthvjMH68TGClb9r+
+        3kKvMI6qy8ym21niEJiuoW5Q4u1CXmNfk/Q30ZRlp97+bXR0xi7DxI1V9di5lRMh
+        77Ih/2tH2cPkDZp/0/H2WNc90tVMYyZnzBKdKG+nIMPXUeGbQKEO9c8knrUHhA17
+        FPMQAPRpWlxE0XVnJb0mDA==</SignatureValue>
+        <KeyInfo>
+        <X509Data>
+        <X509Certificate>MIIH7jCCBdagAwIBAgIIebwmN9dD4mUwDQYJKoZIhvcNAQELBQAwTDELMAkGA1UE
+        BhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxKDAmBgNVBAMTH1NFUkFTQSBDZXJ0
+        aWZpY2Fkb3JhIERpZ2l0YWwgdjIwHhcNMTQwMzE5MTc0MjAwWhcNMTUwMzE5MTc0
+        MjAwWjCCAQoxCzAJBgNVBAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMRQwEgYD
+        VQQLEwsoRU0gQlJBTkNPKTEYMBYGA1UECxMPMDAwMDAxMDA0OTk4NDUzMRQwEgYD
+        VQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UECxMLKEVNIEJSQU5DTykxFDASBgNVBAsT
+        CyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UECxMLKEVN
+        IEJSQU5DTykxSDBGBgNVBAMTP0lOU1RJVFVUTyBERSBTRVJWSUNPUyBFRFVDQUNJ
+        T05BSVMgRSBGT1JNQVRJVk9TIFBBRFJFIFBJTyBMVERBLjCCASIwDQYJKoZIhvcN
+        AQEBBQADggEPADCCAQoCggEBAKoxgxMqQ82YFU2g8qGqTkX1ImB/kvunqrNyNqF0
+        FIJ6T2Knzl+30aFvUkGwCzDZQsZrZvKUEX2zZ4avJFOTwXJpf3O1wARR972Dob75
+        W8O39XuyMCXVoTdnmc9I0veiaCy1T6qfRWHGjgdDYCwp6D0FL1inkOaCGc21NpQb
+        /d4VDto3MELOjvsyT6WOPjn3sRjQB87tZGwxFq/mas3aq3qqMeLBsNtW6ff7EHqA
+        94PrJj/Hk8bVxx8c/fc3kyKPBgrY426rEnUOZeSHnLj97AEoVSapFQpdEFU8jtxL
+        NZnFgKwPvOm5zFOzKi3uyFqvkuxR8f1AMEjB31fwbfn9WJcCAwEAAaOCAxIwggMO
+        MIGXBggrBgEFBQcBAQSBijCBhzBHBggrBgEFBQcwAoY7aHR0cDovL3d3dy5jZXJ0
+        aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL2NhZGVpYXMvc2VyYXNhY2R2Mi5wN2IwPAYI
+        KwYBBQUHMAGGMGh0dHA6Ly9vY3NwLmNlcnRpZmljYWRvZGlnaXRhbC5jb20uYnIv
+        c2VyYXNhY2R2MjAfBgNVHSMEGDAWgBSa4IMQ1yab6bragrKBzjka04dwhjBxBgNV
+        HSAEajBoMGYGBmBMAQIBBjBcMFoGCCsGAQUFBwIBFk5odHRwOi8vcHVibGljYWNh
+        by5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9zaXRvcmlvL2RwYy9kZWNs
+        YXJhY2FvLXNjZC5wZGYwgfAGA1UdHwSB6DCB5TBJoEegRYZDaHR0cDovL3d3dy5j
+        ZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9zaXRvcmlvL2xjci9zZXJhc2Fj
+        ZHYyLmNybDBDoEGgP4Y9aHR0cDovL2xjci5jZXJ0aWZpY2Fkb3MuY29tLmJyL3Jl
+        cG9zaXRvcmlvL2xjci9zZXJhc2FjZHYyLmNybDBToFGgT4ZNaHR0cDovL3JlcG9z
+        aXRvcmlvLmljcGJyYXNpbC5nb3YuYnIvbGNyL1NlcmFzYS9yZXBvc2l0b3Jpby9s
+        Y3Ivc2VyYXNhY2R2Mi5jcmwwDgYDVR0PAQH/BAQDAgXgMB0GA1UdJQQWMBQGCCsG
+        AQUFBwMCBggrBgEFBQcDBDCBuwYDVR0RBIGzMIGwgRhGQUJJQU5PSElHVUNISUBH
+        TUFJTC5DT02gPgYFYEwBAwSgNRMzMTIxMjE5NzgzMDE0NjM3NDgzNTAwMDAwMDAw
+        MDAwMDAwMDAwMjk4MjAwOTk1U1NQIFNQoCAGBWBMAQMCoBcTFUZBQklBTk8gUEFV
+        TE8gSElHVUNISaAZBgVgTAEDA6AQEw4xNDU3NjU4MjAwMDE2M6AXBgVgTAEDB6AO
+        EwwwMDAwMDAwMDAwMDAwDQYJKoZIhvcNAQELBQADggIBAJ/L2TL9T4d3b8v6gKSH
+        4CQjNIcEdlbxNWnxxjDhpPFOVaCswLU7rDeRsqaqv/iu6vFXJwhSHrAtvtOw0Pm+
+        B8/rAEagE9GCV4LBobGKQLfuzWk75ppULFHEVHT4HuW9zkxAUU42M7qTxZN3vi9X
+        048TqAukgGtBFqMyDIvNAJJYZsHzIn8SS1IYWVP/+dgCzYC0l54U+HcK9N8KEypU
+        v0BZ+ZQkjjuU7KTOpDn7OwE2L009KKh/WETjElTIDa7EjUeguLgBnbPUImGU9SNc
+        a7SIxXssFQQV78tWgfJYovmzTMCrd9WDezRNtvYY5Nk++9A/m0ro2efahd9uZJoO
+        IihIXSanv5ChGITRUW5ADckfmMOkhmZAXpizDsjhl1DjeVPQ33imHe7PsX6cvP1Q
+        C28YHJ7OwCr3MTjFybxCe8w9Wtw5pobu4S9sC6H4yZQIIWywZWS9z8dMGfreTGtS
+        jsr2ACd5QFUk7a8bCXHF0hKmpcXhIQrCCJimwXHLarRJgjcFXm/SgIlxvAlzm1N7
+        MVtDqPwyb4gtLpbxUnHFVqC3Gd8M1QD4gTnjIELR/cIF6VelzISDE1mpiKNAK5Uq
+        wDQ51Yr8gzAVv6YJzf3eeMY+UaalrhF0TjteWzEdsn4dp9nX3K2qzx3BlQ4fQfbJ
+        AZNA4jQj/HCGCNKespYVBi6x</X509Certificate>
+        </X509Data>
+        </KeyInfo>
+        </Signature>
+        </EnviarLoteRpsEnvio>
+        ]]></xml></RecepcionarLoteRps></soap:Body></soap:Envelope>
+    headers:
+      Soapaction:
+      - '"RecepcionarLoteRps"'
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Content-Length:
+      - '7185'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 11 Jul 2014 07:16:20 GMT
+      Server:
+      - Microsoft-IIS/6.0
+      X-Powered-By:
+      - ASP.NET
+      X-Aspnet-Version:
+      - 2.0.50727
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Content-Length:
+      - '1256'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c29hcDpF
+        bnZlbG9wZSB4bWxuczpzb2FwPSJodHRwOi8vd3d3LnczLm9yZy8yMDAzLzA1
+        L3NvYXAtZW52ZWxvcGUiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3
+        dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiPjxzb2FwOkJvZHk+PFJlY2VwY2lv
+        bmFyTG90ZVJwc1Jlc3BvbnNlIHhtbG5zPSJodHRwOi8vd3d3Lmlzc25ldG9u
+        bGluZS5jb20uYnIvd2Vic2VydmljZS9uZmQiPjxSZWNlcGNpb25hckxvdGVS
+        cHNSZXN1bHQ+Jmx0Oz94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRm
+        LTgiPyZndDsNCiZsdDtFbnZpYXJMb3RlUnBzUmVzcG9zdGEgeG1sbnM9Imh0
+        dHA6Ly93d3cuaXNzbmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNm
+        L3ZzZC9zZXJ2aWNvX2Vudmlhcl9sb3RlX3Jwc19yZXNwb3N0YS54c2QiJmd0
+        Ow0KICAmbHQ7TGlzdGFNZW5zYWdlbVJldG9ybm8mZ3Q7DQogICAgJmx0O01l
+        bnNhZ2VtUmV0b3JubyZndDsNCiAgICAgICZsdDtDb2RpZ28geG1sbnM9Imh0
+        dHA6Ly93d3cuaXNzbmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNm
+        L3ZzZC90aXBvc19jb21wbGV4b3MueHNkIiZndDtFMTU3Jmx0Oy9Db2RpZ28m
+        Z3Q7DQogICAgICAmbHQ7TWVuc2FnZW0geG1sbnM9Imh0dHA6Ly93d3cuaXNz
+        bmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNmL3ZzZC90aXBvc19j
+        b21wbGV4b3MueHNkIiZndDsgVXN1w6FyaW8gbsOjbyBlc3TDoSBhdXRvcml6
+        YWRvIGEgdXRpbGl6YXIgZXNzZSBzZXJ2acOnbyBwYXJhIGVzc2UgY29udHJp
+        YnVpbnRlLiAmbHQ7L01lbnNhZ2VtJmd0Ow0KICAgICAgJmx0O0NvcnJlY2Fv
+        IHhtbG5zPSJodHRwOi8vd3d3Lmlzc25ldG9ubGluZS5jb20uYnIvd2Vic2Vy
+        dmljZWFicmFzZi92c2QvdGlwb3NfY29tcGxleG9zLnhzZCImZ3Q7U29saWNp
+        dGUgYW8gY29udHJpYnVpbnRlIGF1dG9yaXphw6fDo28gcGFyYSB1dGlsaXph
+        ciBvIHNlcnZpw6dvIGVtIHNldSBub21lLiZsdDsvQ29ycmVjYW8mZ3Q7DQog
+        ICAgJmx0Oy9NZW5zYWdlbVJldG9ybm8mZ3Q7DQogICZsdDsvTGlzdGFNZW5z
+        YWdlbVJldG9ybm8mZ3Q7DQombHQ7L0VudmlhckxvdGVScHNSZXNwb3N0YSZn
+        dDs8L1JlY2VwY2lvbmFyTG90ZVJwc1Jlc3VsdD48L1JlY2VwY2lvbmFyTG90
+        ZVJwc1Jlc3BvbnNlPjwvc29hcDpCb2R5Pjwvc29hcDpFbnZlbG9wZT4=
+    http_version: 
+  recorded_at: Fri, 11 Jul 2014 07:16:22 GMT
+recorded_with: VCR 2.9.2

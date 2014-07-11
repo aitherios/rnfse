@@ -5,6 +5,14 @@ end
 require 'simplecov'
 SimpleCov.start
 
+require 'webmock'
+require 'vcr'
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  WebMock.allow_net_connect!
+end
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 $ROOT = File.expand_path('../..', __FILE__)
