@@ -8,3 +8,7 @@ matrix:
   fast_finish: true
   allow_failures:
     - rvm: ruby-head
+addons:
+  code_climate:
+    repo_token: 
+      secure: "vzzNVwWPm/BzVPjImSALhXSaaqExZRwZ1ePw8v9/lncbBSQoTGdthAjbirOO14rP2RTvupRnvoG3XK8FrY7Ct5+WCtEEuWNNB6f5u6gAI/+KKMQN69oIE5pLienB2yhTvcvghmNVf0aOVVh4H9RWeJD3Bv4GxnSkmNZNKNWfki0="
