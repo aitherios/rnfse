@@ -5,13 +5,14 @@ describe Rnfse::API::IssNet10 do
   let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
   let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
 
+  
   let(:client) do
     Rnfse::API.new(padrao: :iss_net_1_0, 
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
                    key: key)
-  end
+    end
 
 
   describe '#recepcionar_lote_rps' do
@@ -27,7 +28,7 @@ describe Rnfse::API::IssNet10 do
           lote_rps: {
             numero_lote: 1,
             cnpj: "14.576.582/0001-63",
-            inscricao_municipal: "812005",
+            inscricao_municipal: "124762",
             quantidade_rps: 1,
             lista_rps: [
               {
@@ -62,7 +63,7 @@ describe Rnfse::API::IssNet10 do
                   codigo_municipio: 999
                 },
                 prestador: {
-                  cnpj: "11.006.269/0001-00",
+                  cnpj: "14.576.582/0001-63",
                   inscricao_municipal: "124762"
                 },
                 tomador: {

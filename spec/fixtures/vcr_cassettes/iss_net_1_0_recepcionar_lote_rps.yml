@@ -13,7 +13,7 @@ http_interactions:
             <tc:CpfCnpj>
               <tc:Cnpj>14576582000163</tc:Cnpj>
             </tc:CpfCnpj>
-            <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+            <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
             <tc:QuantidadeRps>1</tc:QuantidadeRps>
             <tc:ListaRps>
               <tc:Rps>
@@ -53,7 +53,7 @@ http_interactions:
                   </tc:Servico>
                   <tc:Prestador>
                     <tc:CpfCnpj>
-                      <tc:Cnpj>11006269000100</tc:Cnpj>
+                      <tc:Cnpj>14576582000163</tc:Cnpj>
                     </tc:CpfCnpj>
                     <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
                   </tc:Prestador>
@@ -87,15 +87,15 @@ http_interactions:
         <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
         </Transforms>
         <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-        <DigestValue>wBKH90N6CSrgbPo134OwY7xPFX8=</DigestValue>
+        <DigestValue>8AXJf2h4iLh6Q5wv9ELO2WRmH9s=</DigestValue>
         </Reference>
         </SignedInfo>
-        <SignatureValue>EkvAUi/aZQ8CjfDr3Iys33HJ0Gkd2Iu0vVGQ3OL68OX6XDHAZhVF++GNYqfvla5j
-        z9jFsTLUetNGyMwQZXB//0RPff3nL4SEQ1qypM0SECu1aTtRlra2crCjv12wghde
-        pa0C//DXGkqX52LOsIbDZtHf0l+56JMaIVS9YW79aQfJq0XxthvjMH68TGClb9r+
-        3kKvMI6qy8ym21niEJiuoW5Q4u1CXmNfk/Q30ZRlp97+bXR0xi7DxI1V9di5lRMh
-        77Ih/2tH2cPkDZp/0/H2WNc90tVMYyZnzBKdKG+nIMPXUeGbQKEO9c8knrUHhA17
-        FPMQAPRpWlxE0XVnJb0mDA==</SignatureValue>
+        <SignatureValue>kQXJoLSYxFZriX113XrVKICb1DTI3rHHgtXEUKab08Nc3DMNyyUu07YYlpEVvXEE
+        mkCxDNXOLzDCRLC7+jaKwEIAlOX3G8ikD9GQFqX+j7AT3J99zMULmst8g09ERGJB
+        FFmM7SH/R1rdgfavUyWWRQjjOXe9t7z3hyUF+V0CJR2zO/q/gJqz2K4ZBRvf5am6
+        P7/sSNsq6y/u7d34iZlcEK16KVtNz+eLa5hvJKQaQMyF3ri5H79sVpaWEIbBSbST
+        q2GyP2neYzU4CFfcuTBO7OBWa0B54+BjAERslQRqaG9btc+7KXkQaVA6bJJstIZx
+        L/dlRyxXXJKSCQbcIlmUyA==</SignatureValue>
         <KeyInfo>
         <X509Data>
         <X509Certificate>MIIH7jCCBdagAwIBAgIIebwmN9dD4mUwDQYJKoZIhvcNAQELBQAwTDELMAkGA1UE
@@ -165,7 +165,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 11 Jul 2014 07:16:20 GMT
+      - Fri, 11 Jul 2014 08:56:56 GMT
       Server:
       - Microsoft-IIS/6.0
       X-Powered-By:
@@ -177,38 +177,15 @@ http_interactions:
       Content-Type:
       - application/soap+xml; charset=utf-8
       Content-Length:
-      - '1256'
+      - '799'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c29hcDpF
-        bnZlbG9wZSB4bWxuczpzb2FwPSJodHRwOi8vd3d3LnczLm9yZy8yMDAzLzA1
-        L3NvYXAtZW52ZWxvcGUiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3
-        dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiPjxzb2FwOkJvZHk+PFJlY2VwY2lv
-        bmFyTG90ZVJwc1Jlc3BvbnNlIHhtbG5zPSJodHRwOi8vd3d3Lmlzc25ldG9u
-        bGluZS5jb20uYnIvd2Vic2VydmljZS9uZmQiPjxSZWNlcGNpb25hckxvdGVS
-        cHNSZXN1bHQ+Jmx0Oz94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRm
-        LTgiPyZndDsNCiZsdDtFbnZpYXJMb3RlUnBzUmVzcG9zdGEgeG1sbnM9Imh0
-        dHA6Ly93d3cuaXNzbmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNm
-        L3ZzZC9zZXJ2aWNvX2Vudmlhcl9sb3RlX3Jwc19yZXNwb3N0YS54c2QiJmd0
-        Ow0KICAmbHQ7TGlzdGFNZW5zYWdlbVJldG9ybm8mZ3Q7DQogICAgJmx0O01l
-        bnNhZ2VtUmV0b3JubyZndDsNCiAgICAgICZsdDtDb2RpZ28geG1sbnM9Imh0
-        dHA6Ly93d3cuaXNzbmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNm
-        L3ZzZC90aXBvc19jb21wbGV4b3MueHNkIiZndDtFMTU3Jmx0Oy9Db2RpZ28m
-        Z3Q7DQogICAgICAmbHQ7TWVuc2FnZW0geG1sbnM9Imh0dHA6Ly93d3cuaXNz
-        bmV0b25saW5lLmNvbS5ici93ZWJzZXJ2aWNlYWJyYXNmL3ZzZC90aXBvc19j
-        b21wbGV4b3MueHNkIiZndDsgVXN1w6FyaW8gbsOjbyBlc3TDoSBhdXRvcml6
-        YWRvIGEgdXRpbGl6YXIgZXNzZSBzZXJ2acOnbyBwYXJhIGVzc2UgY29udHJp
-        YnVpbnRlLiAmbHQ7L01lbnNhZ2VtJmd0Ow0KICAgICAgJmx0O0NvcnJlY2Fv
-        IHhtbG5zPSJodHRwOi8vd3d3Lmlzc25ldG9ubGluZS5jb20uYnIvd2Vic2Vy
-        dmljZWFicmFzZi92c2QvdGlwb3NfY29tcGxleG9zLnhzZCImZ3Q7U29saWNp
-        dGUgYW8gY29udHJpYnVpbnRlIGF1dG9yaXphw6fDo28gcGFyYSB1dGlsaXph
-        ciBvIHNlcnZpw6dvIGVtIHNldSBub21lLiZsdDsvQ29ycmVjYW8mZ3Q7DQog
-        ICAgJmx0Oy9NZW5zYWdlbVJldG9ybm8mZ3Q7DQogICZsdDsvTGlzdGFNZW5z
-        YWdlbVJldG9ybm8mZ3Q7DQombHQ7L0VudmlhckxvdGVScHNSZXNwb3N0YSZn
-        dDs8L1JlY2VwY2lvbmFyTG90ZVJwc1Jlc3VsdD48L1JlY2VwY2lvbmFyTG90
-        ZVJwc1Jlc3BvbnNlPjwvc29hcDpCb2R5Pjwvc29hcDpFbnZlbG9wZT4=
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><RecepcionarLoteRpsResponse
+        xmlns=\"http://www.issnetonline.com.br/webservice/nfd\"><RecepcionarLoteRpsResult>&lt;?xml
+        version=\"1.0\" encoding=\"utf-8\"?&gt;\r\n&lt;EnviarLoteRpsResposta xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_resposta.xsd\"&gt;\r\n
+        \ &lt;NumeroLote&gt;1&lt;/NumeroLote&gt;\r\n  &lt;DataRecebimento&gt;2014-07-11T05:56:56&lt;/DataRecebimento&gt;\r\n
+        \ &lt;Protocolo&gt;db1c3e91-6aea-4450-a3fc-5b6a7fba7dc7&lt;/Protocolo&gt;\r\n&lt;/EnviarLoteRpsResposta&gt;</RecepcionarLoteRpsResult></RecepcionarLoteRpsResponse></soap:Body></soap:Envelope>"
     http_version: 
-  recorded_at: Fri, 11 Jul 2014 07:16:22 GMT
+  recorded_at: Fri, 11 Jul 2014 08:56:58 GMT
 recorded_with: VCR 2.9.2
