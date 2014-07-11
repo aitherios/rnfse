@@ -2,10 +2,10 @@ producao:
   iss_net:
     namespace: http://www.issnetonline.com.br/webservice/nfd
     endpoint: http://www.issnetonline.com.br/webserviceabrasf/%{municipio}/servicos.asmx
-    api: abrasf_1_0
+    api: iss_net_1_0
 
 homologacao:
   iss_net:
     namespace: http://www.issnetonline.com.br/webservice/nfd
     endpoint: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
-    api: abrasf_1_0
+    api: iss_net_1_0

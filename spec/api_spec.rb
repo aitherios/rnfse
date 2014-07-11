@@ -18,7 +18,7 @@ describe Rnfse::API do
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx') }
-      its(:api) { should eq('abrasf_1_0') }
+      its(:api) { should eq('iss_net_1_0') }
       its(:xml_builder) { should be_kind_of(Rnfse::XMLBuilder) }
       its(:soap_client) { should be_kind_of(Savon::Client) }
     end
@@ -34,7 +34,7 @@ describe Rnfse::API do
       it { should be_kind_of(Rnfse::API) }
       its(:namespace) { should eq('http://www.issnetonline.com.br/webservice/nfd') }
       its(:endpoint) { should eq('http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx') }
-      its(:api) { should eq('abrasf_1_0') }
+      its(:api) { should eq('iss_net_1_0') }
     end
 
     context 'ao passar o padrão abrasf, namespace e endpoint,' do
