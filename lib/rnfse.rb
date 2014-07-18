@@ -12,6 +12,7 @@ require 'rnfse/version'
 require 'rnfse/configuration'
 require 'rnfse/hash'
 require 'rnfse/string'
+require 'rnfse/call_chain'
 
 require 'rnfse/api'
 require 'rnfse/api/abrasf_1_0'

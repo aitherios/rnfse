@@ -1,0 +1,13 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Consulta de Lote de RPS",
+  "description": "Esse serviço permite ao contribuinte obter as NFS-e que foram geradas a partir do Lote de RPS enviado, quando o processamento ocorrer sem problemas; ou obter a lista de erros e/ou inconsistências encontradas nos RPS. Na validação do lote, devem ser retornados todos os erros verificados. Excepcionalmente, havendo uma excessiva quantidade de erros, poderá ser definido um limitador para a quantidade de erros retornados.",
+
+  "type": "object",
+  "properties": {
+    "prestador": { "$ref": "definitions.json#/identificacaoPrestador"},
+    "protocolo": { "$ref": "definitions.json#/numeroProtocolo"}
+  },
+  "required": ["prestador", "protocolo"],
+  "additionalProperties": false
+}

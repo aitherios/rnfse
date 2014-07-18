@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.issnetonline.com.br/webservice/nfd" xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><ConsultarSituacaoLoteRPS><xml><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+        <ConsultarSituacaoLoteRpsEnvio xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_situacao_lote_rps_envio.xsd" xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+          <Prestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>14576582000163</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
+          </Prestador>
+          <Protocolo>79be6415-5562-4728-b6cf-e9388b804c76</Protocolo>
+        </ConsultarSituacaoLoteRpsEnvio>
+        ]]></xml></ConsultarSituacaoLoteRPS></soap:Body></soap:Envelope>
+    headers:
+      Soapaction:
+      - '"ConsultarSituacaoLoteRPS"'
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Content-Length:
+      - '891'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Jul 2014 06:33:38 GMT
+      Server:
+      - Microsoft-IIS/6.0
+      X-Powered-By:
+      - ASP.NET
+      X-Aspnet-Version:
+      - 2.0.50727
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Content-Length:
+      - '751'
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><ConsultarSituacaoLoteRPSResponse
+        xmlns=\"http://www.issnetonline.com.br/webservice/nfd\"><ConsultarSituacaoLoteRPSResult>&lt;?xml
+        version=\"1.0\" encoding=\"utf-8\"?&gt;\r\n&lt;ConsultarSituacaoLoteRpsResposta
+        xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_situacao_lote_rps_resposta.xsd\"&gt;\r\n
+        \ &lt;NumeroLote&gt;23&lt;/NumeroLote&gt;\r\n  &lt;Situacao&gt;4&lt;/Situacao&gt;\r\n&lt;/ConsultarSituacaoLoteRpsResposta&gt;</ConsultarSituacaoLoteRPSResult></ConsultarSituacaoLoteRPSResponse></soap:Body></soap:Envelope>"
+    http_version: 
+  recorded_at: Fri, 18 Jul 2014 06:33:38 GMT
+recorded_with: VCR 2.9.2

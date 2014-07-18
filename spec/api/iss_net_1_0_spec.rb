@@ -12,7 +12,7 @@ describe Rnfse::API::IssNet10 do
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
                    key: key)
-    end
+  end
 
 
   describe '#recepcionar_lote_rps' do
@@ -92,9 +92,56 @@ describe Rnfse::API::IssNet10 do
     it { should be_kind_of(Hash) }
   end
 
+  describe '#consultar_lote_rps' do
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.consultar_lote_rps(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
+    it { expect(client).to respond_to(:consultar_lote_rps) }
+
+    subject do
+      VCR.use_cassette('iss_net_1_0_consultar_lote_rps') do
+        client.consultar_lote_rps({
+          prestador: {
+            cpf: "301.463.748-35",
+            inscricao_municipal: "124762"
+          },
+          protocolo: "db1c3e91-6aea-4450-a3fc-5b6a7fba7dc7"
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
+  end
+
+  describe '#consultar_situacao_lote_rps' do
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.consultar_situacao_lote_rps(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
+    it { expect(client).to respond_to(:consultar_situacao_lote_rps) }
+
+    subject do
+      VCR.use_cassette('iss_net_1_0_consultar_situacao_lote_rps') do
+        client.consultar_situacao_lote_rps({
+          prestador: {
+            cnpj: "14.576.582/0001-63",
+            inscricao_municipal: "124762"
+          },
+          protocolo: "79be6415-5562-4728-b6cf-e9388b804c76"
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
+  end
+
   describe '#cancelar_nfse'
   describe '#consultar_nfse_por_rps'
-  describe '#consulta_situacao_lote_rps'
+  describe '#consultar_nfse'
   describe '#consultar_url_visualizacao_nfse'
   describe '#consultar_url_visualizacao_nfse_serie'
+  describe '#consulta_situacao_lote_rps'
 end

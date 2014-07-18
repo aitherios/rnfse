@@ -6,32 +6,55 @@ module Rnfse::API::Abrasf10
   module ClassMethods
 
     def recepcionar_lote_rps(hash = {})
-      file = get_filepath('recepcionar_lote_rps.json')
-      json = Rnfse::Hash.camelize_and_symbolize_keys(hash, false).to_json
-      errors = JSON::Validator.fully_validate(file, json)
-      if errors.empty?
-        xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
-        xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
-        response = self.soap_client.call(
-          :recepcionar_lote_rps,
-          soap_action: 'RecepcionarLoteRps',
-          message_tag: 'RecepcionarLoteRps',
-          message: { :'xml!' => "<![CDATA[#{xml}]]>" })
-        parse_response(response)
-      else
-        raise ArgumentError, errors, caller
-      end
+      validate(hash)
+      xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
+      xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+      response = self.soap_client.call(
+        :recepcionar_lote_rps,
+        soap_action: 'RecepcionarLoteRps',
+        message_tag: 'RecepcionarLoteRps',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
+    end
+
+    def consultar_lote_rps(hash = {})
+      validate(hash)
+      xml = xml_builder.build_consultar_lote_rps_xml(hash)
+      response = self.soap_client.call(
+        :consultar_lote_rps,
+        soap_action: 'ConsultarLoteRps',
+        message_tag: 'ConsultarLoteRps',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
+    end
+
+    def consultar_situacao_lote_rps(hash = {})
+      validate(hash)
+      xml = xml_builder.build_consultar_situacao_lote_rps_xml(hash)
+      response = self.soap_client.call(
+        :consultar_situacao_lote_rps,
+        soap_action: 'ConsultarSituacaoLoteRps',
+        message_tag: 'ConsultarSituacaoLoteRps',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
     end
 
     private
 
+    def validate(hash)
+      file = get_filepath("#{Rnfse::CallChain.caller_method}.json")
+      json = Rnfse::Hash.camelize_and_symbolize_keys(hash, false).to_json
+      errors = JSON::Validator.fully_validate(file, json)
+      raise ArgumentError, errors, caller unless errors.empty?
+    end
+
     def parse_response(response)
       hash = Rnfse::Hash.new(response.body)
-      lote_rps_response = hash[:recepcionar_lote_rps_response]
-      if !lote_rps_response.empty? and lote_rps_response[:recepcionar_lote_rps_result]
-        xml = hash[:recepcionar_lote_rps_response][:recepcionar_lote_rps_result]
-        hash[:recepcionar_lote_rps_response][:recepcionar_lote_rps_result] =
-          Nori.new.parse(xml)
+      response_key = hash.keys.select { |k| k =~ /response$/ }.first
+      result_key = hash[response_key].keys.select { |k| k =~ /result$/ }.first
+      if !hash[response_key].nil? and hash[response_key]
+        xml = hash[response_key][result_key]
+        hash[response_key][result_key] = Nori.new.parse(xml)
       end
       hash.underscore_and_symbolize_keys
     end

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio
+    xmlns="http://www.abrasf.org.br/servico_consultar_lote_rps_envio.xsd"
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+  <Prestador>
+    <tc:Cpf>97004731120</tc:Cpf>
+    <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+  </Prestador>
+  <Protocolo>5afd8f42-cc1e-4657-9249-8fbc3f133ebf</Protocolo>
+</ConsultarLoteRpsEnvio>

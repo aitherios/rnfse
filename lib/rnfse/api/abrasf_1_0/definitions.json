@@ -192,6 +192,7 @@
   },
   "numeroProtocolo": {
     "description": "Número do protocolo de recebimento do RPS",
+    "type": "string",
     "maxLength": 50
   },
   "situacaoLoteRps": {
@@ -275,13 +276,26 @@
   },
   "identificacaoPrestador": {
     "description": "Representa dados para identificação do prestador de serviço",
-    "type": "object",
-    "properties": {
-      "cnpj": { "$ref": "#/cnpj" },
-      "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" }
-    },
-    "required": ["cnpj"],
-    "additionalProperties": false
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" },
+          "cnpj": { "$ref": "#/cnpj" }
+        },
+        "required": ["cnpj"],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" },
+          "cpf": { "$ref": "#/cpf" }
+        },
+        "required": ["cpf"],
+        "additionalProperties": false
+      }
+    ]
   },
   "dadosTomador": {
     "description": "Representa dados do tomador de serviço",
@@ -364,6 +378,7 @@
   },
   "dadosConstrucaoCivil": {
     "description": "Representa dados para identificação de intermediário do serviço",
+    "type": "object",
     "properties": {
       "codigoObra": { "$ref": "#/codigoObra" },
       "art": { "$ref": "#/art" }

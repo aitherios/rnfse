@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.issnetonline.com.br/webservice/nfd" xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><ConsultarLoteRps><xml><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+        <ConsultarLoteRpsEnvio xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_lote_rps_envio.xsd" xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd" xmlns:ts="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd">
+          <Prestador>
+            <tc:CpfCnpj>
+              <tc:Cpf>30146374835</tc:Cpf>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
+          </Prestador>
+          <Protocolo>db1c3e91-6aea-4450-a3fc-5b6a7fba7dc7</Protocolo>
+        </ConsultarLoteRpsEnvio>
+        ]]></xml></ConsultarLoteRps></soap:Body></soap:Envelope>
+    headers:
+      Soapaction:
+      - '"ConsultarLoteRps"'
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Content-Length:
+      - '926'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Jul 2014 05:56:20 GMT
+      Server:
+      - Microsoft-IIS/6.0
+      X-Powered-By:
+      - ASP.NET
+      X-Aspnet-Version:
+      - 2.0.50727
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Content-Length:
+      - '1221'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c29hcDpF
+        bnZlbG9wZSB4bWxuczpzb2FwPSJodHRwOi8vd3d3LnczLm9yZy8yMDAzLzA1
+        L3NvYXAtZW52ZWxvcGUiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3
+        dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiPjxzb2FwOkJvZHk+PENvbnN1bHRh
+        ckxvdGVScHNSZXNwb25zZSB4bWxucz0iaHR0cDovL3d3dy5pc3NuZXRvbmxp
+        bmUuY29tLmJyL3dlYnNlcnZpY2UvbmZkIj48Q29uc3VsdGFyTG90ZVJwc1Jl
+        c3VsdD4mbHQ7P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtOCI/
+        Jmd0Ow0KJmx0O0NvbnN1bHRhckxvdGVScHNSZXNwb3N0YSB4bWxucz0iaHR0
+        cDovL3d3dy5pc3NuZXRvbmxpbmUuY29tLmJyL3dlYnNlcnZpY2VhYnJhc2Yv
+        dnNkL3NlcnZpY29fY29uc3VsdGFyX2xvdGVfcnBzX3Jlc3Bvc3RhLnhzZCIg
+        eG1sbnM6dGM9Imh0dHA6Ly93d3cuaXNzbmV0b25saW5lLmNvbS5ici93ZWJz
+        ZXJ2aWNlYWJyYXNmL3ZzZC90aXBvc19jb21wbGV4b3MueHNkIiZndDsNCiAg
+        Jmx0O0xpc3RhTWVuc2FnZW1SZXRvcm5vJmd0Ow0KICAgICZsdDtNZW5zYWdl
+        bVJldG9ybm8mZ3Q7DQogICAgICAmbHQ7dGM6SWRlbnRpZmljYWNhb1JwcyZn
+        dDsNCiAgICAgICAgJmx0O3RjOk51bWVybyZndDsxNSZsdDsvdGM6TnVtZXJv
+        Jmd0Ow0KICAgICAgICAmbHQ7dGM6U2VyaWUmZ3Q7OCZsdDsvdGM6U2VyaWUm
+        Z3Q7DQogICAgICAgICZsdDt0YzpUaXBvJmd0OzEmbHQ7L3RjOlRpcG8mZ3Q7
+        DQogICAgICAmbHQ7L3RjOklkZW50aWZpY2FjYW9ScHMmZ3Q7DQogICAgICAm
+        bHQ7dGM6Q29kaWdvJmd0O0wwMTgmbHQ7L3RjOkNvZGlnbyZndDsNCiAgICAg
+        ICZsdDt0YzpNZW5zYWdlbSZndDsgQSBlbXByZXNhIG7Do28gZXN0w6EgaGFi
+        aWxpdGFkYSBubyBhbWJpZW50ZSBkZSBpbnRlZ3Jhw6fDo28uICBOw7ptZXJv
+        IGRvIFJQUyBlbSBxdWUgb2NvcnJldSBvIGVycm86IDE1Jmx0Oy90YzpNZW5z
+        YWdlbSZndDsNCiAgICAmbHQ7L01lbnNhZ2VtUmV0b3JubyZndDsNCiAgJmx0
+        Oy9MaXN0YU1lbnNhZ2VtUmV0b3JubyZndDsNCiZsdDsvQ29uc3VsdGFyTG90
+        ZVJwc1Jlc3Bvc3RhJmd0OzwvQ29uc3VsdGFyTG90ZVJwc1Jlc3VsdD48L0Nv
+        bnN1bHRhckxvdGVScHNSZXNwb25zZT48L3NvYXA6Qm9keT48L3NvYXA6RW52
+        ZWxvcGU+
+    http_version: 
+  recorded_at: Fri, 18 Jul 2014 05:56:21 GMT
+recorded_with: VCR 2.9.2

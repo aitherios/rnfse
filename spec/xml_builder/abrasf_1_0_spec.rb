@@ -5,14 +5,51 @@ describe Rnfse::XMLBuilder::Abrasf10 do
 
   let(:builder) { Rnfse::XMLBuilder.new(padrao: :abrasf_1_0) }
 
+
+  describe '#build_consultar_situacao_lote_rps_xml' do
+    let(:xml) do 
+      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
+                                        'consultar_situacao_lote_rps_envio.xml')))
+    end
+
+    subject do
+      builder.build_consultar_situacao_lote_rps_xml({
+        prestador: {
+          cnpj: "14.576.582/0001-63",
+          inscricao_municipal: "124762"
+        },
+        protocolo: "db1c3e91-6aea-4450-a3fc-5b6a7fba7dc7"
+      })
+    end
+
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
+  end
+
+  describe "#build_consultar_lote_rps_xml" do
+    let(:xml) do 
+      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
+                                        'consultar_lote_rps_envio.xml')))
+    end
+
+    subject do 
+      builder.build_consultar_lote_rps_xml({
+        prestador: {
+          cpf: "970.047.311-20",
+          inscricao_municipal: "812005"
+        },
+        protocolo: "5afd8f42-cc1e-4657-9249-8fbc3f133ebf"
+      })
+    end
+
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
+  end
+
   describe "#build_recepcionar_lote_rps_xml" do
     let(:xml) do 
-      Nokogiri::XML(
-        File.read(
-          File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
-              'enviar_lote_rps_envio.xml')
-        )
-      )
+      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
+                                        'enviar_lote_rps_envio.xml')))
     end
 
     subject do

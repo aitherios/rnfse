@@ -5,12 +5,24 @@ module Rnfse::XMLBuilder::Abrasf10
   module ClassMethods
 
     def build_recepcionar_lote_rps_xml(hash = {})
-      hash = prepare_hash(hash)
-      inner_xml = ::Gyoku.xml(hash, key_converter: :none)
-      xml_builder('EnviarLoteRpsEnvio', inner_xml).doc
+      build_xml('EnviarLoteRpsEnvio', hash)
+    end
+
+    def build_consultar_lote_rps_xml(hash = {})
+      build_xml('ConsultarLoteRpsEnvio', hash)
+    end
+
+    def build_consultar_situacao_lote_rps_xml(hash = {})
+      build_xml('ConsultarSituacaoLoteRpsEnvio', hash)
     end
 
     private
+
+    def build_xml(wrapper, hash = {})
+      hash = prepare_hash(hash)
+      inner_xml = ::Gyoku.xml(hash, key_converter: :none)
+      xml_builder(wrapper, inner_xml).doc
+    end
 
     # prepara um hash para ser convertido a xml com o Gyoku
     def prepare_hash(hash)
@@ -53,18 +65,20 @@ module Rnfse::XMLBuilder::Abrasf10
     def wrap_rps(hash)
       hash[:LoteRps][:ListaRps] = {
         :Rps => { :InfRps => hash[:LoteRps][:ListaRps] }
-      }
+      } if hash[:LoteRps]
       hash
     end
 
-    # adiciona o namespace tc nas tags dentro de loteRps
+    # adiciona o namespace tc nas tags dentro de loteRps ou prestador
     def add_tc_namespace(hash)
-      hash[:LoteRps] = Rnfse::Hash.transform_keys(hash[:LoteRps]) { |key| "tc:#{key}".to_sym }
+      tag = case
+            when !hash[:LoteRps].nil? then :LoteRps
+            when !hash[:Prestador].nil? then :Prestador
+            end
+      if hash[tag]
+        hash[tag] = Rnfse::Hash.transform_keys(hash[tag]) { |key| "tc:#{key}".to_sym }
+      end
       hash
-    end
-
-    def xmlns
-      'http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd'
     end
 
     # namespace dos tipos complexos
@@ -72,10 +86,35 @@ module Rnfse::XMLBuilder::Abrasf10
       'http://www.abrasf.org.br/tipos_complexos.xsd'
     end  
 
+    # namespaces do xml recepcionar_lote_rps
+    def build_recepcionar_lote_rps_xmlns
+      {
+        'xmlns' => 'http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd',
+        'xmlns:tc' => xmlns_tc
+      }
+    end
+
+    # namespaces do xml consultar_lote_rps
+    def build_consultar_lote_rps_xmlns
+      {
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_lote_rps_envio.xsd',
+        'xmlns:tc' => xmlns_tc
+      }
+    end
+
+    # namespaces do xml consultar_situacao_lote_rps
+    def build_consultar_situacao_lote_rps_xmlns
+      {
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd',
+        'xmlns:tc' => xmlns_tc
+      }
+    end
+
     # instancia o builder a ser utilizado na geracao do xml
-    def xml_builder(root, inner_xml)
+    def xml_builder(root, inner_xml, xmlns = {})
+      xmlns = self.send("#{Rnfse::CallChain.caller_method(2)}ns") if xmlns.empty?
       Nokogiri::XML::Builder.new(encoding: 'utf-8') do |xml|
-        xml.send(root.to_sym, 'xmlns' => xmlns, 'xmlns:tc' => xmlns_tc) do
+        xml.send(root.to_sym, xmlns) do
           xml << inner_xml
         end
       end

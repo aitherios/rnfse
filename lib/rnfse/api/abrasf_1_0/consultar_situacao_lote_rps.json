@@ -1,0 +1,13 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Consulta de Situação de Lote de RPS",
+  "description": "Esse serviço efetua a consulta da situação de um lote de RPS já enviado.",
+
+  "type": "object",
+  "properties": {
+    "prestador": { "$ref": "definitions.json#/identificacaoPrestador"},
+    "protocolo": { "$ref": "definitions.json#/numeroProtocolo"}
+  },
+  "required": ["prestador", "protocolo"],
+  "additionalProperties": false
+}
