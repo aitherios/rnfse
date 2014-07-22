@@ -15,11 +15,11 @@ das versões ou variações dos padrões
 ## Instalação
 
 Usando o rubygems.org rode:
-```
+```shell
 $ gem install rnfse
 ```
 **Ou** usando o repositório git rode:
-```
+```shell
 $ gem build rnfse.gemspec
 $ gem install rnfse-X.X.X.gem
 ```
