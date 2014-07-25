@@ -39,6 +39,7 @@ Esta é uma lista de limitações e problemas conhecidos. São questões que nã
 plano imediato de resolução. Talvez porque a funcionalidade nunca foi 
 necessária ou nenhum pull request tenha sido enviado. (dica!)
 
+- Sem documentação =/
 - Suporte para o JRuby e Rubinius (problema com a dependência nokogiri-xmlsec1).
 - Só foi testada com municípios inscritos no [ISS.net](http://www.issnetonline.com.br/portaliss/) que utilizam o padrão [ABRASF v1](http://www.abrasf.org.br/paginas_multiplas_detalhes.php?cod_pagina=1).
 
