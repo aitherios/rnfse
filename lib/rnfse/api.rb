@@ -14,49 +14,67 @@ module Rnfse
 
     def initialize(options = {})
       options = load_options(options)
-      
-      file = Pathname.new(File.expand_path('../..', __FILE__))
-      provedores = YAML.load_file(file.join('provedores.yml'))
-      
+            
       case
       when has_options(options, 'provedor', 'homologacao')
         provedor = provedores['homologacao'][options['provedor'].to_s]
         raise ArgumentError, 'provedor de homologação inexistente', caller if provedor.nil?
-        self.namespace = provedor['namespace']
-        self.endpoint = provedor['endpoint']
         self.api = provedor['api']
+        load_options_method = :load_options_for_staging
 
       when has_options(options, 'provedor', 'municipio')
         provedor = provedores['producao'][options['provedor'].to_s]
         raise ArgumentError, 'provedor inexistente', caller if provedor.nil?
-        self.namespace = provedor['namespace']
-        self.endpoint = provedor['endpoint'] % { municipio: options['municipio'] }
         self.api = provedor['api']
+        load_options_method = :load_options_for_production
 
       when has_options(options, 'padrao', 'namespace', 'endpoint')
-        self.namespace = options['namespace'].to_s
-        self.endpoint = options['endpoint'].to_s
         self.api = options['padrao'].to_s
+        load_options_method = :load_options_for_custom
 
       else
         raise ArgumentError, 'opções inválidas', caller
       end
 
-      if has_options(options, 'certificate', 'key')
-        self.certificate = options['certificate']
-        self.key = options['key']
-      else
-        raise ArgumentError, 'opções de assinatura digital faltando', caller
-      end
-
-      self.verbose = options['verbose'] || false
-      self.xml_builder = options['xml_builder'] || XMLBuilder.new(padrao: self.api)
-      self.soap_client = options['soap_client'] || savon_client
-
       extend self.class.const_get(String.camelize(self.api))
+
+      self.send(load_options_method, options)
     end
 
     private
+
+    def load_options_for_custom(options)
+      self.namespace = options['namespace'].to_s
+      self.endpoint = options['endpoint'].to_s
+      load_default_options(options)
+    end
+
+    def load_options_for_production(options)
+      provedor = provedores['producao'][options['provedor'].to_s]
+      self.namespace = provedor['namespace']
+      self.endpoint = provedor['endpoint'] % { municipio: options['municipio'] }
+      load_default_options(options)
+    end
+
+    def load_options_for_staging(options)
+      provedor = provedores['homologacao'][options['provedor'].to_s]
+      self.namespace = provedor['namespace']
+      self.endpoint = provedor['endpoint']
+      load_default_options(options)
+    end
+
+    def load_default_options(options)
+      self.certificate = options['certificate']
+      self.key = options['key']
+      self.verbose = options['verbose'] || false
+      self.xml_builder = options['xml_builder'] || XMLBuilder.new(padrao: self.api)
+      self.soap_client = options['soap_client'] || savon_client
+    end
+
+    def provedores
+      file = Pathname.new(File.expand_path('../..', __FILE__))
+      YAML.load_file(file.join('provedores.yml'))
+    end
 
     def savon_client
       savon_hash = {

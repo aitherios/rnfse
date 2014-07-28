@@ -6,7 +6,8 @@ module Rnfse::API::Abrasf10
   module ClassMethods
 
     def recepcionar_lote_rps(hash = {})
-      validate(hash)
+      validate_sign_options
+      validate_options(hash)
       xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
       xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
       response = self.soap_client.call(
@@ -18,7 +19,7 @@ module Rnfse::API::Abrasf10
     end
 
     def consultar_lote_rps(hash = {})
-      validate(hash)
+      validate_options(hash)
       xml = xml_builder.build_consultar_lote_rps_xml(hash)
       response = self.soap_client.call(
         :consultar_lote_rps,
@@ -29,7 +30,7 @@ module Rnfse::API::Abrasf10
     end
 
     def consultar_situacao_lote_rps(hash = {})
-      validate(hash)
+      validate_options(hash)
       xml = xml_builder.build_consultar_situacao_lote_rps_xml(hash)
       response = self.soap_client.call(
         :consultar_situacao_lote_rps,
@@ -41,7 +42,13 @@ module Rnfse::API::Abrasf10
 
     private
 
-    def validate(hash)
+    def validate_sign_options
+      if self.certificate.nil? or self.key.nil?
+        raise ArgumentError, 'opções de assinatura digital (certificate e key) faltando', caller
+      end
+    end
+
+    def validate_options(hash)
       file = get_filepath("#{Rnfse::CallChain.caller_method}.json")
       json = Rnfse::Hash.camelize_and_symbolize_keys(hash, false).to_json
       errors = JSON::Validator.fully_validate(file, json)
