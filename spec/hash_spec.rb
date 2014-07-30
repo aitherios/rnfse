@@ -21,6 +21,16 @@ describe Rnfse::Hash do
       let(:transformed_hash) { { 'NAMES' => [ { 'FIRST' => 'Glados' }, { 'FIRST' => 'Wheatley' } ] } }
       it { expect(Rnfse::Hash.transform_keys(hash){ |key| key.to_s.upcase}).to eq(transformed_hash) }
     end
+
+    context 'com um regex como valor,' do
+      let(:hash) { { names: [ { first_name: 'Glados' }, { first: 'Wheatley' } ] } }
+      let(:transformed_hash) { { names: [ { 'FIRST_NAME' => 'Glados' }, { first: 'Wheatley' } ] } }
+      it { expect(
+        Rnfse::Hash.transform_keys(hash, /first_/) { |key|
+          key.to_s.upcase 
+        }).to eq(transformed_hash)
+      }
+    end
   end
 
   describe '#transform_keys' do

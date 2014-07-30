@@ -3,7 +3,6 @@
 module Rnfse::API::SpeedGov10
   include Rnfse::API::Abrasf10
 
-
   private
   
   def load_options_for_production(options)

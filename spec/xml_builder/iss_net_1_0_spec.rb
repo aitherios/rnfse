@@ -4,11 +4,11 @@ require 'spec_helper'
 describe Rnfse::XMLBuilder::IssNet10 do
 
   let(:builder) { Rnfse::XMLBuilder.new(padrao: :iss_net_1_0) }
+  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0') }
 
   describe '#build_consultar_situacao_lote_rps_xml' do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0', 
-                                        'consultar_situacao_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_situacao_lote_rps_envio.xml')))
     end
 
     subject do
@@ -25,11 +25,9 @@ describe Rnfse::XMLBuilder::IssNet10 do
     it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
-
   describe "#build_consultar_lote_rps_xml" do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0', 
-                                        'consultar_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_lote_rps_envio.xml')))
     end
 
     subject do
@@ -46,11 +44,9 @@ describe Rnfse::XMLBuilder::IssNet10 do
     it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
-
   describe "#build_recepcionar_lote_rps_xml" do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0', 
-                                        'enviar_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'enviar_lote_rps_envio.xml')))
     end
 
     subject do

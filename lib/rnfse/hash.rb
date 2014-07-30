@@ -58,18 +58,24 @@ module Rnfse
       self.class.underscore_and_symbolize_keys(self)
     end
     
-    def self.transform_keys(obj, &block)
+    def self.transform_keys(obj, regex = nil, &block)
+      regex = /.*/ if regex.nil?
+
       case
       when obj.kind_of?(::Hash)
         result = {}
         obj.each_key do |key|
-          result[yield(key)] = self.transform_keys(obj[key], &block)
+          if regex.match(key)
+            result[yield(key)] = self.transform_keys(obj[key], regex, &block)
+          else
+            result[key] = self.transform_keys(obj[key], regex, &block)
+          end
         end
         result
       when obj.kind_of?(::Array)
         result = []
         obj.each do |elem|
-          result << self.transform_keys(elem, &block)
+          result << self.transform_keys(elem, regex, &block)
         end
         result
       else
@@ -77,8 +83,8 @@ module Rnfse
       end
     end
 
-    def transform_keys(&block)
-      self.class.transform_keys(self, &block)
+    def transform_keys(regex = nil, &block)
+      self.class.transform_keys(self, regex, &block)
     end
 
     def self.transform_values(obj, key, &block)

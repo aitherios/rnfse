@@ -4,12 +4,11 @@ require 'spec_helper'
 describe Rnfse::XMLBuilder::Abrasf10 do
 
   let(:builder) { Rnfse::XMLBuilder.new(padrao: :abrasf_1_0) }
-
+  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0') }
 
   describe '#build_consultar_situacao_lote_rps_xml' do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
-                                        'consultar_situacao_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_situacao_lote_rps_envio.xml')))
     end
 
     subject do
@@ -28,8 +27,7 @@ describe Rnfse::XMLBuilder::Abrasf10 do
 
   describe "#build_consultar_lote_rps_xml" do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
-                                        'consultar_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_lote_rps_envio.xml')))
     end
 
     subject do 
@@ -48,8 +46,7 @@ describe Rnfse::XMLBuilder::Abrasf10 do
 
   describe "#build_recepcionar_lote_rps_xml" do
     let(:xml) do 
-      Nokogiri::XML(File.read(File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_0', 
-                                        'enviar_lote_rps_envio.xml')))
+      Nokogiri::XML(File.read(File.join(xml_path, 'enviar_lote_rps_envio.xml')))
     end
 
     subject do
