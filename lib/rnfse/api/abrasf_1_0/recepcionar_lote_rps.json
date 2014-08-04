@@ -18,7 +18,7 @@
             "type": "object",
             "properties": {
               "identificacaoRps": { "$ref": "definitions.json#/identificacaoRps" },
-              "dataEmissao": { "type": "string", "format": "date-time" },
+              "dataEmissao": { "$ref": "definitions.json#/data" },
               "naturezaOperacao": { "$ref": "definitions.json#/naturezaOperacao" },
               "regimeEspecialTributacao": { "$ref": "definitions.json#/regimeEspecialTributacao" },
               "optanteSimplesNacional": { "type": "boolean" },

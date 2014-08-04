@@ -2,7 +2,7 @@
   "numeroNfse": {
     "description": "Número da Nota Fiscal de Serviço Eletrônica, formado pelo ano com 04 (quatro) dígitos e um número seqüencial com 11 posições – Formato AAAANNNNNNNNNNN.",
     "type": "integer",
-    "minimum": 199000000000000,
+    "minimum": 190000000000000,
     "maximum": 220099999999999
   },
    "codigoVerificacao": {
@@ -385,5 +385,10 @@
     },
     "required": [],
     "additionalProperties": false
+  },
+  "data": {
+    "description": "Data como representada no padrão RFC 3339 section 5.6",
+    "type": "string",
+    "format": "date-time"
   }
 }
