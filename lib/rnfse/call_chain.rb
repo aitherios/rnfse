@@ -7,13 +7,13 @@ module Rnfse
 
     private
 
-    # Stolen from ActionMailer, where this was used but was not made
-    # reusable
+    # Stolen from ActionMailer with a tweek,
+    # where this was used but was not made reusable
     def self.parse_caller(at)
-      if /^(.+?):(\d+)(?::in `(.*)')?/ =~ at
+      if /^(.+?):(\d+)(?::in `((block in )?(.*))')?/ =~ at
         file   = Regexp.last_match[1]
         line   = Regexp.last_match[2].to_i
-        method = Regexp.last_match[3]
+        method = Regexp.last_match[5]
         [file, line, method]
       end
     end

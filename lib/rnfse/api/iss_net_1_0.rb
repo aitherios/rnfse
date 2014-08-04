@@ -23,11 +23,11 @@ module Rnfse::API::IssNet10
     parse_response(response)
   end
 
-  def consultar_url_visualizacao_nfse()
+  def consultar_url_visualizacao_nfse(hash = {})
     raise Rnfse::Error::NotImplemented
   end
 
-  def consultar_url_visualizacao_nfse_serie()
+  def consultar_url_visualizacao_nfse_serie(hash = {})
     raise Rnfse::Error::NotImplemented
   end
 

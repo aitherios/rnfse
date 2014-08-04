@@ -369,7 +369,9 @@
       {
         "type": "object",
         "properties": {
-          "cpf": { "$ref": "#/cpf" }
+          "razaoSocial": { "$ref": "#/razaoSocial" },
+          "cpf": { "$ref": "#/cpf" },
+          "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" }
         },
         "required": ["cpf"],
         "additionalProperties": false

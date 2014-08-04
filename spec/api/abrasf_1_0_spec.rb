@@ -21,7 +21,15 @@ describe Rnfse::API::Abrasf10 do
   end
 
   describe '#recepcionar_lote_rps' do
-    it { expect(client).to respond_to(:recepcionar_lote_rps) }
+    context 'ao não passar opções certificate e key para assinatura do xml,' do
+      let(:client) do
+        Rnfse::API.new(padrao: :abrasf_1_0, 
+                       namespace: 'http://www.issnetonline.com.br/webservice/nfd',
+                       endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
+      end
+
+      it { expect { client.recepcionar_lote_rps() }.to raise_error(ArgumentError) }
+    end
 
     context 'ao não passar opções certificate e key para assinatura do xml,' do
       let(:client) do
@@ -32,6 +40,8 @@ describe Rnfse::API::Abrasf10 do
 
       it { expect { client.recepcionar_lote_rps() }.to raise_error(ArgumentError) }
     end
+
+    it { expect(client).to respond_to(:recepcionar_lote_rps) }
   end
 
   describe '#consultar_situacao_lote_rps' do

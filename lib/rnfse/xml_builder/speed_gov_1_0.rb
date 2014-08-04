@@ -17,8 +17,27 @@ module Rnfse::XMLBuilder::SpeedGov10
     end.doc
   end
 
+  def build_recepcionar_lote_rps_xml(hash = {})
+    hash = prepare_hash(hash)
+    hash = add_p_namespace(hash, /LoteRps/)
+    inner_xml = ::Gyoku.xml(hash, key_converter: :none)
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
+      xml.send('p:EnviarLoteRpsEnvio'.to_sym, build_parameters_xmlns) do
+        xml << inner_xml
+      end
+    end.doc
+  end
+
+  def build_recepcionar_lote_rps_xmlns()
+    {
+      'xmlns:p' => "http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd",
+      'xsi:schemaLocation' => "http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd"
+    }
+  end
+
   def build_consultar_nfse_envio_xml(hash = {})
     hash = prepare_hash(hash)
+    hash = add_p_namespace(hash, /Prestador/)
     inner_xml = ::Gyoku.xml(hash, key_converter: :none)
     Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.send('p:ConsultarNfseEnvio'.to_sym, build_parameters_xmlns) do
@@ -27,35 +46,57 @@ module Rnfse::XMLBuilder::SpeedGov10
     end.doc
   end
 
+  def build_consultar_nfse_envio_xmlns()
+    {
+      'xmlns:p' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd",
+      'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd"
+    }
+  end
+
   def build_parameters_xmlns
     {
       'xmlns:ds' => "http://www.w3.org/2000/09/xmldsig#",
-      'xmlns:p' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd",
       'xmlns:p1' => "http://ws.speedgov.com.br/tipos_v1.xsd",
-      'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
-      'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd"
-    }
+      'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance"
+    }.merge(self.send("#{Rnfse::CallChain.caller_method()}ns"))
   end
 
   private
 
   def prepare_hash(hash)
     hash = camelize_hash(hash)
+    hash = wrap_rps(hash)
     hash = clean_numerics(hash)
-    hash = add_p_namespace(hash)
+    hash = alter_aliquota(hash)
+    hash = wrap_cpf_cnpj(hash)
+    hash = fix_booleans(hash)
     hash = add_p1_namespace(hash)
     hash
   end
 
-  def add_p_namespace(hash)
-    Rnfse::Hash.transform_keys(hash) { |key| "p:#{key}".to_sym }
+  # encapsula as tags cpf ou cnpj em uma tag cpfcnpj
+  def wrap_cpf_cnpj(hash)
+    match = '(IdentificacaoTomador|IntermediarioServico)/(Cnpj|Cpf)'
+    Rnfse::Hash.replace_key_values(hash, match) do |key, value|
+      { :'CpfCnpj' => { key => value } }
+    end
+  end
+
+  # alterar o formato da aliquota de 0 a 1 para 0 a 100
+  def alter_aliquota(hash)
+    Rnfse::Hash.transform_values(hash, 'Aliquota') do |val|
+      "%.1f" % (val * 100)
+    end
+  end
+
+  def add_p_namespace(hash, regex)
+    Rnfse::Hash.transform_keys(hash, regex) do |key|
+      "p:#{key.to_s.gsub(/^[^:]+:/, '')}"
+    end
   end
 
   def add_p1_namespace(hash)
-    regex = /(Cpf|Cnpj|InscricaoMunicipal)\Z/
-    Rnfse::Hash.transform_keys(hash, regex) do |key|
-      "p1:#{key.to_s.gsub(/^[^:]+:/, '')}"
-    end
+    Rnfse::Hash.transform_keys(hash) { |key| "p1:#{key}".to_sym }
   end
 
 end

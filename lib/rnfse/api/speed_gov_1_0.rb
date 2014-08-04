@@ -3,15 +3,25 @@
 module Rnfse::API::SpeedGov10
   include Rnfse::API::Abrasf10
 
-  def recepcionar_lote_rps()
+  def recepcionar_lote_rps(hash = {})
+    validate_sign_options
+    validate_options(hash)
+    header = xml_builder.build_header_xml()
+    parameters = xml_builder.build_recepcionar_lote_rps_xml(hash)
+    response = self.soap_client.call(
+      :recepcionar_lote_rps,
+      soap_action: 'RecepcionarLoteRps',
+      message_tag: 'nfse:RecepcionarLoteRps',
+      message: { :'header!' => "<![CDATA[#{header}]]>",
+                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
+    parse_response(response)
+  end
+
+  def consultar_situacao_lote_rps(hash = {})
     raise Rnfse::Error::NotImplemented
   end
 
-  def consultar_situacao_lote_rps()
-    raise Rnfse::Error::NotImplemented
-  end
-
-  def consultar_lote_rps()
+  def consultar_lote_rps(hash = {})
     raise Rnfse::Error::NotImplemented
   end
 
