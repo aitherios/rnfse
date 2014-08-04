@@ -14,7 +14,7 @@ describe Rnfse::API::Abrasf10 do
 
   describe '#operations' do
     it { expect(client.operations).to eq([
-      :recepcionar_lote_rps, :consulta_situacao_lote_rps, 
+      :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
       :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
       :cancelar_nfse
     ]) }
@@ -34,7 +34,7 @@ describe Rnfse::API::Abrasf10 do
     end
   end
 
-  describe '#consulta_situacao_lote_rps' do
+  describe '#consultar_situacao_lote_rps' do
     it { expect(client).to respond_to(:consultar_situacao_lote_rps) }
   end
 

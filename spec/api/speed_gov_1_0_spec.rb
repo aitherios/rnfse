@@ -12,6 +12,29 @@ describe Rnfse::API::SpeedGov10 do
                    key: key)
   end
 
+  describe '#operations' do
+    it { expect(client.operations).to eq([
+      :recepcionar_lote_rps, :consultar_situacao_lote_rps,
+      :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
+      :cancelar_nfse
+    ]) }
+  end
+
+  describe '#recepcionar_lote_rps' do
+    it { expect(client).to respond_to(:recepcionar_lote_rps)  }
+    it { expect { client.recepcionar_lote_rps() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_situacao_lote_rps' do
+    it { expect(client).to respond_to(:consultar_situacao_lote_rps)  }
+    it { expect { client.consultar_situacao_lote_rps() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_nfse_por_rps' do
+    it { expect(client).to respond_to(:cancelar_nfse)  }
+    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
   describe '#consultar_nfse' do
 
     context 'quando parametros errados são passados,' do
@@ -24,4 +47,15 @@ describe Rnfse::API::SpeedGov10 do
     end
     
   end
+
+  describe '#consultar_lote_rps' do
+    it { expect(client).to respond_to(:consultar_lote_rps)  }
+    it { expect { client.consultar_lote_rps() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#cancelar_nfse' do
+    it { expect(client).to respond_to(:cancelar_nfse)  }
+    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
 end

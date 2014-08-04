@@ -3,6 +3,18 @@
 module Rnfse::API::SpeedGov10
   include Rnfse::API::Abrasf10
 
+  def recepcionar_lote_rps()
+    raise Rnfse::Error::NotImplemented
+  end
+
+  def consultar_situacao_lote_rps()
+    raise Rnfse::Error::NotImplemented
+  end
+
+  def consultar_lote_rps()
+    raise Rnfse::Error::NotImplemented
+  end
+
   private
   
   def load_options_for_production(options)

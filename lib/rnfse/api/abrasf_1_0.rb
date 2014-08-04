@@ -6,7 +6,7 @@ module Rnfse::API::Abrasf10
   module ClassMethods
 
     def operations()
-      [ :recepcionar_lote_rps, :consulta_situacao_lote_rps, 
+      [ :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
         :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
         :cancelar_nfse ]
     end
