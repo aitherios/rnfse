@@ -76,8 +76,8 @@ module Rnfse
       YAML.load_file(file.join('provedores.yml'))
     end
 
-    def savon_client
-      savon_hash = {
+    def savon_client_options
+      {
         soap_version: 2,
         env_namespace: :soap,
         namespace_identifier: nil,
@@ -87,6 +87,10 @@ module Rnfse
         endpoint: self.endpoint,
         namespace: self.namespace
       }
+    end
+
+    def savon_client
+      savon_hash = savon_client_options
 
       savon_hash = savon_hash.merge(
         log: true,
