@@ -5,6 +5,12 @@ module Rnfse::API::Abrasf10
 
   module ClassMethods
 
+    def operations()
+      [ :recepcionar_lote_rps, :consulta_situacao_lote_rps, 
+        :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
+        :cancelar_nfse ]
+    end
+    
     def recepcionar_lote_rps(hash = {})
       validate_sign_options
       validate_options(hash)
@@ -18,6 +24,25 @@ module Rnfse::API::Abrasf10
       parse_response(response)
     end
 
+    def consultar_situacao_lote_rps(hash = {})
+      validate_options(hash)
+      xml = xml_builder.build_consultar_situacao_lote_rps_xml(hash)
+      response = self.soap_client.call(
+        :consultar_situacao_lote_rps,
+        soap_action: 'ConsultarSituacaoLoteRps',
+        message_tag: 'ConsultarSituacaoLoteRps',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
+    end
+
+    def consultar_nfse_por_rps(hash = {})
+      raise Rnfse::Error::NotImplemented
+    end
+
+    def consultar_nfse(hash = {})
+      raise Rnfse::Error::NotImplemented
+    end
+
     def consultar_lote_rps(hash = {})
       validate_options(hash)
       xml = xml_builder.build_consultar_lote_rps_xml(hash)
@@ -29,15 +54,8 @@ module Rnfse::API::Abrasf10
       parse_response(response)
     end
 
-    def consultar_situacao_lote_rps(hash = {})
-      validate_options(hash)
-      xml = xml_builder.build_consultar_situacao_lote_rps_xml(hash)
-      response = self.soap_client.call(
-        :consultar_situacao_lote_rps,
-        soap_action: 'ConsultarSituacaoLoteRps',
-        message_tag: 'ConsultarSituacaoLoteRps',
-        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
-      parse_response(response)
+    def cancelar_nfse(hash = {})
+      raise Rnfse::Error::NotImplemented
     end
 
     private

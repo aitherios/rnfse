@@ -12,6 +12,15 @@ describe Rnfse::API::IssNet10 do
                    key: key)
   end
 
+  describe '#operations' do
+    it { expect(client.operations).to eq([
+      :recepcionar_lote_rps, :consulta_situacao_lote_rps, 
+      :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
+      :cancelar_nfse, :consultar_url_visualizacao_nfse, 
+      :consultar_url_visualizacao_nfse_serie
+    ]) }
+  end
+
   describe '#recepcionar_lote_rps' do
     context 'quando parametros errados são passados,' do
       it { expect{ client.recepcionar_lote_rps(bogus: :data) }.to raise_error(ArgumentError) }
@@ -135,10 +144,29 @@ describe Rnfse::API::IssNet10 do
     it { should be_kind_of(Hash) }
   end
 
-  describe '#cancelar_nfse'
-  describe '#consultar_nfse_por_rps'
-  describe '#consultar_nfse'
-  describe '#consultar_url_visualizacao_nfse'
-  describe '#consultar_url_visualizacao_nfse_serie'
-  describe '#consulta_situacao_lote_rps'
+  describe '#cancelar_nfse' do
+    it { expect(client).to respond_to(:cancelar_nfse)  }
+    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_nfse_por_rps' do
+    it { expect(client).to respond_to(:cancelar_nfse)  }
+    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_nfse' do
+    it { expect(client).to respond_to(:consultar_nfse)  }
+    it { expect { client.consultar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_url_visualizacao_nfse' do
+    it { expect(client).to respond_to(:consultar_url_visualizacao_nfse)  }
+    it { expect { client.consultar_url_visualizacao_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+
+  describe '#consultar_url_visualizacao_nfse_serie' do
+    it { expect(client).to respond_to(:consultar_url_visualizacao_nfse_serie)  }
+    it { expect { client.consultar_url_visualizacao_nfse_serie() }.to raise_error(Rnfse::Error::NotImplemented) }
+  end
+  
 end
