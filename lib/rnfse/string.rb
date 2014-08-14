@@ -11,7 +11,7 @@ module Rnfse
       end
       string.gsub!(/(?:_|(\/))([a-z\d]*)/i) { $2.capitalize }
       string.gsub!('/', '::')
-      string
+      self.new(string)
     end
 
     def camelize
@@ -26,11 +26,25 @@ module Rnfse
       word.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
       word.tr!("-", "_")
       word.downcase!
-      word
+      self.new(word)
     end
 
     def underscore
       self.class.underscore(self)
     end
+
+    def self.demodulize(path)
+      path = path.to_s
+      self.new( if i = path.rindex('::')
+                  path[(i+2)..-1]
+                else
+                  path
+                end )
+    end
+    
+    def demodulize
+      self.class.demodulize(self)
+    end
+
   end
 end

@@ -67,7 +67,7 @@ module Rnfse::API::Abrasf10
     end
 
     def validate_options(hash)
-      file = get_filepath("#{Rnfse::CallChain.caller_method}.json")
+      file = json_filepath("#{Rnfse::CallChain.caller_method}.json")
       json = Rnfse::Hash.camelize_and_symbolize_keys(hash, false).to_json
       errors = JSON::Validator.fully_validate(file, json)
       raise ArgumentError, errors, caller unless errors.empty?
@@ -84,8 +84,19 @@ module Rnfse::API::Abrasf10
       hash.underscore_and_symbolize_keys
     end
 
-    def get_filepath(filename)
-      File.join(File.expand_path(File.dirname(__FILE__)), 'abrasf_1_0', filename)
+    def json_folder
+      'abrasf_1_0'
+    end
+
+    def json_filepath(filename)
+      result = nil
+      folders = ['abrasf_1_0']
+      folders = folders.unshift(json_folder) unless folders.include?(json_folder)
+      folders.each do |folder|
+        path = File.join(File.expand_path(File.dirname(__FILE__)), folder, filename)
+        result = path if File.exists?(path)
+      end
+      result
     end
 
   end

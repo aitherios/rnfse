@@ -1,0 +1,15 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Consulta de NFS-e",
+  "description": "Esse serviço permite a obtenção de determinada NFS-e já gerada.",
+
+  "type": "object",
+  "properties": {
+    "prestador": { "$ref": "../abrasf_1_0/definitions.json#/identificacaoPrestador" },
+    "numeroNfse": { "$ref": "../abrasf_1_0/definitions.json#/numeroNfse" },
+    "tomador": { "$ref": "../abrasf_1_0/definitions.json#/identificacaoTomador" },
+    "intermediarioServico": { "$ref": "../abrasf_1_0/definitions.json#/identificacaoIntermediarioServico" }
+  },
+  "required": ["prestador"],
+  "additionalProperties": false
+}

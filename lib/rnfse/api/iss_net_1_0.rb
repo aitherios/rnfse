@@ -31,5 +31,8 @@ module Rnfse::API::IssNet10
     raise Rnfse::Error::NotImplemented
   end
 
+  def json_folder
+    'iss_net_1_0'
+  end
 
 end

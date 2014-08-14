@@ -39,7 +39,7 @@ module Rnfse::API::SpeedGov10
   end
 
   private
-  
+
   def load_options_for_production(options)
     provedor = provedores['producao'][options['provedor'].to_s]
     self.namespace = provedor['namespace']
@@ -77,6 +77,10 @@ module Rnfse::API::SpeedGov10
       endpoint: self.endpoint,
       namespace: self.namespace
     }
+  end
+
+  def json_folder
+    'speed_gov_1_0'
   end
 
 end
