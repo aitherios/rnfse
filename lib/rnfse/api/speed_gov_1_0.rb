@@ -8,6 +8,7 @@ module Rnfse::API::SpeedGov10
     validate_options(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_recepcionar_lote_rps_xml(hash)
+    parameters.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
     response = self.soap_client.call(
       :recepcionar_lote_rps,
       soap_action: 'RecepcionarLoteRps',

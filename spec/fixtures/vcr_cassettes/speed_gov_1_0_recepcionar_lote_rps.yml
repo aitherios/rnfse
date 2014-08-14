@@ -91,6 +91,42 @@ http_interactions:
               </p1:Rps>
             </p1:ListaRps>
           </p:LoteRps>
+          <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+        <Reference>
+        <Transforms>
+        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>i7o9RYh3bStKaJDhWX71JXdtmRo=</DigestValue>
+        </Reference>
+        </SignedInfo>
+        <SignatureValue>xPnp+hh9RTwUvCoYf+EFauRgeOmhfroxsYgbEe3wGLwPIQisNB2GMA/G5C0eVwiL
+        aOD4NqmZwaUXwYoTeXfYqdbRJT5+RlpxTxPYrUPDCD+m+zdb8eOSjK86bV/9TduJ
+        njdAv9DlcPhAQaMNG1R0IRwz0GVPWTwZ32yIIkTxjO4=</SignatureValue>
+        <KeyInfo>
+        <X509Data>
+        <X509Certificate>MIIC5jCCAk+gAwIBAgIJAMzd2iNeztRSMA0GCSqGSIb3DQEBCwUAMIGKMQswCQYD
+        VQQGEwJCUjEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDERMA8GA1UEBwwIQnJh
+        c2lsaWExDjAMBgNVBAoMBVJuZnNlMRkwFwYDVQQDDBBybmZzZS5naXRodWIuY29t
+        MSIwIAYJKoZIhvcNAQkBFhNhaXRoZXJpb3NAZ21haWwuY29tMCAXDTE0MDcxMDEx
+        MTMyOFoYDzIxMTQwNjE2MTExMzI4WjCBijELMAkGA1UEBhMCQlIxGTAXBgNVBAgM
+        EERpc3RyaXRvIEZlZGVyYWwxETAPBgNVBAcMCEJyYXNpbGlhMQ4wDAYDVQQKDAVS
+        bmZzZTEZMBcGA1UEAwwQcm5mc2UuZ2l0aHViLmNvbTEiMCAGCSqGSIb3DQEJARYT
+        YWl0aGVyaW9zQGdtYWlsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA
+        1cQuK7bqd2w3ZslKWABFQHe3bD43b6SxWbI58ZXwM4VAOHjXJrSe1Ai2Yvd982gW
+        Ir9zjQf+CebzW7N/Es7maFQzFP9KlevRldUM8OTThJ6TEVvpLRgeIbgpRQ8bWKB0
+        lp3i6AggqCIQT8Q+5HG1bZn+8vjD1ZQ0lCZmyMX85w0CAwEAAaNQME4wHQYDVR0O
+        BBYEFGBEjuYDxQcIjemHCelvFmdD85cgMB8GA1UdIwQYMBaAFGBEjuYDxQcIjemH
+        CelvFmdD85cgMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEA1QQ8UFQT
+        UWRxR8sqmnguN+nQR6GtmDi6XCpgvP73TW68Em/lhdKjzP3RUy3Clw3qv+CV0ebI
+        BdHlq5kw12fb2XBVsls+PFnD6yQq9M8fUlUOLe4qz7mAIHw4iBS7I28uvoFsAvqE
+        1ePe8pdP1RFvBMVm5fpduWR0h+z083Ytwkk=</X509Certificate>
+        </X509Data>
+        </KeyInfo>
+        </Signature>
         </p:EnviarLoteRpsEnvio>
         ]]></parameters></nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>
     headers:
@@ -99,7 +135,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '4549'
+      - '6351'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -116,13 +152,13 @@ http_interactions:
       Content-Type:
       - text/xml;charset=utf-8
       Date:
-      - Mon, 04 Aug 2014 17:24:47 GMT
+      - Thu, 14 Aug 2014 06:58:26 GMT
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - AWSELB=33FDC97B088EC7D48E554EA7951916335FCF4DD333E4A43CD9B76A107EBCCF68257B30698ACA194B02A0DB136DD306EBD8DB9ECFD127334DB4D04B2CE4F6462BEA42C169F4;PATH=/
-      Content-Length:
-      - '609'
+      - AWSELB=33FDC97B088EC7D48E554EA7951916335FCF4DD33354B9B00E5F1779243F06793B26A496916FB9C4F76E82B464490FEDD2D190D63CE7A0FA21188F78CC6FE9E7F20CBFCD5D;PATH=/
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -131,5 +167,5 @@ http_interactions:
         <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:RecepcionarLoteRpsResponse xmlns:ns2="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><return>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
         &lt;RecepcionarLoteRpsResposta&gt;&lt;MensagemRetorno/&gt;&lt;NumeroLote&gt;1&lt;/NumeroLote&gt;&lt;DataRecebimento&gt;2014-08-04T09:34:21&lt;/DataRecebimento&gt;&lt;Protocolo&gt;2f3aa5f5-ccad-4136-8c27-c2fe490ad77f&lt;/Protocolo&gt;&lt;/RecepcionarLoteRpsResposta&gt;</return></ns2:RecepcionarLoteRpsResponse></S:Body></S:Envelope>
     http_version: 
-  recorded_at: Mon, 04 Aug 2014 17:24:48 GMT
+  recorded_at: Thu, 14 Aug 2014 06:58:28 GMT
 recorded_with: VCR 2.9.2
