@@ -53,6 +53,24 @@ module Rnfse::XMLBuilder::SpeedGov10
     }
   end
 
+  def build_consultar_nfse_rps_envio_xml(hash = {})
+    hash = prepare_hash(hash)
+    hash = add_p_namespace(hash, /(Prestador|IdentificacaoRps)/)
+    inner_xml = ::Gyoku.xml(hash, key_converter: :none)
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
+      xml.send('p:ConsultarNfseRpsEnvio'.to_sym, build_parameters_xmlns) do
+        xml << inner_xml
+      end
+    end.doc
+  end
+
+  def build_consultar_nfse_rps_envio_xmlns()
+    {
+      'xmlns:p' => "http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd",
+      'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd"
+    }
+  end
+
   def build_parameters_xmlns
     {
       'xmlns:ds' => "http://www.w3.org/2000/09/xmldsig#",

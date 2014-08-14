@@ -1,0 +1,13 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Consulta de NFS-e por RPS",
+  "description": "Esse serviço efetua a consulta de uma NFS-e a partir do número de RPS que a gerou.",
+
+  "type": "object",
+  "properties": {
+    "identificacaoRps": { "$ref": "definitions.json#/identificacaoRps" },
+    "prestador": { "$ref": "definitions.json#/identificacaoPrestador" }
+  },
+  "required": ["identificacaoRps", "prestador"],
+  "additionalProperties": false
+}

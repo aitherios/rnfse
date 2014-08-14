@@ -25,6 +25,19 @@ module Rnfse::API::SpeedGov10
     raise Rnfse::Error::NotImplemented
   end
 
+  def consultar_nfse_por_rps(hash = {})
+    validate_options(hash)
+    header = xml_builder.build_header_xml()
+    parameters = xml_builder.build_consultar_nfse_rps_envio_xml(hash)
+    response = self.soap_client.call(
+      :consultar_nfse_por_rps,
+      soap_action: 'ConsultarNfsePorRps',
+      message_tag: 'nfse:ConsultarNfsePorRps',
+      message: { :'header!' => "<![CDATA[#{header}]]>",
+                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
+    parse_response(response)
+  end
+
   def consultar_nfse(hash = {})
     validate_options(hash)
     header = xml_builder.build_header_xml()
