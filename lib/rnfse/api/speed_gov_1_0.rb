@@ -9,12 +9,13 @@ module Rnfse::API::SpeedGov10
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_recepcionar_lote_rps_xml(hash)
     parameters.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+    binding.pry
     response = self.soap_client.call(
       :recepcionar_lote_rps,
       soap_action: 'RecepcionarLoteRps',
       message_tag: 'nfse:RecepcionarLoteRps',
-      message: { :'header!' => CGI.escapeHTML(header.to_s),
-                 :'parameters!' => CGI.escapeHTML(parameters.to_s) })
+      message: { :'header!' => header.to_s.encode(xml: :attr).gsub(/(^"|"$)/, ''),
+                 :'parameters!' => parameters.to_s.encode(xml: :attr).gsub(/(^"|"$)/, '') })
     parse_response(response)
   end
 

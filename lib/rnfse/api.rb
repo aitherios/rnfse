@@ -95,7 +95,7 @@ module Rnfse
       savon_hash = savon_hash.merge(
         log: true,
         log_level: :debug,
-        pretty_print_xml: true
+        pretty_print_xml: false
       ) if self.verbose
 
       Savon.client(savon_hash)
