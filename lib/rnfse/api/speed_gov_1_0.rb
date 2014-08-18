@@ -13,8 +13,8 @@ module Rnfse::API::SpeedGov10
       :recepcionar_lote_rps,
       soap_action: 'RecepcionarLoteRps',
       message_tag: 'nfse:RecepcionarLoteRps',
-      message: { :'header!' => "<![CDATA[#{header}]]>",
-                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
+      message: { :'header!' => CGI.escapeHTML(header.to_s),
+                 :'parameters!' => CGI.escapeHTML(parameters.to_s) })
     parse_response(response)
   end
 
