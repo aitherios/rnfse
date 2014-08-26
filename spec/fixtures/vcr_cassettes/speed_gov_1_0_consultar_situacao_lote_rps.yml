@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://speedgov.com.br/wsmod/Nfes
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><soapenv:Body><nfse:ConsultarSituacaoLoteRps><header><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:cabecalho xmlns:p="http://ws.speedgov.com.br/cabecalho_v1.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versao="1" xsi:schemaLocation="http://ws.speedgov.com.br/cabecalho_v1.xsd">
+          <versaoDados>1</versaoDados>
+        </p:cabecalho>
+        ]]></header><parameters><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:ConsultarSituacaoLoteRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd" xsi:schemaLocation="http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd">
+          <p:Prestador>
+            <p1:Cnpj>07792435000912</p1:Cnpj>
+            <p1:InscricaoMunicipal>59274734</p1:InscricaoMunicipal>
+          </p:Prestador>
+          <p:Protocolo>717293e4-3601-4955-865c-5a022c2b5ff5</p:Protocolo>
+        </p:ConsultarSituacaoLoteRpsEnvio>
+        ]]></parameters></nfse:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>
+    headers:
+      Soapaction:
+      - '"ConsultarSituacaoLoteRps"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1459'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      Content-Type:
+      - text/xml;charset=utf-8
+      Date:
+      - Tue, 26 Aug 2014 23:08:19 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - AWSELB=33FDC97B088EC7D48E554EA7951916335FCF4DD33354B9B00E5F1779243F06793B26A49691A6E3300925177F1FEC0FFBE981FDDAACE7A0FA21188F78CC6FE9E7F20CBFCD5D;PATH=/
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48UzpFbnZl
+        bG9wZSB4bWxuczpTPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2Fw
+        L2VudmVsb3BlLyI+PFM6Qm9keT48bnMyOkNvbnN1bHRhclNpdHVhY2FvTG90
+        ZVJwc1Jlc3BvbnNlIHhtbG5zOm5zMj0iaHR0cDovL3d3dy5hYnJhc2Yub3Jn
+        LmJyL0FCUkFTRi9hcnF1aXZvcy9uZnNlLnhzZCI+PHJldHVybj4mbHQ7P3ht
+        bCB2ZXJzaW9uPSZxdW90OzEuMCZxdW90OyBlbmNvZGluZz0mcXVvdDtVVEYt
+        OCZxdW90Oz8mZ3Q7CiZsdDtDb25zdWx0YXJTaXR1YWNhb0xvdGVScHNSZXNw
+        b3N0YSZndDsmbHQ7U3VjZXNzbyZndDtmYWxzZSZsdDsvU3VjZXNzbyZndDsm
+        bHQ7RGF0YUhvcmEmZ3Q7MjAxNC0wOC0yNlQwODowODoyMCZsdDsvRGF0YUhv
+        cmEmZ3Q7Jmx0O01lbnNhZ2VtUmV0b3JubyZndDsmbHQ7Q29kaWdvJmd0O0Ux
+        NTYmbHQ7L0NvZGlnbyZndDsmbHQ7TWVuc2FnZW0mZ3Q7Q05QSiBkbyBwcmVz
+        dGFkb3IgbsOjbyBhdXRvcml6YWRvIGEgZW1pdGlyIE5GUy1lJmx0Oy9NZW5z
+        YWdlbSZndDsmbHQ7Q29ycmVjYW8mZ3Q7U29saWNpdGUgYXV0b3JpemHDp8Oj
+        byBwYXJhIGVtaXRpciBORlMtZSBwYXJhIG8gQ05QSiBpbmZvcm1hZG8uJmx0
+        Oy9Db3JyZWNhbyZndDsmbHQ7L01lbnNhZ2VtUmV0b3JubyZndDsmbHQ7L0Nv
+        bnN1bHRhclNpdHVhY2FvTG90ZVJwc1Jlc3Bvc3RhJmd0OzwvcmV0dXJuPjwv
+        bnMyOkNvbnN1bHRhclNpdHVhY2FvTG90ZVJwc1Jlc3BvbnNlPjwvUzpCb2R5
+        PjwvUzpFbnZlbG9wZT4=
+    http_version: 
+  recorded_at: Tue, 26 Aug 2014 23:08:22 GMT
+recorded_with: VCR 2.9.2

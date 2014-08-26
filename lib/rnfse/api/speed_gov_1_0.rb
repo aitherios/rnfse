@@ -13,13 +13,22 @@ module Rnfse::API::SpeedGov10
       :recepcionar_lote_rps,
       soap_action: 'RecepcionarLoteRps',
       message_tag: 'nfse:RecepcionarLoteRps',
-      message: { :'header!' => header.to_s.encode(xml: :attr).gsub(/(^"|"$)/, ''),
-                 :'parameters!' => parameters.to_s.encode(xml: :attr).gsub(/(^"|"$)/, '') })
+      message: { :'header!' => "<![CDATA[#{header}]]>",
+                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
     parse_response(response)
   end
 
   def consultar_situacao_lote_rps(hash = {})
-    raise Rnfse::Error::NotImplemented
+    validate_options(hash)
+    header = xml_builder.build_header_xml()
+    parameters = xml_builder.build_consultar_situacao_lote_rps_envio_xml(hash)
+    response = self.soap_client.call(
+      :consultar_situacao_lote_rps,
+      soap_action: 'ConsultarSituacaoLoteRps',
+      message_tag: 'nfse:ConsultarSituacaoLoteRps',
+      message: { :'header!' => "<![CDATA[#{header}]]>",
+                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
+    parse_response(response)
   end
 
   def consultar_lote_rps(hash = {})

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:ConsultarSituacaoLoteRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                 xmlns:p="http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd"
+                                 xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd"
+                                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                 xsi:schemaLocation="http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd">
+  <p:Prestador>
+    <p1:Cnpj>07792435000912</p1:Cnpj>
+    <p1:InscricaoMunicipal>59274734</p1:InscricaoMunicipal>
+  </p:Prestador>
+  <p:Protocolo>717293e4-3601-4955-865c-5a022c2b5ff5</p:Protocolo>
+</p:ConsultarSituacaoLoteRpsEnvio>
