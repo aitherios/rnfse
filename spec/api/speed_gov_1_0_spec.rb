@@ -57,25 +57,10 @@ describe Rnfse::API::SpeedGov10 do
                   servico: {
                     valores: {
                       valor_servicos: 500.0,
-                      valor_deducoes: 0.0,
-                      valor_pis: 0.0,
-                      valor_cofins: 0.0,
-                      valor_inss: 0.0,
-                      valor_ir: 0.0,
-                      valor_csll: 0.0,
                       iss_retido: false,
-                      valor_iss: 10.0,
-                      valor_iss_retido: 0.0,
-                      outras_retencoes: 0.0,
-                      base_calculo: 500.0,
-                      aliquota: 0.02,
-                      valor_liquido_nfse: 490.0,
-                      desconto_condicionado: 0.0,
-                      desconto_incondicionado: 0.0
+                      base_calculo: 500.0
                     },
                     item_lista_servico: "101",
-                    codigo_cnae: "6201-5/00",
-                    codigo_tributacao_municipio: "620150000",
                     discriminacao: 'àõéúîàõéúîàõéúîàõéúîàõéúî',
                     codigo_municipio: 9999999
                   },
