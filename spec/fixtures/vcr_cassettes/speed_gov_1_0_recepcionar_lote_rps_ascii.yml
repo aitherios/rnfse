@@ -1,0 +1,171 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://speedgov.com.br/wsmod/Nfes
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><soapenv:Body><nfse:RecepcionarLoteRps><header><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:cabecalho xmlns:p="http://ws.speedgov.com.br/cabecalho_v1.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versao="1" xsi:schemaLocation="http://ws.speedgov.com.br/cabecalho_v1.xsd">
+          <versaoDados>1</versaoDados>
+        </p:cabecalho>
+        ]]></header><parameters><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:EnviarLoteRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd" xsi:schemaLocation="http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd">
+          <p:LoteRps>
+            <p1:NumeroLote>1</p1:NumeroLote>
+            <p1:Cnpj>12552510000150</p1:Cnpj>
+            <p1:InscricaoMunicipal>68</p1:InscricaoMunicipal>
+            <p1:QuantidadeRps>1</p1:QuantidadeRps>
+            <p1:ListaRps>
+              <p1:Rps>
+                <p1:InfRps>
+                  <p1:IdentificacaoRps>
+                    <p1:Numero>1</p1:Numero>
+                    <p1:Serie>00000</p1:Serie>
+                    <p1:Tipo>1</p1:Tipo>
+                  </p1:IdentificacaoRps>
+                  <p1:DataEmissao>2013-10-01T08:10:00</p1:DataEmissao>
+                  <p1:NaturezaOperacao>1</p1:NaturezaOperacao>
+                  <p1:OptanteSimplesNacional>2</p1:OptanteSimplesNacional>
+                  <p1:IncentivadorCultural>2</p1:IncentivadorCultural>
+                  <p1:Status>1</p1:Status>
+                  <p1:Servico>
+                    <p1:Valores>
+                      <p1:ValorServicos>500.0</p1:ValorServicos>
+                      <p1:ValorDeducoes>0.0</p1:ValorDeducoes>
+                      <p1:ValorPis>0.0</p1:ValorPis>
+                      <p1:ValorCofins>0.0</p1:ValorCofins>
+                      <p1:ValorInss>0.0</p1:ValorInss>
+                      <p1:ValorIr>0.0</p1:ValorIr>
+                      <p1:ValorCsll>0.0</p1:ValorCsll>
+                      <p1:IssRetido>2</p1:IssRetido>
+                      <p1:ValorIss>10.0</p1:ValorIss>
+                      <p1:ValorIssRetido>0.0</p1:ValorIssRetido>
+                      <p1:OutrasRetencoes>0.0</p1:OutrasRetencoes>
+                      <p1:BaseCalculo>500.0</p1:BaseCalculo>
+                      <p1:Aliquota>2.0</p1:Aliquota>
+                      <p1:ValorLiquidoNfse>490.0</p1:ValorLiquidoNfse>
+                      <p1:DescontoCondicionado>0.0</p1:DescontoCondicionado>
+                      <p1:DescontoIncondicionado>0.0</p1:DescontoIncondicionado>
+                    </p1:Valores>
+                    <p1:ItemListaServico>101</p1:ItemListaServico>
+                    <p1:CodigoCnae>6201500</p1:CodigoCnae>
+                    <p1:CodigoTributacaoMunicipio>620150000</p1:CodigoTributacaoMunicipio>
+                    <p1:Discriminacao>Borealis</p1:Discriminacao>
+                    <p1:CodigoMunicipio>9999999</p1:CodigoMunicipio>
+                  </p1:Servico>
+                  <p1:Prestador>
+                    <p1:Cnpj>12552510000150</p1:Cnpj>
+                    <p1:InscricaoMunicipal>68</p1:InscricaoMunicipal>
+                  </p1:Prestador>
+                  <p1:Tomador>
+                    <p1:IdentificacaoTomador>
+                      <p1:CpfCnpj>
+                        <p1:Cnpj>12477945000188</p1:Cnpj>
+                      </p1:CpfCnpj>
+                    </p1:IdentificacaoTomador>
+                    <p1:RazaoSocial>Black Mesa Research Facility</p1:RazaoSocial>
+                    <p1:Endereco>
+                      <p1:Endereco>RUA VICENTE F. GOES</p1:Endereco>
+                      <p1:Numero>182</p1:Numero>
+                      <p1:Complemento>A</p1:Complemento>
+                      <p1:Bairro>ALTO DA MANGUEIRA</p1:Bairro>
+                      <p1:CodigoMunicipio>9999999</p1:CodigoMunicipio>
+                      <p1:Uf>CE</p1:Uf>
+                      <p1:Cep>61900000</p1:Cep>
+                    </p1:Endereco>
+                    <p1:Contato>
+                      <p1:Telefone>8512341234</p1:Telefone>
+                      <p1:Email>teste@fes.com.br</p1:Email>
+                    </p1:Contato>
+                  </p1:Tomador>
+                  <p1:IntermediarioServico>
+                    <p1:RazaoSocial>Intersol Servicos Ltda</p1:RazaoSocial>
+                    <p1:CpfCnpj>
+                      <p1:Cpf>89746104349</p1:Cpf>
+                    </p1:CpfCnpj>
+                    <p1:InscricaoMunicipal>1234567</p1:InscricaoMunicipal>
+                  </p1:IntermediarioServico>
+                </p1:InfRps>
+              </p1:Rps>
+            </p1:ListaRps>
+          </p:LoteRps>
+          <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+        <Reference>
+        <Transforms>
+        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>i7o9RYh3bStKaJDhWX71JXdtmRo=</DigestValue>
+        </Reference>
+        </SignedInfo>
+        <SignatureValue>xPnp+hh9RTwUvCoYf+EFauRgeOmhfroxsYgbEe3wGLwPIQisNB2GMA/G5C0eVwiL
+        aOD4NqmZwaUXwYoTeXfYqdbRJT5+RlpxTxPYrUPDCD+m+zdb8eOSjK86bV/9TduJ
+        njdAv9DlcPhAQaMNG1R0IRwz0GVPWTwZ32yIIkTxjO4=</SignatureValue>
+        <KeyInfo>
+        <X509Data>
+        <X509Certificate>MIIC5jCCAk+gAwIBAgIJAMzd2iNeztRSMA0GCSqGSIb3DQEBCwUAMIGKMQswCQYD
+        VQQGEwJCUjEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDERMA8GA1UEBwwIQnJh
+        c2lsaWExDjAMBgNVBAoMBVJuZnNlMRkwFwYDVQQDDBBybmZzZS5naXRodWIuY29t
+        MSIwIAYJKoZIhvcNAQkBFhNhaXRoZXJpb3NAZ21haWwuY29tMCAXDTE0MDcxMDEx
+        MTMyOFoYDzIxMTQwNjE2MTExMzI4WjCBijELMAkGA1UEBhMCQlIxGTAXBgNVBAgM
+        EERpc3RyaXRvIEZlZGVyYWwxETAPBgNVBAcMCEJyYXNpbGlhMQ4wDAYDVQQKDAVS
+        bmZzZTEZMBcGA1UEAwwQcm5mc2UuZ2l0aHViLmNvbTEiMCAGCSqGSIb3DQEJARYT
+        YWl0aGVyaW9zQGdtYWlsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA
+        1cQuK7bqd2w3ZslKWABFQHe3bD43b6SxWbI58ZXwM4VAOHjXJrSe1Ai2Yvd982gW
+        Ir9zjQf+CebzW7N/Es7maFQzFP9KlevRldUM8OTThJ6TEVvpLRgeIbgpRQ8bWKB0
+        lp3i6AggqCIQT8Q+5HG1bZn+8vjD1ZQ0lCZmyMX85w0CAwEAAaNQME4wHQYDVR0O
+        BBYEFGBEjuYDxQcIjemHCelvFmdD85cgMB8GA1UdIwQYMBaAFGBEjuYDxQcIjemH
+        CelvFmdD85cgMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEA1QQ8UFQT
+        UWRxR8sqmnguN+nQR6GtmDi6XCpgvP73TW68Em/lhdKjzP3RUy3Clw3qv+CV0ebI
+        BdHlq5kw12fb2XBVsls+PFnD6yQq9M8fUlUOLe4qz7mAIHw4iBS7I28uvoFsAvqE
+        1ePe8pdP1RFvBMVm5fpduWR0h+z083Ytwkk=</X509Certificate>
+        </X509Data>
+        </KeyInfo>
+        </Signature>
+        </p:EnviarLoteRpsEnvio>
+        ]]></parameters></nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>
+    headers:
+      Soapaction:
+      - '"RecepcionarLoteRps"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '6351'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      Content-Type:
+      - text/xml;charset=utf-8
+      Date:
+      - Tue, 26 Aug 2014 23:29:24 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - AWSELB=33FDC97B088EC7D48E554EA7951916335FCF4DD33354B9B00E5F1779243F06793B26A49691A6E3300925177F1FEC0FFBE981FDDAACE7A0FA21188F78CC6FE9E7F20CBFCD5D;PATH=/
+      Content-Length:
+      - '609'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:RecepcionarLoteRpsResponse xmlns:ns2="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><return>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        &lt;RecepcionarLoteRpsResposta&gt;&lt;MensagemRetorno/&gt;&lt;NumeroLote&gt;1&lt;/NumeroLote&gt;&lt;DataRecebimento&gt;2014-08-04T09:34:21&lt;/DataRecebimento&gt;&lt;Protocolo&gt;2f3aa5f5-ccad-4136-8c27-c2fe490ad77f&lt;/Protocolo&gt;&lt;/RecepcionarLoteRpsResposta&gt;</return></ns2:RecepcionarLoteRpsResponse></S:Body></S:Envelope>
+    http_version: 
+  recorded_at: Tue, 26 Aug 2014 23:29:27 GMT
+recorded_with: VCR 2.9.2

@@ -8,5 +8,8 @@ module Rnfse
     # Em alguns provedores algumas ações, embora implemenadas não
     # funcionam ou tem comportamento anômalo.
     class BetterNotBeUsed < ::StandardError; end
+
+    # Caracteres fora do padrão ASCII foram utilizados.
+    class NonASCIIEncoding < ::StandardError; end
   end
 end

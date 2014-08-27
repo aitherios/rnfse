@@ -6,6 +6,7 @@ module Rnfse::API::SpeedGov10
   def recepcionar_lote_rps(hash = {})
     validate_sign_options
     validate_options(hash)
+    validate_ascii(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_recepcionar_lote_rps_xml(hash)
     parameters.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
@@ -37,6 +38,7 @@ module Rnfse::API::SpeedGov10
 
   def consultar_nfse_por_rps(hash = {})
     validate_options(hash)
+    validate_ascii(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_nfse_rps_envio_xml(hash)
     response = self.soap_client.call(
@@ -62,6 +64,10 @@ module Rnfse::API::SpeedGov10
   end
 
   private
+
+  def validate_ascii(hash)
+    raise Rnfse::Error::NonASCIIEncoding unless hash.to_s.ascii_only?
+  end
 
   def load_options_for_production(options)
     provedor = provedores['producao'][options['provedor'].to_s]
