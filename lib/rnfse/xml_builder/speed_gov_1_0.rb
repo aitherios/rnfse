@@ -37,7 +37,15 @@ module Rnfse::XMLBuilder::SpeedGov10
 
   def build_consultar_nfse_envio_xml(hash = {})
     hash = prepare_hash(hash)
-    hash = add_p_namespace(hash, /Prestador/)
+    hash = add_p_namespace(hash, %r{
+                                     (Prestador|
+                                      NumeroNfse|
+                                      DataInicial|
+                                      DataFinal|
+                                      PeriodoEmissao|
+                                      Tomador|
+                                      IntermediarioServico)
+                                    }x)
     inner_xml = ::Gyoku.xml(hash, key_converter: :none)
     Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.send('p:ConsultarNfseEnvio'.to_sym, build_parameters_xmlns) do
@@ -105,6 +113,7 @@ module Rnfse::XMLBuilder::SpeedGov10
     hash = clean_numerics(hash)
     hash = alter_aliquota(hash)
     hash = wrap_cpf_cnpj(hash)
+    hash = wrap_data_inicial_data_final(hash)
     hash = fix_booleans(hash)
     hash = add_p1_namespace(hash)
     hash
@@ -112,10 +121,21 @@ module Rnfse::XMLBuilder::SpeedGov10
 
   # encapsula as tags cpf ou cnpj em uma tag cpfcnpj
   def wrap_cpf_cnpj(hash)
-    match = '(IdentificacaoTomador|IntermediarioServico)/(Cnpj|Cpf)'
+    match = '(IdentificacaoTomador|IntermediarioServico|Tomador)/(Cnpj|Cpf)'
     Rnfse::Hash.replace_key_values(hash, match) do |key, value|
       { :'CpfCnpj' => { key => value } }
     end
+  end
+
+  # encapsula as tags data inicial e data final em periodo emissao
+  def wrap_data_inicial_data_final(hash)
+    if hash[:'DataFinal'] and hash[:'DataInicial']
+      hash[:'PeriodoEmissao'] = {
+        :'DataInicial' => hash.delete(:'DataInicial'),
+        :'DataFinal' => hash.delete(:'DataFinal')
+      }
+    end
+    hash
   end
 
   # alterar o formato da aliquota de 0 a 1 para 0 a 100

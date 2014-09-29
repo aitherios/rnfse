@@ -99,6 +99,18 @@ describe Rnfse::XMLBuilder::IssNet10 do
         prestador: {
           cnpj: "07.792.435/0009-12",
           inscricao_municipal: "59274734"
+        },
+        numero_nfse: '201400000000001',
+        data_inicial: "2013-04-21T21:42:42-03:00",
+        data_final: "2014-04-21T21:42:42-03:00",
+        tomador: {
+          cnpj: "38.421.846/0001-78",
+          inscricao_municipal: "12345679"
+        },
+        intermediario_servico: {
+          razao_social: "Black Mesa Research Facility",
+          cnpj: "62.894.995/0001-39",
+          inscricao_municipal: "12345670"
         }
       })
     end

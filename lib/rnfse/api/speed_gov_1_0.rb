@@ -108,8 +108,4 @@ module Rnfse::API::SpeedGov10
     }
   end
 
-  def json_folder
-    'speed_gov_1_0'
-  end
-
 end

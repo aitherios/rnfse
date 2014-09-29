@@ -8,4 +8,22 @@
     <p1:Cnpj>07792435000912</p1:Cnpj>
     <p1:InscricaoMunicipal>59274734</p1:InscricaoMunicipal>
   </p:Prestador>
+  <p:NumeroNfse>201400000000001</p:NumeroNfse>
+  <p:Tomador>
+    <p1:CpfCnpj>
+      <p1:Cnpj>38421846000178</p1:Cnpj>
+    </p1:CpfCnpj>
+    <p1:InscricaoMunicipal>12345679</p1:InscricaoMunicipal>
+  </p:Tomador>
+  <p:IntermediarioServico>
+    <p1:RazaoSocial>Black Mesa Research Facility</p1:RazaoSocial>
+    <p1:CpfCnpj>
+      <p1:Cnpj>62894995000139</p1:Cnpj>
+    </p1:CpfCnpj>
+    <p1:InscricaoMunicipal>12345670</p1:InscricaoMunicipal>
+  </p:IntermediarioServico>
+  <p:PeriodoEmissao>
+    <p:DataInicial>2013-04-21T21:42:42-03:00</p:DataInicial>
+    <p:DataFinal>2014-04-21T21:42:42-03:00</p:DataFinal>
+  </p:PeriodoEmissao>
 </p:ConsultarNfseEnvio>
