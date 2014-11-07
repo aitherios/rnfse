@@ -62,7 +62,9 @@ module Rnfse::API::Abrasf10
 
     def validate_sign_options
       if self.certificate.nil? or self.key.nil?
-        raise ArgumentError, 'opções de assinatura digital (certificate e key) faltando', caller
+        raise ArgumentError, 'opções de assinatura digital ' <<
+                             '(certificate e key) ao criar ' <<
+                             'o Rnfse::API faltando', caller
       end
     end
 
