@@ -46,7 +46,7 @@ module Rnfse::XMLBuilder::Abrasf10
     # converte datas para GMT-0
     def date_to_utc(hash)
       Rnfse::Hash.transform_values(hash, /DataEmissao\Z/) do |val|
-        DateTime.parse(val).new_offset(0).strftime('%FT%T')
+        DateTime.parse(val.to_s).new_offset(0).strftime('%FT%T')
       end
     end
 

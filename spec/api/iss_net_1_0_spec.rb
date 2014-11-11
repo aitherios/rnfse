@@ -39,7 +39,7 @@ describe Rnfse::API::IssNet10 do
             lista_rps: [
               {
                 identificacao_rps: { numero: 15, serie: "8", tipo: 1 },
-                data_emissao: "2014-06-24T10:00:00",
+                data_emissao: Date.parse("2014-06-24T10:00:00").rfc3339,
                 natureza_operacao: 1,
                 optante_simples_nacional: false,
                 incentivador_cultural: false,

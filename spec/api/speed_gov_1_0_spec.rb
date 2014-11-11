@@ -49,7 +49,7 @@ describe Rnfse::API::SpeedGov10 do
               lista_rps: [
                 {
                   identificacao_rps: { numero: 1, serie: "00000", tipo: 1 },
-                  data_emissao: "2013-10-01T08:10:00",
+                  data_emissao: Date.parse("2013-10-01T08:10:00").rfc3339,
                   natureza_operacao: 1,
                   optante_simples_nacional: false,
                   incentivador_cultural: false,
@@ -93,7 +93,7 @@ describe Rnfse::API::SpeedGov10 do
             lista_rps: [
               {
                 identificacao_rps: { numero: 1, serie: "00000", tipo: 1 },
-                data_emissao: "2013-10-01T08:10:00",
+                data_emissao: Date.parse("2013-10-01T08:10:00").rfc3339,
                 natureza_operacao: 1,
                 optante_simples_nacional: false,
                 incentivador_cultural: false,
