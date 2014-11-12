@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.email         = ['aitherios@gmail.com']
   s.homepage      = 'https://github.com/aitherios/rnfse'
 
-  s.files         = `git ls-files`.split($/)
+  s.files         = Dir['{lib,doc,spec}/**/*', 'README*', 'LICENSE*', 'CHANGELOG*']
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
   s.rubyforge_project = '[none]'
