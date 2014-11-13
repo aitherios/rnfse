@@ -95,8 +95,33 @@ describe Rnfse::XMLBuilder::Abrasf10 do
   end
 
   describe '#build_consultar_nfse_xml' do
-    it { expect(builder).to respond_to(:build_consultar_nfse_xml) }
-    it { expect { builder.build_consultar_nfse_xml() }.to raise_error(Rnfse::Error::NotImplemented) }
+    let(:xml) do 
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_nfse.xml')))
+    end
+
+    subject do
+      builder.build_consultar_nfse_xml({
+        prestador: {
+          cnpj: '09.255.435/0001-51',
+          inscricao_municipal: '1000017840'
+        },
+        numero_nfse: '93',
+        data_inicial: '2009-08-01',
+        data_final: '2009-08-30',
+        tomador: {
+          cnpj: '38.693.524/0001-88',
+          inscricao_municipal: '812005'
+        },
+        intermediario_servico: {
+          cnpj: '38.693.524/0001-88',
+          razao_social: 'sdfsfsdfsf',
+          inscricao_municipal: '812005'
+        }
+      })
+    end
+    
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
   describe "#build_consultar_lote_rps_xml" do

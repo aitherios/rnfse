@@ -17,7 +17,7 @@ module Rnfse::XMLBuilder::Abrasf10
     end
 
     def build_consultar_nfse_xml(hash = {})
-      raise Rnfse::Error::NotImplemented
+      build_xml('ConsultarNfseEnvio', hash)
     end
 
     def build_consultar_lote_rps_xml(hash = {})
@@ -40,6 +40,7 @@ module Rnfse::XMLBuilder::Abrasf10
     def prepare_hash(hash)
       hash = camelize_hash(hash)
       hash = wrap_rps(hash)
+      hash = wrap_periodo_emissao(hash)
       hash = add_tc_namespace(hash)
       hash = clean_numerics(hash)
       hash = date_to_utc(hash)
@@ -81,9 +82,26 @@ module Rnfse::XMLBuilder::Abrasf10
       hash
     end
 
+    # encapsula as tags data_inicial e data_final em periodo_emissao
+    def wrap_periodo_emissao(hash)
+      if hash[:DataInicial] or hash[:DataFinal]
+        hash[:PeriodoEmissao] = {
+          :DataInicial => hash.delete(:DataInicial),
+          :DataFinal => hash.delete(:DataFinal)
+        }
+      end
+      hash
+    end
+
     # adiciona o namespace tc nas tags dentro de loteRps ou prestador
     def add_tc_namespace(hash)
-      regex = /\A(LoteRps|Prestador|IdentificacaoRps)\Z/
+      regex = %r{ \A
+                  (LoteRps|
+                   Prestador|
+                   IdentificacaoRps|
+                   Tomador|
+                   IntermediarioServico)
+                  \Z }x
       Rnfse::Hash.replace_key_values(hash, regex) do |key, value|
         { key => Rnfse::Hash.transform_keys(value) { |k| "tc:#{k}".to_sym } }
       end
@@ -122,6 +140,14 @@ module Rnfse::XMLBuilder::Abrasf10
     def build_consultar_nfse_por_rps_xmlns
       {
         'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd',
+        'xmlns:tc' => xmlns_tc
+      }
+    end
+
+    # namespaces do xml consultar_nfse
+    def build_consultar_nfse_xmlns
+      {
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_nfse_envio.xsd',
         'xmlns:tc' => xmlns_tc
       }
     end

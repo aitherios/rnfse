@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio 
+    xmlns="http://www.abrasf.org.br/servico_consultar_nfse_envio.xsd"
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+  <Prestador>
+    <tc:Cnpj>09255435000151</tc:Cnpj>
+    <tc:InscricaoMunicipal>1000017840</tc:InscricaoMunicipal>
+  </Prestador>
+  <NumeroNfse>93</NumeroNfse>
+  <PeriodoEmissao>
+    <DataInicial>2009-08-01</DataInicial>
+    <DataFinal>2009-08-30</DataFinal>
+  </PeriodoEmissao>
+  <Tomador>
+    <tc:Cnpj>38693524000188</tc:Cnpj>
+    <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+  </Tomador>
+  <IntermediarioServico>
+    <tc:Cnpj>38693524000188</tc:Cnpj>
+    <tc:RazaoSocial>sdfsfsdfsf</tc:RazaoSocial>
+    <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+  </IntermediarioServico>
+</ConsultarNfseEnvio>
