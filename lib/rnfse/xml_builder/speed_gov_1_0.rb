@@ -3,20 +3,6 @@
 module Rnfse::XMLBuilder::SpeedGov10
   include Rnfse::XMLBuilder::Abrasf10
 
-  def build_header_xml
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.cabecalho('versao' => '1',
-                    'xmlns:p' => 'http://ws.speedgov.com.br/cabecalho_v1.xsd',
-                    'xmlns:ds' => 'http://www.w3.org/2000/09/xmldsig#',
-                    'xmlns:p1' => 'http://ws.speedgov.com.br/tipos_v1.xsd',
-                    'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-                    'xsi:schemaLocation' => 'http://ws.speedgov.com.br/cabecalho_v1.xsd') do
-        xml.versaoDados('1')
-        xml.parent.namespace = xml.parent.namespace_definitions.first
-      end
-    end.doc
-  end
-
   def build_recepcionar_lote_rps_xml(hash = {})
     hash = prepare_hash(hash)
     hash = add_p_namespace(hash, /LoteRps/)
@@ -26,6 +12,24 @@ module Rnfse::XMLBuilder::SpeedGov10
         xml << inner_xml
       end
     end.doc
+  end
+
+  def build_consultar_situacao_lote_rps_envio_xml(hash = {})
+    hash = prepare_hash(hash)
+    hash = add_p_namespace(hash, /(Prestador|Protocolo)/)
+    inner_xml = ::Gyoku.xml(hash, key_converter: :none)
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
+      xml.send('p:ConsultarSituacaoLoteRpsEnvio'.to_sym, build_parameters_xmlns) do
+        xml << inner_xml
+      end
+    end.doc
+  end
+
+  def build_consultar_situacao_lote_rps_envio_xmlns()
+    {
+      'xmlns:p' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd",
+      'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd"
+    }
   end
 
   def build_recepcionar_lote_rps_xmlns()
@@ -79,30 +83,26 @@ module Rnfse::XMLBuilder::SpeedGov10
     }
   end
 
-  def build_consultar_situacao_lote_rps_envio_xml(hash = {})
-    hash = prepare_hash(hash)
-    hash = add_p_namespace(hash, /(Prestador|Protocolo)/)
-    inner_xml = ::Gyoku.xml(hash, key_converter: :none)
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.send('p:ConsultarSituacaoLoteRpsEnvio'.to_sym, build_parameters_xmlns) do
-        xml << inner_xml
-      end
-    end.doc
-  end
-
-  def build_consultar_situacao_lote_rps_envio_xmlns()
-    {
-      'xmlns:p' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd",
-      'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd"
-    }
-  end
-
   def build_parameters_xmlns
     {
       'xmlns:ds' => "http://www.w3.org/2000/09/xmldsig#",
       'xmlns:p1' => "http://ws.speedgov.com.br/tipos_v1.xsd",
       'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance"
     }.merge(self.send("#{Rnfse::CallChain.caller_method()}ns"))
+  end
+
+  def build_header_xml
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
+      xml.cabecalho('versao' => '1',
+                    'xmlns:p' => 'http://ws.speedgov.com.br/cabecalho_v1.xsd',
+                    'xmlns:ds' => 'http://www.w3.org/2000/09/xmldsig#',
+                    'xmlns:p1' => 'http://ws.speedgov.com.br/tipos_v1.xsd',
+                    'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+                    'xsi:schemaLocation' => 'http://ws.speedgov.com.br/cabecalho_v1.xsd') do
+        xml.versaoDados('1')
+        xml.parent.namespace = xml.parent.namespace_definitions.first
+      end
+    end.doc
   end
 
   private
