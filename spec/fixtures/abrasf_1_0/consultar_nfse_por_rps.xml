@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio 
+    xmlns="http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd"
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+  <IdentificacaoRps>
+    <tc:Numero>2</tc:Numero>
+    <tc:Serie>8</tc:Serie>
+    <tc:Tipo>1</tc:Tipo>
+  </IdentificacaoRps>
+  <Prestador>
+    <tc:Cnpj>14576582000163</tc:Cnpj>
+    <tc:InscricaoMunicipal>124762</tc:InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseRpsEnvio>

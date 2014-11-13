@@ -8,12 +8,24 @@ module Rnfse::XMLBuilder::Abrasf10
       build_xml('EnviarLoteRpsEnvio', hash)
     end
 
+    def build_consultar_situacao_lote_rps_xml(hash = {})
+      build_xml('ConsultarSituacaoLoteRpsEnvio', hash)
+    end
+
+    def build_consultar_nfse_por_rps_xml(hash = {})
+      build_xml('ConsultarNfseRpsEnvio', hash)
+    end
+
+    def build_consultar_nfse_xml(hash = {})
+      raise Rnfse::Error::NotImplemented
+    end
+
     def build_consultar_lote_rps_xml(hash = {})
       build_xml('ConsultarLoteRpsEnvio', hash)
     end
 
-    def build_consultar_situacao_lote_rps_xml(hash = {})
-      build_xml('ConsultarSituacaoLoteRpsEnvio', hash)
+    def build_cancelar_nfse_xml(hash = {})
+      raise Rnfse::Error::NotImplemented
     end
 
     private
@@ -71,14 +83,10 @@ module Rnfse::XMLBuilder::Abrasf10
 
     # adiciona o namespace tc nas tags dentro de loteRps ou prestador
     def add_tc_namespace(hash)
-      tag = case
-            when !hash[:LoteRps].nil? then :LoteRps
-            when !hash[:Prestador].nil? then :Prestador
-            end
-      if hash[tag]
-        hash[tag] = Rnfse::Hash.transform_keys(hash[tag]) { |key| "tc:#{key}".to_sym }
+      regex = /\A(LoteRps|Prestador|IdentificacaoRps)\Z/
+      Rnfse::Hash.replace_key_values(hash, regex) do |key, value|
+        { key => Rnfse::Hash.transform_keys(value) { |k| "tc:#{k}".to_sym } }
       end
-      hash
     end
 
     # namespace dos tipos complexos
@@ -104,6 +112,14 @@ module Rnfse::XMLBuilder::Abrasf10
 
     # namespaces do xml consultar_situacao_lote_rps
     def build_consultar_situacao_lote_rps_xmlns
+      {
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd',
+        'xmlns:tc' => xmlns_tc
+      }
+    end
+
+    # namespaces do xml consultar_nfse_por_rps
+    def build_consultar_nfse_por_rps_xmlns
       {
         'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd',
         'xmlns:tc' => xmlns_tc

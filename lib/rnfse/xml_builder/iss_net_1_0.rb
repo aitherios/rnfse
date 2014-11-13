@@ -13,7 +13,7 @@ module Rnfse::XMLBuilder::IssNet10
     hash = clean_numerics(hash)
     hash = date_to_utc(hash)
     hash = fix_booleans(hash)
-    hash = wrap_cpf_cnpj(hash)    
+    hash = wrap_cpf_cnpj(hash)
     hash = add_municipio_prestacao_servico(hash)
     hash = add_estado(hash)
     hash = add_cidade(hash)
@@ -89,6 +89,15 @@ module Rnfse::XMLBuilder::IssNet10
   def build_consultar_lote_rps_xmlns
     {
       'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_lote_rps_envio.xsd',
+      'xmlns:tc' => xmlns_tc,
+      'xmlns:ts' => xmlns_ts
+    }
+  end
+
+  # namespaces do xml consultar_nfse_por_xml
+  def build_consultar_nfse_por_rps_xmlns
+    {
+      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_envio.xsd',
       'xmlns:tc' => xmlns_tc,
       'xmlns:ts' => xmlns_ts
     }
