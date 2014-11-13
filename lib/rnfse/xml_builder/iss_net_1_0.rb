@@ -10,6 +10,7 @@ module Rnfse::XMLBuilder::IssNet10
     hash = camelize_hash(hash)
     hash = wrap_rps(hash)
     hash = add_tc_namespace(hash)
+    hash = wrap_periodo_emissao(hash)
     hash = clean_numerics(hash)
     hash = date_to_utc(hash)
     hash = fix_booleans(hash)
@@ -100,6 +101,14 @@ module Rnfse::XMLBuilder::IssNet10
       'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_envio.xsd',
       'xmlns:tc' => xmlns_tc,
       'xmlns:ts' => xmlns_ts
+    }
+  end
+
+  # namespaces do xml consultar_nfse
+  def build_consultar_nfse_xmlns
+    {
+      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd',
+      'xmlns:tc' => xmlns_tc
     }
   end
 
