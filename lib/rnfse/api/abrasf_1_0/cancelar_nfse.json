@@ -1,0 +1,13 @@
+{ 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Cancelamento de NFS-e",
+  "description": "Esse serviço permite o cancelamento direto de uma NFS-e sem substituição da mesma por outra.",
+
+  "type": "object",
+  "properties": {
+    "identificacaoNfse": { "$ref": "definitions.json#/identificacaoNfse"},
+    "codigoCancelamento": { "$ref": "definitions.json#/codigoCancelamentoNfse"}
+  },
+  "required": ["identificacaoNfse", "codigoCancelamento"],
+  "additionalProperties": false
+}
