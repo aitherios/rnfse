@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio 
+    xmlns="http://www.abrasf.org.br/servico_cancelar_nfse_envio.xsd"
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+  <Pedido>
+    <tc:InfPedidoCancelamento>
+      <tc:IdentificacaoNfse>
+        <tc:Numero>15</tc:Numero>
+        <tc:Cnpj>02956773000171</tc:Cnpj>
+        <tc:InscricaoMunicipal>1998010</tc:InscricaoMunicipal>
+        <tc:CodigoMunicipio>999</tc:CodigoMunicipio>
+      </tc:IdentificacaoNfse>
+      <tc:CodigoCancelamento>5</tc:CodigoCancelamento>
+    </tc:InfPedidoCancelamento>
+  </Pedido>
+</CancelarNfseEnvio>

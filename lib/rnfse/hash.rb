@@ -117,19 +117,26 @@ module Rnfse
     end
 
     def self.replace_key_values(obj, key, &block)
-      parent = key.to_s.split('/').first
-      childs = key.to_s.split('/')[1..-1]
-      regex = key.kind_of?(::Regexp) ? key : /\A#{parent}\Z/
+      parent, children = case
+                         when key.kind_of?(::Regexp)
+                           [ key, [] ]
+                         when key.kind_of?(::Array)
+                           [ key.first, key[1..-1] ]
+                         else
+                           parts = key.to_s.split('/')
+                           [ parts.first, parts[1..-1] ]
+                         end
+      regex = parent.kind_of?(::Regexp) ? parent : /\A#{parent}\Z/
 
       case
       when obj.kind_of?(::Hash)
         result = {}
         obj.each_key do |k|
           case
-          when (regex.match(k) and childs.empty?)
+          when (regex.match(k) and children.empty?)
             result.merge!(yield(k, obj[k]))
-          when (regex.match(k) and !childs.empty?)
-            result[k] = self.replace_key_values(obj[k], childs.join('/'), &block)            
+          when (regex.match(k) and !children.empty?)
+            result[k] = self.replace_key_values(obj[k], children, &block)
           else
             result[k] = self.replace_key_values(obj[k], key, &block)
           end

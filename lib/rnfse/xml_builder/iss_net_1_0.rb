@@ -9,8 +9,9 @@ module Rnfse::XMLBuilder::IssNet10
   def prepare_hash(hash)
     hash = camelize_hash(hash)
     hash = wrap_rps(hash)
-    hash = add_tc_namespace(hash)
     hash = wrap_periodo_emissao(hash)
+    hash = wrap_identificacao_nfse(hash)
+    hash = add_tc_namespace(hash)
     hash = clean_numerics(hash)
     hash = date_to_utc(hash)
     hash = fix_booleans(hash)
@@ -54,9 +55,12 @@ module Rnfse::XMLBuilder::IssNet10
 
   # encapsula as tags cpf ou cnpj em uma tag cpfcnpj
   def wrap_cpf_cnpj(hash)
-    regex = /(Cpf|Cnpj)\Z/
-    Rnfse::Hash.replace_key_values(hash, regex) do |key, value|
-      { :'tc:CpfCnpj' => { key => value } }
+    if hash[:Pedido].nil?
+      Rnfse::Hash.replace_key_values(hash, /tc:(Cpf|Cnpj)/) do |key, value|
+        { :'tc:CpfCnpj' => { key => value } }
+      end
+    else
+      hash
     end
   end
 
@@ -108,6 +112,14 @@ module Rnfse::XMLBuilder::IssNet10
   def build_consultar_nfse_xmlns
     {
       'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd',
+      'xmlns:tc' => xmlns_tc
+    }
+  end
+
+  # namespaces do xml cancelar_nfse
+  def build_cancelar_nfse_xmlns
+    {
+      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_cancelar_nfse_envio.xsd',
       'xmlns:tc' => xmlns_tc
     }
   end

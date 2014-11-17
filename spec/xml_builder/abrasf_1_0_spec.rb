@@ -144,8 +144,24 @@ describe Rnfse::XMLBuilder::Abrasf10 do
   end
 
   describe '#build_cancelar_nfse_xml' do
-    it { expect(builder).to respond_to(:build_cancelar_nfse_xml) }
-    it { expect { builder.build_cancelar_nfse_xml() }.to raise_error(Rnfse::Error::NotImplemented) }
+    let(:xml) do 
+      Nokogiri::XML(File.read(File.join(xml_path, 'cancelar_nfse_envio.xml')))
+    end
+
+    subject do
+      builder.build_cancelar_nfse_xml({
+        identificacao_nfse: {
+          numero: 15,
+          cnpj: '02.956.773/0001-71',
+          inscricao_municipal: '1998010',
+          codigo_municipio: '999'
+        },
+        codigo_cancelamento: '5'
+      })
+    end
+
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
 end
