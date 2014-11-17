@@ -14,8 +14,20 @@ module Rnfse::API::Abrasf10
     def recepcionar_lote_rps(hash = {})
       validate_sign_options
       validate_options(hash)
-      xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
-      xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+      xml = xml_builder.build_recepcionar_lote_rps_xml(hash) do |inner_xml|
+        regex = /<tc:Rps>.*<\/tc:Rps>/
+        plain_xml = inner_xml.to_xml(
+          save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
+        signed_rps = Nokogiri::XML(
+                       plain_xml.match(regex)[0]).
+                     sign!(
+                       certificate: File.read(self.certificate), 
+                       key: File.read(self.key)).
+                     to_xml(
+                       save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).
+                     strip
+        plain_xml.gsub(regex, signed_rps)
+      end
       response = self.soap_client.call(
         :recepcionar_lote_rps,
         soap_action: 'RecepcionarLoteRps',
@@ -47,7 +59,14 @@ module Rnfse::API::Abrasf10
     end
 
     def consultar_nfse(hash = {})
-      raise Rnfse::Error::NotImplemented
+      validate_options(hash)
+      xml = xml_builder.build_consultar_nfse_xml(hash)
+      response = self.soap_client.call(
+        :consultar_nfse,
+        soap_action: 'ConsultarNfse',
+        message_tag: 'ConsultarNfse',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
     end
 
     def consultar_lote_rps(hash = {})
@@ -62,7 +81,17 @@ module Rnfse::API::Abrasf10
     end
 
     def cancelar_nfse(hash = {})
-      raise Rnfse::Error::NotImplemented
+      validate_options(hash)
+      xml = xml_builder.build_cancelar_nfse_xml(hash) do |inner_xml|
+        inner_xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+        inner_xml.to_xml(save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
+      end
+      response = self.soap_client.call(
+        :cancelar_nfse,
+        soap_action: 'CancelarNfse',
+        message_tag: 'CancelarNfse',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
     end
 
     private
@@ -84,9 +113,18 @@ module Rnfse::API::Abrasf10
 
     def parse_response(response)
       hash = Rnfse::Hash.new(response.body)
-      response_key = hash.keys.select { |k| k =~ /response$/ }.first
-      result_key = hash[response_key].keys.select { |k| k =~ /result$/ }.first
-      if !hash[response_key].nil? and hash[response_key]
+
+      response_key = hash.keys.select { |k| k =~ /response$/ }
+      response_key = response_key.first unless response_key.nil?
+
+      if hash[response_key]
+        result_key = hash[response_key].keys.select { |k| k =~ /result$/ }
+        result_key = result_key.first unless result_key.nil?
+      else
+        result_key = nil
+      end
+
+      if response_key and result_key
         xml = hash[response_key][result_key]
         hash[response_key][result_key] = Nori.new.parse(xml)
       end

@@ -5,27 +5,51 @@ module Rnfse::XMLBuilder::Abrasf10
   module ClassMethods
 
     def build_recepcionar_lote_rps_xml(hash = {})
-      build_xml('EnviarLoteRpsEnvio', hash)
+      if block_given?
+        build_xml('EnviarLoteRpsEnvio', hash, &Proc.new)
+      else
+        build_xml('EnviarLoteRpsEnvio', hash)
+      end
     end
 
     def build_consultar_situacao_lote_rps_xml(hash = {})
-      build_xml('ConsultarSituacaoLoteRpsEnvio', hash)
+      if block_given?
+        build_xml('ConsultarSituacaoLoteRpsEnvio', hash, &Proc.new)
+      else
+        build_xml('ConsultarSituacaoLoteRpsEnvio', hash)
+      end
     end
 
     def build_consultar_nfse_por_rps_xml(hash = {})
-      build_xml('ConsultarNfseRpsEnvio', hash)
+      if block_given?
+        build_xml('ConsultarNfseRpsEnvio', hash, &Proc.new)
+      else
+        build_xml('ConsultarNfseRpsEnvio', hash)
+      end
     end
 
     def build_consultar_nfse_xml(hash = {})
-      build_xml('ConsultarNfseEnvio', hash)
+      if block_given?
+        build_xml('ConsultarNfseEnvio', hash, &Proc.new)
+      else
+        build_xml('ConsultarNfseEnvio', hash)
+      end
     end
 
     def build_consultar_lote_rps_xml(hash = {})
-      build_xml('ConsultarLoteRpsEnvio', hash)
+      if block_given?
+        build_xml('ConsultarLoteRpsEnvio', hash, &Proc.new)
+      else
+        build_xml('ConsultarLoteRpsEnvio', hash)
+      end
     end
 
     def build_cancelar_nfse_xml(hash = {})
-      build_xml('CancelarNfseEnvio', hash)
+      if block_given?
+        build_xml('CancelarNfseEnvio', hash, &Proc.new)
+      else
+        build_xml('CancelarNfseEnvio', hash)
+      end
     end
 
     private
@@ -33,6 +57,7 @@ module Rnfse::XMLBuilder::Abrasf10
     def build_xml(wrapper, hash = {})
       hash = prepare_hash(hash)
       inner_xml = ::Gyoku.xml(hash, key_converter: :none)
+      inner_xml = yield(Nokogiri::XML(inner_xml)) if block_given?
       xml_builder(wrapper, inner_xml).doc
     end
 
