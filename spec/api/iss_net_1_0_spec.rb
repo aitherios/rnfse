@@ -9,7 +9,8 @@ describe Rnfse::API::IssNet10 do
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
-                   key: key)
+                   key: key,
+                   verbose: true)
   end
 
   describe '#operations' do
@@ -150,8 +151,26 @@ describe Rnfse::API::IssNet10 do
   end
 
   describe '#consultar_nfse_por_rps' do
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.consultar_nfse_por_rps(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
     it { expect(client).to respond_to(:cancelar_nfse)  }
-    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+
+    subject do
+      VCR.use_cassette('iss_net_1_0_consultar_nfse_por_rps') do
+        client.consultar_nfse_por_rps({
+          identificacao_rps: { numero: 15, serie: "8", tipo: 1 },
+          prestador: {
+            cnpj: "14.576.582/0001-63",
+            inscricao_municipal: "124762"
+          }
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
   end
 
   describe '#consultar_nfse' do
