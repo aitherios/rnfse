@@ -9,8 +9,7 @@ describe Rnfse::API::IssNet10 do
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
-                   key: key,
-                   verbose: true)
+                   key: key)
   end
 
   describe '#operations' do
@@ -146,8 +145,28 @@ describe Rnfse::API::IssNet10 do
   end
 
   describe '#cancelar_nfse' do
-    it { expect(client).to respond_to(:cancelar_nfse)  }
-    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.cancelar_nfse(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
+    it { expect(client).to respond_to(:cancelar_nfse) }
+
+    subject do
+      VCR.use_cassette('iss_net_1_0_cancelar_nfse') do
+        client.cancelar_nfse({
+          identificacao_nfse: {
+            numero: 201400000000015,
+            cnpj: "14.576.582/0001-63",
+            inscricao_municipal: "124762",
+            codigo_municipio: 999
+          },
+          codigo_cancelamento: '5'
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
   end
 
   describe '#consultar_nfse_por_rps' do
@@ -174,8 +193,25 @@ describe Rnfse::API::IssNet10 do
   end
 
   describe '#consultar_nfse' do
-    it { expect(client).to respond_to(:consultar_nfse)  }
-    it { expect { client.consultar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.consultar_nfse(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
+    it { expect(client).to respond_to(:cancelar_nfse)  }
+
+    subject do
+      VCR.use_cassette('iss_net_1_0_consultar_nfse') do
+        client.consultar_nfse({
+          prestador: {
+            cnpj: "14.576.582/0001-63",
+            inscricao_municipal: "124762"
+          }
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
   end
 
   describe '#consultar_url_visualizacao_nfse' do
