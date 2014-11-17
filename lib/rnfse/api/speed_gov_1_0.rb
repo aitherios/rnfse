@@ -63,6 +63,10 @@ module Rnfse::API::SpeedGov10
     parse_response(response)
   end
 
+  def cancelar_nfse(hash = {})
+    raise Rnfse::Error::NotImplemented
+  end
+
   private
 
   def validate_ascii(hash)

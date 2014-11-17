@@ -36,7 +36,14 @@ module Rnfse::API::Abrasf10
     end
 
     def consultar_nfse_por_rps(hash = {})
-      raise Rnfse::Error::NotImplemented
+      validate_options(hash)
+      xml = xml_builder.build_consultar_nfse_por_rps_xml(hash)
+      response = self.soap_client.call(
+        :consultar_nfse_por_rps,
+        soap_action: 'ConsultarNfsePorRps',
+        message_tag: 'ConsultarNfsePorRps',
+        message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+      parse_response(response)
     end
 
     def consultar_nfse(hash = {})

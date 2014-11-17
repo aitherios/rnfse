@@ -50,7 +50,6 @@ describe Rnfse::API::Abrasf10 do
 
   describe '#consultar_nfse_por_rps' do
     it { expect(client).to respond_to(:consultar_nfse_por_rps)  }
-    it { expect { client.consultar_nfse_por_rps() }.to raise_error(Rnfse::Error::NotImplemented) }
   end
 
   describe '#consultar_nfse' do
