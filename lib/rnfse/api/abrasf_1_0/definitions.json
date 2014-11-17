@@ -392,5 +392,22 @@
     "description": "Data como representada no padrão RFC 3339 section 5.6",
     "type": "string",
     "format": "date-time"
+  },
+  "codigoCancelamentoNfse": {
+    "description": "Código de cancelamento com base na tabela de erros e alertas",
+    "type": "string",
+    "maxLength": 4
+  },
+  "identificacaoNfse": {
+    "description": "Representa dados que identificam uma Nota Fiscal de Serviços Eletrônica",
+    "type": "object",
+    "properties": {
+      "numero": { "$ref": "#/numeroNfse" },
+      "cnpj": { "$ref": "#/cnpj" },
+      "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" },
+      "codigoMunicipio": { "$ref": "#/codigoMunicipioIbge" }      
+    },
+    "required": ["numero", "cnpj"],
+    "additionalProperties": false
   }
 }
