@@ -200,6 +200,17 @@ describe Rnfse::Hash do
         }).to eq(transformed_hash) 
       }
     end
+
+    context 'com um array de regexes' do
+      let(:hash) { { names: { first: 'Glados' }, nicknames: { first: 'Wheatley' } } }
+      let(:transformed_hash) { { names: { first: 'GLADOS' }, nicknames: { first: 'Wheatley' } } }
+
+      it { expect(
+        Rnfse::Hash.replace_key_values(hash, [ /\Anames\Z/, /\Afirst\Z/ ]) { |key, value| 
+          { key => value.upcase }
+        }).to eq(transformed_hash)
+      }
+    end
   end
 
   describe '#replace_key_values' do
