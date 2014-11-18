@@ -12,18 +12,18 @@ module Rnfse::API::IssNet10
     ]
   end
 
-  # def recepcionar_lote_rps(hash = {})
-  #   validate_sign_options
-  #   validate_options(hash)
-  #   xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
-  #   xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
-  #   response = self.soap_client.call(
-  #     :recepcionar_lote_rps,
-  #     soap_action: 'RecepcionarLoteRps',
-  #     message_tag: 'RecepcionarLoteRps',
-  #     message: { :'xml!' => "<![CDATA[#{xml}]]>" })
-  #   parse_response(response)
-  # end
+  def recepcionar_lote_rps(hash = {})
+    validate_sign_options
+    validate_options(hash)
+    xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
+    xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+    response = self.soap_client.call(
+      :recepcionar_lote_rps,
+      soap_action: 'RecepcionarLoteRps',
+      message_tag: 'RecepcionarLoteRps',
+      message: { :'xml!' => "<![CDATA[#{xml}]]>" })
+    parse_response(response)
+  end
 
   def consultar_situacao_lote_rps(hash = {})
     validate_options(hash)
