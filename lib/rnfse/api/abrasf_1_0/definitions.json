@@ -3,7 +3,7 @@
     "description": "Número da Nota Fiscal de Serviço Eletrônica, formado pelo ano com 04 (quatro) dígitos e um número seqüencial com 11 posições – Formato AAAANNNNNNNNNNN.",
     "type": "integer",
     "minimum": 190000000000000,
-    "maximum": 220099999999999
+    "maximum": 299999999999999
   },
    "codigoVerificacao": {
     "description": "Código de verificação do número da nota",
@@ -405,7 +405,7 @@
       "numero": { "$ref": "#/numeroNfse" },
       "cnpj": { "$ref": "#/cnpj" },
       "inscricaoMunicipal": { "$ref": "#/inscricaoMunicipal" },
-      "codigoMunicipio": { "$ref": "#/codigoMunicipioIbge" }      
+      "codigoMunicipio": { "$ref": "#/codigoMunicipioIbge" }
     },
     "required": ["numero", "cnpj"],
     "additionalProperties": false
