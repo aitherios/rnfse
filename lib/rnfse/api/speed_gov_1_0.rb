@@ -37,7 +37,7 @@ module Rnfse::API::SpeedGov10
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_lote_rps_envio_xml(hash)
     response = self.soap_client.call(
-      :consultar_situacao_lote_rps,
+      :consultar_lote_rps,
       soap_action: 'ConsultarLoteRps',
       message_tag: 'nfse:ConsultarLoteRps',
       message: { :'header!' => "<![CDATA[#{header}]]>",
@@ -64,7 +64,7 @@ module Rnfse::API::SpeedGov10
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_nfse_envio_xml(hash)
     response = self.soap_client.call(
-      :consultar_situacao_lote_rps,
+      :consultar_nfse,
       soap_action: 'ConsultarNfse',
       message_tag: 'nfse:ConsultarNfse',
       message: { :'header!' => "<![CDATA[#{header}]]>",

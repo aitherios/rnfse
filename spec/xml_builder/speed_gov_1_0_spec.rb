@@ -218,6 +218,25 @@ describe Rnfse::XMLBuilder::IssNet10 do
     it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
+  describe '#build_consultar_lote_rps_envio_xml' do
+    let(:xml) do
+      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_lote_rps_envio.xml')))
+    end
+
+    subject do
+      builder.build_consultar_lote_rps_envio_xml({
+        prestador: {
+          cnpj: '07.792.435/0009-12',
+          inscricao_municipal: '59274734'
+        },
+        protocolo: '3b2c9c94-4fb7-4858-a455-452009cc1fd0'
+      })
+    end
+
+    it { should be_equivalent_to(xml) }
+    it { should be_kind_of(Nokogiri::XML::Document) }
+  end
+
   describe '#build_header_xml' do
     let(:xml) do
       Nokogiri::XML(File.read(File.join(xml_path, 'header.xml')))
