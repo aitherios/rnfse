@@ -33,7 +33,16 @@ module Rnfse::API::SpeedGov10
   end
 
   def consultar_lote_rps(hash = {})
-    raise Rnfse::Error::NotImplemented
+    validate_options(hash)
+    header = xml_builder.build_header_xml()
+    parameters = xml_builder.build_consultar_lote_rps_envio_xml(hash)
+    response = self.soap_client.call(
+      :consultar_situacao_lote_rps,
+      soap_action: 'ConsultarLoteRps',
+      message_tag: 'nfse:ConsultarLoteRps',
+      message: { :'header!' => "<![CDATA[#{header}]]>",
+                 :'parameters!' => "<![CDATA[#{parameters}]]>" })
+    parse_response(response)
   end
 
   def consultar_nfse_por_rps(hash = {})
