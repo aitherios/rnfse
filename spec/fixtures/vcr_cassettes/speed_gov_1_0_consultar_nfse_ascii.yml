@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://speedgov.com.br/wsmod/Nfes
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><soapenv:Body><nfse:ConsultarNfse><header><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:cabecalho xmlns:p="http://ws.speedgov.com.br/cabecalho_v1.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versao="1" xsi:schemaLocation="http://ws.speedgov.com.br/cabecalho_v1.xsd">
+          <versaoDados>1</versaoDados>
+        </p:cabecalho>
+        ]]></header><parameters><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <p:ConsultarNfseEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd" xsi:schemaLocation="http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd">
+          <p:Prestador>
+            <p1:Cnpj>12552510000150</p1:Cnpj>
+            <p1:InscricaoMunicipal>68</p1:InscricaoMunicipal>
+          </p:Prestador>
+          <p:IntermediarioServico>
+            <p1:RazaoSocial>àõéúîàõéúîàõéúîàõéúîàõéúî</p1:RazaoSocial>
+            <p1:CpfCnpj>
+              <p1:Cnpj>62894995000139</p1:Cnpj>
+            </p1:CpfCnpj>
+            <p1:InscricaoMunicipal>12345670</p1:InscricaoMunicipal>
+          </p:IntermediarioServico>
+        </p:ConsultarNfseEnvio>
+        ]]></parameters></nfse:ConsultarNfse></soapenv:Body></soapenv:Envelope>
+    headers:
+      Soapaction:
+      - '"ConsultarNfse"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1595'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      Content-Type:
+      - text/xml;charset=utf-8
+      Date:
+      - Wed, 19 Nov 2014 22:08:11 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - AWSELB=33FDC97B088EC7D48E554EA7951916335FCF4DD3330FF363E61E26C47E1495D25A7D0ED17ADFB0210868A985B0949924EE66806F2727334DB4D04B2CE4F6462BEA42C169F4;PATH=/
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><S:Fault
+        xmlns:ns4="http://www.w3.org/2003/05/soap-envelope"><faultcode>S:Server</faultcode><faultstring>java.lang.NullPointerException</faultstring><detail><ns2:exception
+        xmlns:ns2="http://jax-ws.dev.java.net/" class="java.lang.NullPointerException"
+        note="To disable this feature, set com.sun.xml.ws.fault.SOAPFaultBuilder.disableCaptureStackTrace
+        system property to false"><ns2:stackTrace><ns2:frame class="com.intersol.envio.ConsultarNfseEnvio"
+        file="ConsultarNfseEnvio.java" line="48" method="acessoDatabase"/><ns2:frame
+        class="com.intersol.envio.ConsultarNfseEnvio" file="ConsultarNfseEnvio.java"
+        line="43" method="processaEnvio"/><ns2:frame class="com.intersol.Nfes" file="Nfes.java"
+        line="190" method="ConsultarNfse"/><ns2:frame class="sun.reflect.NativeMethodAccessorImpl"
+        file="NativeMethodAccessorImpl.java" line="native" method="invoke0"/><ns2:frame
+        class="sun.reflect.NativeMethodAccessorImpl" file="NativeMethodAccessorImpl.java"
+        line="39" method="invoke"/><ns2:frame class="sun.reflect.DelegatingMethodAccessorImpl"
+        file="DelegatingMethodAccessorImpl.java" line="25" method="invoke"/><ns2:frame
+        class="java.lang.reflect.Method" file="Method.java" line="597" method="invoke"/><ns2:frame
+        class="com.sun.xml.ws.api.server.InstanceResolver$1" file="InstanceResolver.java"
+        line="246" method="invoke"/><ns2:frame class="com.sun.xml.ws.server.InvokerTube$2"
+        file="InvokerTube.java" line="146" method="invoke"/><ns2:frame class="com.sun.xml.ws.server.sei.EndpointMethodHandler"
+        file="EndpointMethodHandler.java" line="257" method="invoke"/><ns2:frame class="com.sun.xml.ws.server.sei.SEIInvokerTube"
+        file="SEIInvokerTube.java" line="95" method="processRequest"/><ns2:frame class="com.sun.xml.ws.api.pipe.Fiber"
+        file="Fiber.java" line="629" method="__doRun"/><ns2:frame class="com.sun.xml.ws.api.pipe.Fiber"
+        file="Fiber.java" line="588" method="_doRun"/><ns2:frame class="com.sun.xml.ws.api.pipe.Fiber"
+        file="Fiber.java" line="573" method="doRun"/><ns2:frame class="com.sun.xml.ws.api.pipe.Fiber"
+        file="Fiber.java" line="470" method="runSync"/><ns2:frame class="com.sun.xml.ws.server.WSEndpointImpl$2"
+        file="WSEndpointImpl.java" line="295" method="process"/><ns2:frame class="com.sun.xml.ws.transport.http.HttpAdapter$HttpToolkit"
+        file="HttpAdapter.java" line="519" method="handle"/><ns2:frame class="com.sun.xml.ws.transport.http.HttpAdapter"
+        file="HttpAdapter.java" line="288" method="handle"/><ns2:frame class="com.sun.xml.ws.transport.http.servlet.ServletAdapter"
+        file="ServletAdapter.java" line="143" method="handle"/><ns2:frame class="com.sun.xml.ws.transport.http.servlet.WSServletDelegate"
+        file="WSServletDelegate.java" line="155" method="doGet"/><ns2:frame class="com.sun.xml.ws.transport.http.servlet.WSServletDelegate"
+        file="WSServletDelegate.java" line="189" method="doPost"/><ns2:frame class="com.sun.xml.ws.transport.http.servlet.WSServlet"
+        file="WSServlet.java" line="76" method="doPost"/><ns2:frame class="javax.servlet.http.HttpServlet"
+        file="HttpServlet.java" line="637" method="service"/><ns2:frame class="javax.servlet.http.HttpServlet"
+        file="HttpServlet.java" line="717" method="service"/><ns2:frame class="org.apache.catalina.core.ApplicationFilterChain"
+        file="ApplicationFilterChain.java" line="290" method="internalDoFilter"/><ns2:frame
+        class="org.apache.catalina.core.ApplicationFilterChain" file="ApplicationFilterChain.java"
+        line="206" method="doFilter"/><ns2:frame class="org.apache.catalina.core.StandardWrapperValve"
+        file="StandardWrapperValve.java" line="233" method="invoke"/><ns2:frame class="org.apache.catalina.core.StandardContextValve"
+        file="StandardContextValve.java" line="191" method="invoke"/><ns2:frame class="org.apache.catalina.core.StandardHostValve"
+        file="StandardHostValve.java" line="127" method="invoke"/><ns2:frame class="com.googlecode.psiprobe.Tomcat60AgentValve"
+        file="Tomcat60AgentValve.java" line="30" method="invoke"/><ns2:frame class="org.apache.catalina.valves.ErrorReportValve"
+        file="ErrorReportValve.java" line="103" method="invoke"/><ns2:frame class="org.apache.catalina.core.StandardEngineValve"
+        file="StandardEngineValve.java" line="109" method="invoke"/><ns2:frame class="org.apache.catalina.connector.CoyoteAdapter"
+        file="CoyoteAdapter.java" line="293" method="service"/><ns2:frame class="org.apache.coyote.http11.Http11AprProcessor"
+        file="Http11AprProcessor.java" line="879" method="process"/><ns2:frame class="org.apache.coyote.http11.Http11AprProtocol$Http11ConnectionHandler"
+        file="Http11AprProtocol.java" line="600" method="process"/><ns2:frame class="org.apache.tomcat.util.net.AprEndpoint$Worker"
+        file="AprEndpoint.java" line="1703" method="run"/><ns2:frame class="java.lang.Thread"
+        file="Thread.java" line="662" method="run"/></ns2:stackTrace></ns2:exception></detail></S:Fault></S:Body></S:Envelope>
+    http_version: 
+  recorded_at: Wed, 19 Nov 2014 22:08:12 GMT
+recorded_with: VCR 2.9.3

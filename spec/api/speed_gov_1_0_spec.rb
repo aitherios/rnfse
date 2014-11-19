@@ -215,6 +215,24 @@ describe Rnfse::API::SpeedGov10 do
 
     it { expect(client).to respond_to(:consultar_nfse) }
 
+    context 'quando existem parametros não ASCII,' do
+      it { expect do
+      VCR.use_cassette('speed_gov_1_0_consultar_nfse_ascii') do
+          client.consultar_nfse({
+            prestador: {
+              cnpj: "12.552.510/0001-50",
+              inscricao_municipal: "68"
+            },
+            intermediario_servico: {
+              razao_social: 'àõéúîàõéúîàõéúîàõéúîàõéúî',
+              cnpj: "62.894.995/0001-39",
+              inscricao_municipal: "12345670"
+            }
+          })
+        end
+      end.to raise_error(Rnfse::Error::NonASCIIEncoding) }
+    end
+
     subject do
       VCR.use_cassette('speed_gov_1_0_consultar_nfse') do
         client.consultar_nfse({

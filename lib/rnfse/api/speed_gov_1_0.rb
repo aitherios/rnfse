@@ -21,6 +21,7 @@ module Rnfse::API::SpeedGov10
 
   def consultar_situacao_lote_rps(hash = {})
     validate_options(hash)
+    validate_ascii(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_situacao_lote_rps_envio_xml(hash)
     response = self.soap_client.call(
@@ -34,6 +35,7 @@ module Rnfse::API::SpeedGov10
 
   def consultar_lote_rps(hash = {})
     validate_options(hash)
+    validate_ascii(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_lote_rps_envio_xml(hash)
     response = self.soap_client.call(
@@ -61,6 +63,7 @@ module Rnfse::API::SpeedGov10
 
   def consultar_nfse(hash = {})
     validate_options(hash)
+    validate_ascii(hash)
     header = xml_builder.build_header_xml()
     parameters = xml_builder.build_consultar_nfse_envio_xml(hash)
     response = self.soap_client.call(
