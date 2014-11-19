@@ -231,8 +231,26 @@ describe Rnfse::API::SpeedGov10 do
   end
 
   describe '#consultar_lote_rps' do
-    it { expect(client).to respond_to(:consultar_lote_rps) }
-    it { expect { client.consultar_lote_rps() }.to raise_error(Rnfse::Error::NotImplemented) }
+    context 'quando parametros errados são passados,' do
+      it { expect{ client.consultar_lote_rps(bogus: :data) }.to raise_error(ArgumentError) }
+    end
+
+    it { expect(client).to respond_to(:consultar_lote_rps)  }
+
+    subject do
+      VCR.use_cassette('speed_gov_1_0_consultar_lote_rps') do
+        client.consultar_lote_rps({
+          prestador: {
+            cnpj: '07.792.435/0009-12',
+            inscricao_municipal: '59274734'
+          },
+          protocolo: '717293e4-3601-4955-865c-5a022c2b5ff5'
+        })
+      end
+    end
+
+    it { should_not be_nil }
+    it { should be_kind_of(Hash) }
   end
 
   describe '#cancelar_nfse' do
