@@ -102,9 +102,11 @@ module Rnfse::XMLBuilder::Abrasf10
 
     # encapsula as rps dentro de listaRps com Rps/InfRps
     def wrap_rps(hash)
-      hash[:LoteRps][:ListaRps] = {
-        :Rps => { :InfRps => hash[:LoteRps][:ListaRps] }
-      } if hash[:LoteRps]
+      if hash[:LoteRps]
+        hash[:LoteRps][:ListaRps] = {
+          :Rps => hash[:LoteRps][:ListaRps].map { |rps| { :InfRps => rps} }
+        }
+      end
       hash
     end
 

@@ -76,6 +76,8 @@
             <p1:InscricaoMunicipal>1234567</p1:InscricaoMunicipal>
           </p1:IntermediarioServico>
         </p1:InfRps>
+      </p1:Rps>
+      <p1:Rps>
         <p1:InfRps>
           <p1:IdentificacaoRps>
             <p1:Numero>2</p1:Numero>

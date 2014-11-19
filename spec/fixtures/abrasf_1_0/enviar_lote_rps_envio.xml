@@ -41,6 +41,8 @@
             </tc:IdentificacaoTomador>
           </tc:Tomador>
         </tc:InfRps>
+      </tc:Rps>
+      <tc:Rps>
         <tc:InfRps>
           <tc:IdentificacaoRps>
             <tc:Numero>3</tc:Numero>
