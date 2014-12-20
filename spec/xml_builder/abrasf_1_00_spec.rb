@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::XMLBuilder::IssNet10 do
+describe Rnfse::XMLBuilder::Abrasf100 do
 
-  let(:builder) { Rnfse::XMLBuilder.new(padrao: :iss_net_1_0) }
-  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'iss_net_1_0') }
+  let(:builder) { Rnfse::XMLBuilder.new(padrao: :abrasf_1_00) }
+  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_00') }
 
   describe "#build_recepcionar_lote_rps_xml" do
     let(:xml) do 
@@ -14,59 +14,64 @@ describe Rnfse::XMLBuilder::IssNet10 do
     subject do
       builder.build_recepcionar_lote_rps_xml({
         lote_rps: {
-          numero_lote: 1,
-          cnpj: "11.006.269/0001-00",
-          inscricao_municipal: "812005",
+          numero_lote: 2,
+          cnpj: "44.141.526/0001-67",
+          inscricao_municipal: "12345678",
           quantidade_rps: 1,
           lista_rps: [
             {
-              identificacao_rps: { numero: 215, serie: "10", tipo: 1 },
-              data_emissao: "2009-07-24T10:00:00",
+              identificacao_rps: { numero: 2, serie: "8", tipo: 1 },
+              data_emissao: "1960-04-21T21:42:42-03:00",
               natureza_operacao: 1,
               optante_simples_nacional: false,
               incentivador_cultural: false,
               status: 1,
-              regime_especial_tributacao: 1,
               servico: {
                 valores: {
-                  valor_servicos: 1100,
-                  valor_pis: 10,
-                  valor_cofins: 20,
-                  valor_inss: 30,
-                  valor_ir: 40,
-                  valor_csll: 50,
+                  valor_servicos: 10.42,
                   iss_retido: false,
-                  valor_iss: 50,
-                  base_calculo: 1000,
-                  aliquota: 0.05,
-                  valor_liquido_nfse: 850,
-                  desconto_incondicionado: 0,
-                  desconto_condicionado: 0
+                  base_calculo: 10.42
                 },
-                item_lista_servico: "12",
-                codigo_cnae: "6311-9/00",
+                item_lista_servico: "00001",
                 discriminacao: "Borealis",
-                codigo_tributacao_municipio: "45217023",
-                discriminacao: 'Discriminação da RPS',
-                codigo_municipio: 999
+                codigo_municipio: 5300108
               },
               prestador: {
-                cnpj: "11.006.269/0001-00",
-                inscricao_municipal: "812005"
+                cnpj: "44.141.526/0001-67",
+                inscricao_municipal: "12345678"
               },
               tomador: {
                 identificacao_tomador: {
-                  cnpj: "38.693.524/0001-88"
+                  cnpj: "38.421.846/0001-78",
+                  inscricao_municipal: "12345679"
+                }
+              }
+            },
+            {
+              identificacao_rps: { numero: 3, serie: "8", tipo: 1 },
+              data_emissao: "1960-04-21T21:42:42-03:00",
+              natureza_operacao: 1,
+              optante_simples_nacional: false,
+              incentivador_cultural: false,
+              status: 1,
+              servico: {
+                valores: {
+                  valor_servicos: 10.42,
+                  iss_retido: false,
+                  base_calculo: 10.42
                 },
-                razao_social: 'Empresa do Recife',
-                endereco: {
-                  endereco: 'R dos Navegantes 123, 321',
-                  numero: '123',
-                  complemento: '321',
-                  bairro: 'Boa Viagem',
-                  codigo_municipio: 261160,
-                  uf: 'PE',
-                  cep: '51021-010'
+                item_lista_servico: "00001",
+                discriminacao: "Borealis",
+                codigo_municipio: 5300108
+              },
+              prestador: {
+                cnpj: "44.141.526/0001-67",
+                inscricao_municipal: "12345678"
+              },
+              tomador: {
+                identificacao_tomador: {
+                  cnpj: "38.421.846/0001-78",
+                  inscricao_municipal: "12345679"
                 }
               }
             }
@@ -74,7 +79,7 @@ describe Rnfse::XMLBuilder::IssNet10 do
         }
       })
     end
-    
+
     it { should be_equivalent_to(xml) }
     it { should be_kind_of(Nokogiri::XML::Document) }
   end
@@ -103,19 +108,18 @@ describe Rnfse::XMLBuilder::IssNet10 do
       Nokogiri::XML(File.read(File.join(xml_path, 'consultar_nfse_por_rps.xml')))
     end
 
-    subject do
+    subject do 
       builder.build_consultar_nfse_por_rps_xml({
-        identificacao_rps: { numero: 210, serie: "10", tipo: 1 },
+        identificacao_rps: { numero: 2, serie: "8", tipo: 1 },
         prestador: {
-          cpf: '970.047.311-20',
-          inscricao_municipal: '812005'
+          cnpj: "14.576.582./0001-63",
+          inscricao_municipal: "124762"
         }
       })
     end
-    
+
     it { should be_equivalent_to(xml) }
     it { should be_kind_of(Nokogiri::XML::Document) }
-
   end
 
   describe '#build_consultar_nfse_xml' do
@@ -148,14 +152,14 @@ describe Rnfse::XMLBuilder::IssNet10 do
     it { should be_kind_of(Nokogiri::XML::Document) }
   end
 
-  describe '#build_consultar_lote_rps_xml' do
+  describe "#build_consultar_lote_rps_xml" do
     let(:xml) do 
       Nokogiri::XML(File.read(File.join(xml_path, 'consultar_lote_rps_envio.xml')))
     end
 
-    subject do
+    subject do 
       builder.build_consultar_lote_rps_xml({
-        prestador: {                                      
+        prestador: {
           cpf: "970.047.311-20",
           inscricao_municipal: "812005"
         },

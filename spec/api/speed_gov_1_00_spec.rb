@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::API::SpeedGov10 do
+describe Rnfse::API::SpeedGov100 do
   let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
   let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
   let(:client) do
-    Rnfse::API.new(padrao: :speed_gov_1_0,
+    Rnfse::API.new(padrao: :speed_gov_1_00,
                    namespace: 'http://ws.speedgov.com.br/',
                    endpoint: 'http://speedgov.com.br/wsmod/Nfes',
                    certificate: certificate,
@@ -25,7 +25,7 @@ describe Rnfse::API::SpeedGov10 do
 
     context 'ao não passar opções certificate e key para assinatura do xml,' do
       let(:client) do
-        Rnfse::API.new(padrao: :abrasf_1_0,
+        Rnfse::API.new(padrao: :abrasf_1_00,
                        namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
@@ -39,7 +39,7 @@ describe Rnfse::API::SpeedGov10 do
 
     context 'quando existem parametros não ASCII,' do
       it { expect do
-        VCR.use_cassette('speed_gov_1_0_recepcionar_lote_rps_ascii') do
+        VCR.use_cassette('speed_gov_1_00_recepcionar_lote_rps_ascii') do
           client.recepcionar_lote_rps({
             lote_rps: {
               numero_lote: 1,
@@ -83,7 +83,7 @@ describe Rnfse::API::SpeedGov10 do
     end
 
     subject do
-      VCR.use_cassette('speed_gov_1_0_recepcionar_lote_rps') do
+      VCR.use_cassette('speed_gov_1_00_recepcionar_lote_rps') do
         client.recepcionar_lote_rps({
           lote_rps: {
             numero_lote: 1,
@@ -170,7 +170,7 @@ describe Rnfse::API::SpeedGov10 do
     it { expect(client).to respond_to(:consultar_situacao_lote_rps)  }
 
     subject do
-      VCR.use_cassette('speed_gov_1_0_consultar_situacao_lote_rps') do
+      VCR.use_cassette('speed_gov_1_00_consultar_situacao_lote_rps') do
         client.consultar_situacao_lote_rps({
           prestador: {
             cnpj: '07.792.435/0009-12',
@@ -193,7 +193,7 @@ describe Rnfse::API::SpeedGov10 do
     it { expect(client).to respond_to(:cancelar_nfse)  }
 
     subject do
-      VCR.use_cassette('speed_gov_1_0_consultar_nfse_por_rps') do
+      VCR.use_cassette('speed_gov_1_00_consultar_nfse_por_rps') do
         client.consultar_nfse_por_rps({
           identificacao_rps: { numero: 1, serie: "00000", tipo: 1 },
           prestador: {
@@ -217,7 +217,7 @@ describe Rnfse::API::SpeedGov10 do
 
     context 'quando existem parametros não ASCII,' do
       it { expect do
-      VCR.use_cassette('speed_gov_1_0_consultar_nfse_ascii') do
+      VCR.use_cassette('speed_gov_1_00_consultar_nfse_ascii') do
           client.consultar_nfse({
             prestador: {
               cnpj: "12.552.510/0001-50",
@@ -234,7 +234,7 @@ describe Rnfse::API::SpeedGov10 do
     end
 
     subject do
-      VCR.use_cassette('speed_gov_1_0_consultar_nfse') do
+      VCR.use_cassette('speed_gov_1_00_consultar_nfse') do
         client.consultar_nfse({
           prestador: {
             cnpj: "12.552.510/0001-50",
@@ -256,7 +256,7 @@ describe Rnfse::API::SpeedGov10 do
     it { expect(client).to respond_to(:consultar_lote_rps)  }
 
     subject do
-      VCR.use_cassette('speed_gov_1_0_consultar_lote_rps') do
+      VCR.use_cassette('speed_gov_1_00_consultar_lote_rps') do
         client.consultar_lote_rps({
           prestador: {
             cnpj: '07.792.435/0009-12',

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-module Rnfse::XMLBuilder::Abrasf10
+module Rnfse::XMLBuilder::Abrasf100
 
   module ClassMethods
 

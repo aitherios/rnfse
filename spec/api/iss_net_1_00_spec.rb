@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::API::IssNet10 do
+describe Rnfse::API::IssNet100 do
   let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
   let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
   let(:client) do
-    Rnfse::API.new(padrao: :iss_net_1_0, 
+    Rnfse::API.new(padrao: :iss_net_1_00, 
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
@@ -29,7 +29,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:recepcionar_lote_rps) }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_recepcionar_lote_rps') do
+      VCR.use_cassette('iss_net_1_00_recepcionar_lote_rps') do
         client.recepcionar_lote_rps({
           lote_rps: {
             numero_lote: 1,
@@ -106,7 +106,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:consultar_lote_rps) }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_consultar_lote_rps') do
+      VCR.use_cassette('iss_net_1_00_consultar_lote_rps') do
         client.consultar_lote_rps({
           prestador: {
             cpf: "301.463.748-35",
@@ -129,7 +129,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:consultar_situacao_lote_rps) }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_consultar_situacao_lote_rps') do
+      VCR.use_cassette('iss_net_1_00_consultar_situacao_lote_rps') do
         client.consultar_situacao_lote_rps({
           prestador: {
             cnpj: "14.576.582/0001-63",
@@ -152,7 +152,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:cancelar_nfse) }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_cancelar_nfse') do
+      VCR.use_cassette('iss_net_1_00_cancelar_nfse') do
         client.cancelar_nfse({
           identificacao_nfse: {
             numero: 201400000000015,
@@ -177,7 +177,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:cancelar_nfse)  }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_consultar_nfse_por_rps') do
+      VCR.use_cassette('iss_net_1_00_consultar_nfse_por_rps') do
         client.consultar_nfse_por_rps({
           identificacao_rps: { numero: 15, serie: "8", tipo: 1 },
           prestador: {
@@ -200,7 +200,7 @@ describe Rnfse::API::IssNet10 do
     it { expect(client).to respond_to(:cancelar_nfse)  }
 
     subject do
-      VCR.use_cassette('iss_net_1_0_consultar_nfse') do
+      VCR.use_cassette('iss_net_1_00_consultar_nfse') do
         client.consultar_nfse({
           prestador: {
             cnpj: "14.576.582/0001-63",

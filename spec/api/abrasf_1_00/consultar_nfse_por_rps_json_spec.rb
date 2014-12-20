@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "abrasf_1_0/consultar_nfse_por_rps.json" do
   let(:file) do 
-    File.join($ROOT, 'lib', 'rnfse', 'api', 'abrasf_1_0', 
+    File.join($ROOT, 'lib', 'rnfse', 'api', 'abrasf_1_00', 
               'consultar_nfse_por_rps.json')
   end
 

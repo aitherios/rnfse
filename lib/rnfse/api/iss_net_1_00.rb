@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Rnfse::API::IssNet10
-  include Rnfse::API::Abrasf10
+module Rnfse::API::IssNet100
+  include Rnfse::API::Abrasf100
 
   def operations()
     [
@@ -53,10 +53,6 @@ module Rnfse::API::IssNet10
 
   def consultar_url_visualizacao_nfse_serie(hash = {})
     raise Rnfse::Error::NotImplemented
-  end
-
-  def json_folder
-    'iss_net_1_0'
   end
 
 end

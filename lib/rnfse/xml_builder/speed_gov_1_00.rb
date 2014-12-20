@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Rnfse::XMLBuilder::SpeedGov10
-  include Rnfse::XMLBuilder::Abrasf10
+module Rnfse::XMLBuilder::SpeedGov100
+  include Rnfse::XMLBuilder::Abrasf100
 
   def build_recepcionar_lote_rps_xml(hash = {})
     hash = prepare_hash(hash)

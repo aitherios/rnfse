@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Rnfse::API::SpeedGov10
-  include Rnfse::API::Abrasf10
+module Rnfse::API::SpeedGov100
+  include Rnfse::API::Abrasf100
 
   def recepcionar_lote_rps(hash = {})
     validate_sign_options

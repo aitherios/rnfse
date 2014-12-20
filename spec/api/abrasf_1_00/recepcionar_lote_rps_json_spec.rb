@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe "abrasf_1_0/recepcionar_lote_rps.json" do
+describe "abrasf_1_00/recepcionar_lote_rps.json" do
   let(:file) do 
-    File.join($ROOT, 'lib', 'rnfse', 'api', 'abrasf_1_0', 
+    File.join($ROOT, 'lib', 'rnfse', 'api', 'abrasf_1_00', 
               'recepcionar_lote_rps.json')
   end
 

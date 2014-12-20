@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-module Rnfse::XMLBuilder::IssNet10
-  include Rnfse::XMLBuilder::Abrasf10
+module Rnfse::XMLBuilder::IssNet100
+  include Rnfse::XMLBuilder::Abrasf100
 
   private
 

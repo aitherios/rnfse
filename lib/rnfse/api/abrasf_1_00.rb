@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'json-schema'
 
-module Rnfse::API::Abrasf10
+module Rnfse::API::Abrasf100
 
   module ClassMethods
 
@@ -132,12 +132,12 @@ module Rnfse::API::Abrasf10
     end
 
     def json_folder
-      'abrasf_1_0'
+      'abrasf_1_00'
     end
 
     def json_filepath(filename)
       result = nil
-      folders = ['abrasf_1_0']
+      folders = ['abrasf_1_00']
       folders = folders.unshift(json_folder) unless folders.include?(json_folder)
       folders.each do |folder|
         path = File.join(File.expand_path(File.dirname(__FILE__)), folder, filename)

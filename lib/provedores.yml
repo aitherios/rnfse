@@ -2,18 +2,18 @@ producao:
   iss_net:
     namespace: http://www.issnetonline.com.br/webservice/nfd
     endpoint: http://www.issnetonline.com.br/webserviceabrasf/%{municipio}/servicos.asmx
-    api: iss_net_1_0
+    api: iss_net_1_00
   speed_gov:
     namespace: http://ws.speedgov.com.br/
     endpoint: http://www.speedgov.com.br/ws%{municipio}/Nfes
-    api: speed_gov_1_0
+    api: speed_gov_1_00
 
 homologacao:
   iss_net:
     namespace: http://www.issnetonline.com.br/webservice/nfd
     endpoint: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
-    api: iss_net_1_0
+    api: iss_net_1_00
   speed_gov:
     namespace: http://ws.speedgov.com.br/
     endpoint: http://speedgov.com.br/wsmod/Nfes
-    api: speed_gov_1_0
+    api: speed_gov_1_00

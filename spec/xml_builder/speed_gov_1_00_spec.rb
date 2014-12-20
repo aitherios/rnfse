@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::XMLBuilder::IssNet10 do
+describe Rnfse::XMLBuilder::IssNet100 do
 
-  let(:builder) { Rnfse::XMLBuilder.new(padrao: :speed_gov_1_0) }
-  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'speed_gov_1_0') }
+  let(:builder) { Rnfse::XMLBuilder.new(padrao: :speed_gov_1_00) }
+  let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'speed_gov_1_00') }
 
   describe "#build_recepcionar_lote_rps_xml" do
     let(:xml) do 

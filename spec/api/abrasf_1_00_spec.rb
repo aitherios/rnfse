@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Rnfse::API::Abrasf10 do
+describe Rnfse::API::Abrasf100 do
   let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
   let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
   let(:client) do
-    Rnfse::API.new(padrao: :abrasf_1_0, 
+    Rnfse::API.new(padrao: :abrasf_1_00, 
                    namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                    endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx',
                    certificate: certificate,
@@ -29,7 +29,7 @@ describe Rnfse::API::Abrasf10 do
   describe '#recepcionar_lote_rps' do
     context 'ao não passar opções certificate e key para assinatura do xml,' do
       let(:client) do
-        Rnfse::API.new(padrao: :abrasf_1_0, 
+        Rnfse::API.new(padrao: :abrasf_1_00, 
                        namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
@@ -39,7 +39,7 @@ describe Rnfse::API::Abrasf10 do
 
     context 'ao não passar opções certificate e key para assinatura do xml,' do
       let(:client) do
-        Rnfse::API.new(padrao: :abrasf_1_0, 
+        Rnfse::API.new(padrao: :abrasf_1_00, 
                        namespace: 'http://www.issnetonline.com.br/webservice/nfd',
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
