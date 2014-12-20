@@ -44,7 +44,7 @@ plano imediato de resolução. Talvez porque a funcionalidade nunca foi
 necessária ou nenhum pull request tenha sido enviado. (dica!)
 
 * Sem documentação =/
-* Suporte para o JRuby e Rubinius (problema com a dependência nokogiri-xmlsec1).
+* Não suporta JRuby nem Rubinius (problema da dependência nokogiri-xmlsec1).
 * Implementação somente dos padrões abrasf:
   * v1.00
 * Implementação e teste em produção somente dos provedores:
