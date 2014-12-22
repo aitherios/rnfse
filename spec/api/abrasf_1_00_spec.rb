@@ -34,7 +34,7 @@ describe Rnfse::API::Abrasf100 do
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
 
-      it { expect { client.recepcionar_lote_rps() }.to raise_error(ArgumentError) }
+      it { expect { client.recepcionar_lote_rps }.to raise_error(ArgumentError) }
     end
 
     context 'ao não passar opções certificate e key para assinatura do xml,' do
@@ -44,7 +44,7 @@ describe Rnfse::API::Abrasf100 do
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
 
-      it { expect { client.recepcionar_lote_rps() }.to raise_error(ArgumentError) }
+      it { expect { client.recepcionar_lote_rps }.to raise_error(ArgumentError) }
     end
 
     it { expect(client).to respond_to(:recepcionar_lote_rps) }

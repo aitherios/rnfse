@@ -243,7 +243,7 @@ describe Rnfse::XMLBuilder::IssNet100 do
     end
 
     subject do
-      builder.build_header_xml()
+      builder.build_header_xml
     end
     
     it { should be_equivalent_to(xml) }

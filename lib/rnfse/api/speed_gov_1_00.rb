@@ -7,7 +7,7 @@ module Rnfse::API::SpeedGov100
     validate_sign_options
     validate_options(hash)
     validate_ascii(hash)
-    header = xml_builder.build_header_xml()
+    header = xml_builder.build_header_xml
     parameters = xml_builder.build_recepcionar_lote_rps_xml(hash)
     parameters.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
     response = self.soap_client.call(
@@ -22,7 +22,7 @@ module Rnfse::API::SpeedGov100
   def consultar_situacao_lote_rps(hash = {})
     validate_options(hash)
     validate_ascii(hash)
-    header = xml_builder.build_header_xml()
+    header = xml_builder.build_header_xml
     parameters = xml_builder.build_consultar_situacao_lote_rps_envio_xml(hash)
     response = self.soap_client.call(
       :consultar_situacao_lote_rps,
@@ -36,7 +36,7 @@ module Rnfse::API::SpeedGov100
   def consultar_lote_rps(hash = {})
     validate_options(hash)
     validate_ascii(hash)
-    header = xml_builder.build_header_xml()
+    header = xml_builder.build_header_xml
     parameters = xml_builder.build_consultar_lote_rps_envio_xml(hash)
     response = self.soap_client.call(
       :consultar_lote_rps,
@@ -50,7 +50,7 @@ module Rnfse::API::SpeedGov100
   def consultar_nfse_por_rps(hash = {})
     validate_options(hash)
     validate_ascii(hash)
-    header = xml_builder.build_header_xml()
+    header = xml_builder.build_header_xml
     parameters = xml_builder.build_consultar_nfse_rps_envio_xml(hash)
     response = self.soap_client.call(
       :consultar_nfse_por_rps,
@@ -64,7 +64,7 @@ module Rnfse::API::SpeedGov100
   def consultar_nfse(hash = {})
     validate_options(hash)
     validate_ascii(hash)
-    header = xml_builder.build_header_xml()
+    header = xml_builder.build_header_xml
     parameters = xml_builder.build_consultar_nfse_envio_xml(hash)
     response = self.soap_client.call(
       :consultar_nfse,

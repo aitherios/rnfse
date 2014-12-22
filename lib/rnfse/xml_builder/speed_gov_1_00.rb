@@ -25,14 +25,14 @@ module Rnfse::XMLBuilder::SpeedGov100
     end.doc
   end
 
-  def build_consultar_situacao_lote_rps_envio_xmlns()
+  def build_consultar_situacao_lote_rps_envio_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd"
     }
   end
 
-  def build_recepcionar_lote_rps_xmlns()
+  def build_recepcionar_lote_rps_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/enviar_lote_rps_envio_v1.xsd"
@@ -58,7 +58,7 @@ module Rnfse::XMLBuilder::SpeedGov100
     end.doc
   end
 
-  def build_consultar_nfse_envio_xmlns()
+  def build_consultar_nfse_envio_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_nfse_envio_v1.xsd"
@@ -76,7 +76,7 @@ module Rnfse::XMLBuilder::SpeedGov100
     end.doc
   end
 
-  def build_consultar_nfse_rps_envio_xmlns()
+  def build_consultar_nfse_rps_envio_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd"
@@ -94,7 +94,7 @@ module Rnfse::XMLBuilder::SpeedGov100
     end.doc
   end
 
-  def build_consultar_situacao_lote_rps_envio_xmlns()
+  def build_consultar_situacao_lote_rps_envio_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_situacao_lote_rps_envio_v1.xsd"
@@ -112,7 +112,7 @@ module Rnfse::XMLBuilder::SpeedGov100
     end.doc
   end
 
-  def build_consultar_lote_rps_envio_xmlns()
+  def build_consultar_lote_rps_envio_xmlns
     {
       'xmlns:p' => "http://ws.speedgov.com.br/consultar_lote_rps_envio_v1.xsd",
       'xsi:schemaLocation' => "http://ws.speedgov.com.br/consultar_lote_rps_envio_v1.xsd"
@@ -124,7 +124,7 @@ module Rnfse::XMLBuilder::SpeedGov100
       'xmlns:ds' => "http://www.w3.org/2000/09/xmldsig#",
       'xmlns:p1' => "http://ws.speedgov.com.br/tipos_v1.xsd",
       'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance"
-    }.merge(self.send("#{Rnfse::CallChain.caller_method()}ns"))
+    }.merge(self.send("#{Rnfse::CallChain.caller_method}ns"))
   end
 
   def build_header_xml

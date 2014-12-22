@@ -19,7 +19,7 @@ describe Rnfse::API do
     end
 
     context 'ao não passar informações válidas,' do
-      it { expect { Rnfse::API.new() }.to raise_error(ArgumentError) }
+      it { expect { Rnfse::API.new }.to raise_error(ArgumentError) }
       it { expect { Rnfse::API.new(error: 'error') }.to raise_error(ArgumentError) }
 
       context 'como provedor inexistente,' do

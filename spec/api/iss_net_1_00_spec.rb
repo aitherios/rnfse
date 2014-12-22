@@ -216,12 +216,12 @@ describe Rnfse::API::IssNet100 do
 
   describe '#consultar_url_visualizacao_nfse' do
     it { expect(client).to respond_to(:consultar_url_visualizacao_nfse)  }
-    it { expect { client.consultar_url_visualizacao_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+    it { expect { client.consultar_url_visualizacao_nfse }.to raise_error(Rnfse::Error::NotImplemented) }
   end
 
   describe '#consultar_url_visualizacao_nfse_serie' do
     it { expect(client).to respond_to(:consultar_url_visualizacao_nfse_serie)  }
-    it { expect { client.consultar_url_visualizacao_nfse_serie() }.to raise_error(Rnfse::Error::NotImplemented) }
+    it { expect { client.consultar_url_visualizacao_nfse_serie }.to raise_error(Rnfse::Error::NotImplemented) }
   end
   
 end

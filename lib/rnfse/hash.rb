@@ -5,7 +5,7 @@ module Rnfse
 
     def initialize(constructor = {})
       if constructor.is_a?(::Hash)
-        super()
+        super
         update(constructor)
       else
         super(constructor)

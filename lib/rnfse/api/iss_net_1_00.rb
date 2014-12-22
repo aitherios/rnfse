@@ -3,7 +3,7 @@
 module Rnfse::API::IssNet100
   include Rnfse::API::Abrasf100
 
-  def operations()
+  def operations
     [
       :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
       :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,

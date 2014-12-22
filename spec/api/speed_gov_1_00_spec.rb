@@ -30,7 +30,7 @@ describe Rnfse::API::SpeedGov100 do
                        endpoint: 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx')
       end
 
-      it { expect { client.recepcionar_lote_rps() }.to raise_error(ArgumentError) }
+      it { expect { client.recepcionar_lote_rps }.to raise_error(ArgumentError) }
     end
 
     context 'quando os parametros são errados,' do
@@ -273,7 +273,7 @@ describe Rnfse::API::SpeedGov100 do
 
   describe '#cancelar_nfse' do
     it { expect(client).to respond_to(:cancelar_nfse) }
-    it { expect { client.cancelar_nfse() }.to raise_error(Rnfse::Error::NotImplemented) }
+    it { expect { client.cancelar_nfse }.to raise_error(Rnfse::Error::NotImplemented) }
   end
 
 end
