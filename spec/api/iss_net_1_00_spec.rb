@@ -65,7 +65,6 @@ describe Rnfse::API::IssNet100 do
                   codigo_cnae: "6399-2/00",
                   discriminacao: "Borealis",
                   codigo_tributacao_municipio: "50000024",
-                  discriminacao: 'Discriminação da RPS',
                   codigo_municipio: 999
                 },
                 prestador: {

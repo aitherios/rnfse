@@ -45,7 +45,6 @@ describe Rnfse::XMLBuilder::IssNet100 do
                 },
                 item_lista_servico: "12",
                 codigo_cnae: "6311-9/00",
-                discriminacao: "Borealis",
                 codigo_tributacao_municipio: "45217023",
                 discriminacao: 'Discriminação da RPS',
                 codigo_municipio: 999
