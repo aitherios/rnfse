@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'json-schema',                           '~> 2.0'
   s.add_dependency 'gyoku',                                 '~> 1.0'
   s.add_dependency 'nori',                                  '~> 2.0'
-  s.add_dependency 'nokogiri-xmlsec1',                      '~> 0.0.7'
+  s.add_dependency 'nokogiri-xmlsec1',                      '~> 0.0.9'
   s.add_dependency 'savon',                                 '~> 2.2'
 
   s.add_development_dependency 'bundler',                   '~> 1.3'
