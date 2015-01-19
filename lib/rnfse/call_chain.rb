@@ -1,8 +1,8 @@
 module Rnfse
 
   class CallChain
-    def self.caller_method(depth=1)
-      parse_caller(caller(depth+1).first).last
+    def self.caller_method(depth = 1)
+      parse_caller(caller(depth + 1).first).last
     end
 
     private

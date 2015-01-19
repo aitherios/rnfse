@@ -1,0 +1,77 @@
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps versao="2.01" Id="lote1">
+    <NumeroLote>1</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>01001001000113</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>1.000.10</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
+        <InfDeclaracaoPrestacaoServico Id="rps000000000000001999">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>1</Numero>
+              <Serie>999</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2013-05-13</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2013-05-13</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>100.00</ValorServicos>
+              <ValorDeducoes>1.00</ValorDeducoes>
+              <ValorPis>2.00</ValorPis>
+              <ValorCofins>3.00</ValorCofins>
+              <ValorInss>4.00</ValorInss>
+              <ValorIr>5.00</ValorIr>
+              <ValorCsll>6.00</ValorCsll>
+              <OutrasRetencoes>7.00</OutrasRetencoes>
+              <ValorIss>8.00</ValorIss>
+              <Aliquota>2.0000</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>01.05</ItemListaServico>
+            <Discriminacao>descricao do servico</Discriminacao>
+            <CodigoMunicipio>3505203</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>01001001000113</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1.000.10</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>27600930854</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>Ivan Moraes</RazaoSocial>
+            <Endereco>
+              <Endereco>Av Jose Goncalves</Endereco>
+              <Numero>93</Numero>
+              <Complemento>Casa</Complemento>
+              <Bairro>Santa Rosa</Bairro>
+              <CodigoMunicipio>3505203</CodigoMunicipio>
+              <Uf>SP</Uf>
+              <CodigoPais>1058</CodigoPais>
+              <Cep>17250000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>36620000</Telefone>
+              <Email>ivantgm@gmail.com</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>
