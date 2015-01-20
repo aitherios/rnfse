@@ -44,7 +44,7 @@ module Rnfse::XMLBuilder::Abrasf202
   }
 
   def self.included(base)
-    self.inject_builder_methods(@@operations)
+    self.inject_builder_methods(@@operations, @@operation_options)
     super
   end
 
