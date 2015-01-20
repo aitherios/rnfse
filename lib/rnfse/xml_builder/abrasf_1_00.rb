@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 
+# Construtor dos xmls das soap actions do padrão Abrasf 1.00.
+# Inclui um método público para cada operação.
+#
+# ==== Operations
+#
+# * RecepcionarLoteRps 
+# * ConsultarSituacaoLoteRps
+# * ConsultarNfsePorRps
+# * ConsultarNfse
+# * ConsultarLoteRps
+# * CancelarNfse
+#
+#   Os métodos públicos são baseados nos nomes em snake_case.
+#   E.g. RecepcionarLoteRps vira build_recepcionar_lote_rps_xml
+#
+#   Para mais detalhes veja a seção de documentação do README.md
 module Rnfse::XMLBuilder::Abrasf100
+  include Rnfse::XMLBuilder::Base
 
   module ClassMethods
 
@@ -212,8 +229,6 @@ module Rnfse::XMLBuilder::Abrasf100
       end
     end
   end
-
-  extend ClassMethods
 
   def self.extended(base)
     base.extend(ClassMethods)

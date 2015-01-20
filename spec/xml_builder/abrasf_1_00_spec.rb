@@ -5,11 +5,10 @@ describe Rnfse::XMLBuilder::Abrasf100 do
 
   let(:builder) { Rnfse::XMLBuilder.new(padrao: :abrasf_1_00) }
   let(:xml_path) { File.join($ROOT, 'spec', 'fixtures', 'abrasf_1_00') }
+  let(:xml) { Nokogiri::XML(File.read(File.join(xml_path, filename))) }
 
   describe "#build_recepcionar_lote_rps_xml" do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'enviar_lote_rps_envio.xml')))
-    end
+    let!(:filename) { 'enviar_lote_rps_envio.xml' }
 
     subject do
       builder.build_recepcionar_lote_rps_xml({
@@ -85,9 +84,7 @@ describe Rnfse::XMLBuilder::Abrasf100 do
   end
 
   describe '#build_consultar_situacao_lote_rps_xml' do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_situacao_lote_rps_envio.xml')))
-    end
+    let!(:filename) { 'consultar_situacao_lote_rps_envio.xml' }
 
     subject do
       builder.build_consultar_situacao_lote_rps_xml({
@@ -104,9 +101,7 @@ describe Rnfse::XMLBuilder::Abrasf100 do
   end
 
   describe '#build_consultar_nfse_por_rps_xml' do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_nfse_por_rps.xml')))
-    end
+    let!(:filename) { 'consultar_nfse_por_rps.xml' }
 
     subject do 
       builder.build_consultar_nfse_por_rps_xml({
@@ -123,9 +118,7 @@ describe Rnfse::XMLBuilder::Abrasf100 do
   end
 
   describe '#build_consultar_nfse_xml' do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_nfse.xml')))
-    end
+    let!(:filename) { 'consultar_nfse.xml' }
 
     subject do
       builder.build_consultar_nfse_xml({
@@ -153,9 +146,7 @@ describe Rnfse::XMLBuilder::Abrasf100 do
   end
 
   describe "#build_consultar_lote_rps_xml" do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'consultar_lote_rps_envio.xml')))
-    end
+    let!(:filename) { 'consultar_lote_rps_envio.xml' }
 
     subject do 
       builder.build_consultar_lote_rps_xml({
@@ -172,9 +163,7 @@ describe Rnfse::XMLBuilder::Abrasf100 do
   end
 
   describe '#build_cancelar_nfse_xml' do
-    let(:xml) do 
-      Nokogiri::XML(File.read(File.join(xml_path, 'cancelar_nfse_envio.xml')))
-    end
+    let!(:filename) { 'cancelar_nfse_envio.xml' }
 
     subject do
       builder.build_cancelar_nfse_xml({

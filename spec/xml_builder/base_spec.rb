@@ -29,7 +29,6 @@ describe Rnfse::XMLBuilder::Base do
     context 'when no options are provided, infer from caller method' do
       before do
         allow(Rnfse::CallChain).to receive(:caller_method) { 'build_previous_method_xml' }
-        allow(builder).to receive(:previous_method_xml_namespace) { { 'xmlns' => 'http://test' } }
       end
       let!(:filename) { 'build_xml.xml' }
       let!(:options) {[ { tag: 'content' } ]}
@@ -47,7 +46,6 @@ describe Rnfse::XMLBuilder::Base do
       end
       before do
         allow(Rnfse::CallChain).to receive(:caller_method) { 'build_previous_method_xml' }
-        allow(builder).to receive(:previous_method_xml_namespace) { { 'xmlns' => 'http://test' } }
       end
       let!(:filename) { 'build_xml_customized.xml' }
       let!(:options) {[ { tag: 'content' } ]}
