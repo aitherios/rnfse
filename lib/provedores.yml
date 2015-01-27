@@ -17,3 +17,7 @@ homologacao:
     namespace: http://ws.speedgov.com.br/
     endpoint: http://speedgov.com.br/wsmod/Nfes
     api: speed_gov_1_00
+  sia:
+    namespace: http://ws.issweb.fiorilli.com.br/
+    endpoint: http://201.28.69.146:5663/IssWeb-ejb/IssWebWS/IssWebWS
+    api: sia_2_01

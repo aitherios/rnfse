@@ -17,7 +17,7 @@ describe Rnfse::XMLBuilder::Sia201 do
       }) 
     end
 
-    it { is_expected.not_to be_equivalent_to(xml) }
+    xit { is_expected.to be_equivalent_to(xml) }
     it { is_expected.to be_kind_of(Nokogiri::XML::Document) }
   end
 
