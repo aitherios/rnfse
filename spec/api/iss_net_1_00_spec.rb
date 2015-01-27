@@ -14,10 +14,10 @@ describe Rnfse::API::IssNet100 do
 
   describe '#operations' do
     it { expect(client.operations).to eq([
-      :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
-      :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
-      :cancelar_nfse, :consultar_url_visualizacao_nfse, 
-      :consultar_url_visualizacao_nfse_serie
+      :cancelar_nfse, :consultar_lote_rps, :consultar_nfse, 
+      :consultar_nfse_por_rps, :consultar_situacao_lote_rps, 
+      :consultar_url_visualizacao_nfse, :consultar_url_visualizacao_nfse_serie, 
+      :recepcionar_lote_rps
     ]) }
   end
 

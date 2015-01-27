@@ -3,6 +3,13 @@
 module Rnfse::API::SpeedGov100
   include Rnfse::API::Abrasf100
 
+  def operations
+    [
+      :recepcionar_lote_rps, :consultar_situacao_lote_rps, :cancelar_nfse,
+      :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps
+    ].sort
+  end
+
   def recepcionar_lote_rps(hash = {})
     validate_sign_options
     validate_options(hash)

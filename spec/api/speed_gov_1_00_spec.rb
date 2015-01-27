@@ -14,9 +14,9 @@ describe Rnfse::API::SpeedGov100 do
 
   describe '#operations' do
     it { expect(client.operations).to eq([
-      :recepcionar_lote_rps, :consultar_situacao_lote_rps,
-      :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
-      :cancelar_nfse
+      :cancelar_nfse, :consultar_lote_rps, :consultar_nfse, 
+      :consultar_nfse_por_rps, :consultar_situacao_lote_rps, 
+      :recepcionar_lote_rps
     ]) }
   end
 

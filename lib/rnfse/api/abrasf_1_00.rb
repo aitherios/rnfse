@@ -6,9 +6,10 @@ module Rnfse::API::Abrasf100
   module ClassMethods
 
     def operations
-      [ :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
-        :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
-        :cancelar_nfse ]
+      [ 
+        :recepcionar_lote_rps, :consultar_situacao_lote_rps, :cancelar_nfse,
+        :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps
+      ].sort
     end
     
     def recepcionar_lote_rps(hash = {})

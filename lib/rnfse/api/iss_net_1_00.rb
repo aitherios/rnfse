@@ -9,7 +9,7 @@ module Rnfse::API::IssNet100
       :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps,
       :cancelar_nfse, :consultar_url_visualizacao_nfse, 
       :consultar_url_visualizacao_nfse_serie
-    ]
+    ].sort
   end
 
   def recepcionar_lote_rps(hash = {})
