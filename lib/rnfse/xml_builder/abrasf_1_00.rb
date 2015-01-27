@@ -19,43 +19,39 @@
 module Rnfse::XMLBuilder::Abrasf100
   include Rnfse::XMLBuilder::Base
 
-  @@operations = [ 
+  @operations = [ 
     :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
-    :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps, :cancelar_nfse
+    :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps, 
+    :cancelar_nfse
   ]
 
-  @@operation_options = {
+  @options = {
     all: {
       namespace: {
-        'xmlns:tc' => 'http://www.abrasf.org.br/tipos_complexos.xsd'
-      }
-    },
+        'xmlns:tc' => 'http://www.abrasf.org.br/tipos_complexos.xsd' }},
     recepcionar_lote_rps: { 
       action: 'EnviarLoteRpsEnvio',
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd' }
-    },
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd' }},
     consultar_lote_rps: {
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_consultar_lote_rps_envio.xsd' }
-    },
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_lote_rps_envio.xsd' }},
     consultar_situacao_lote_rps: {
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd' }
-    },
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd' }},
     consultar_nfse_por_rps: { 
       action: 'ConsultarNfseRpsEnvio',
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd' }
-    },
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_situacao_lote_rps_envio.xsd' }},
     consultar_nfse: { 
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_consultar_nfse_envio.xsd' }
-    },
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_consultar_nfse_envio.xsd' }},
     cancelar_nfse: { 
-      namespace: { 'xmlns' => 'http://www.abrasf.org.br/servico_cancelar_nfse_envio.xsd' }
-    }
+      namespace: { 
+        'xmlns' => 'http://www.abrasf.org.br/servico_cancelar_nfse_envio.xsd' }}
   }
 
-  def self.included(base)
-    self.inject_builder_methods(@@operations, @@operation_options)
-    super
-  end
+  inject_builder_methods @operations, @options
 
   private
 

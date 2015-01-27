@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EnviarLoteRpsEnvio
     xmlns="http://www.abrasf.org.br/servico_enviar_lote_rps_envio.xsd"
-    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd">
+    xmlns:tc="http://www.abrasf.org.br/tipos_complexos.xsd"
+    xmlns:ts="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd">
   <LoteRps>
     <tc:NumeroLote>2</tc:NumeroLote>
     <tc:Cnpj>44141526000167</tc:Cnpj>

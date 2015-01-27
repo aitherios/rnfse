@@ -51,7 +51,10 @@ module Rnfse::XMLBuilder::Base
   #   # => 'EnviarLoteRpsEnvio'
   def get_action_from(caller, operation_options = {})
     operation = get_operation_from(caller)
-    if operation_options[operation] and operation_options[operation][:action]
+    if operation_options and 
+       operation_options[operation] and 
+       operation_options[operation][:action]
+
       operation_options[operation][:action]
     else
       "#{Rnfse::String.new(operation.to_s).camelize}Envio"
@@ -143,6 +146,10 @@ module Rnfse::XMLBuilder::Base
           build_xml(hash, options)
         end
       end
+    end
+
+    def included(base)
+      base.extend ClassMethods
     end
   end
 

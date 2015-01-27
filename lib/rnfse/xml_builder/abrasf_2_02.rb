@@ -23,29 +23,29 @@
 module Rnfse::XMLBuilder::Abrasf202
   include Rnfse::XMLBuilder::Base
 
-  @@operations = [
+  @operations = [
     :recepcionar_lote_rps, :recepcionar_lote_rps_sincrono, :gerar_nfse,
     :cancelar_nfse, :substituir_nfse, :consultar_lote_rps, 
     :consultar_nfse_por_rps, :consultar_nfse_servico_prestado,
     :consultar_nfse_servico_tomado, :consultar_nfse_faixa
   ]
 
-  @@operation_options = {
+  @options = {
     all: {
       namespace: {
-        xmlns: 'http://www.abrasf.org.br/nfse.xsd'
-      }
-    },
-    recepcionar_lote_rps: { action: 'EnviarLoteRpsEnvio' },
-    recepcionar_lote_rps_sincrono: { action: 'EnviarLoteRpsSincronoEnvio' },
-    consultar_nfse_por_rps: { action: 'ConsultarNfseRpsEnvio' },
-    consultar_nfse_servico_prestado: { action: 'ConsultarNfseEnvio' },
-    consultar_nfse_servico_tomado: { action: 'ConsultarNfseEnvio' }
+        xmlns: 'http://www.abrasf.org.br/nfse.xsd' }},
+    recepcionar_lote_rps: { 
+      action: 'EnviarLoteRpsEnvio' },
+    recepcionar_lote_rps_sincrono: { 
+      action: 'EnviarLoteRpsSincronoEnvio' },
+    consultar_nfse_por_rps: { 
+      action: 'ConsultarNfseRpsEnvio' },
+    consultar_nfse_servico_prestado: { 
+      action: 'ConsultarNfseEnvio' },
+    consultar_nfse_servico_tomado: { 
+      action: 'ConsultarNfseEnvio' }
   }
 
-  def self.included(base)
-    self.inject_builder_methods(@@operations, @@operation_options)
-    super
-  end
+  inject_builder_methods @operations, @options
 
 end

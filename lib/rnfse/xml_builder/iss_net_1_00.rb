@@ -3,10 +3,45 @@
 module Rnfse::XMLBuilder::IssNet100
   include Rnfse::XMLBuilder::Abrasf100
 
+  @operations = [ 
+    :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
+    :consultar_nfse_por_rps, :consultar_nfse, :consultar_lote_rps, 
+    :cancelar_nfse
+  ]
+
+  @options = {
+    all: {
+      namespace: {
+        'xmlns:tc' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd',
+        'xmlns:ts' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd' }},
+    recepcionar_lote_rps: { 
+      action: 'EnviarLoteRpsEnvio',
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd' }},
+    consultar_lote_rps: {
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_lote_rps_envio.xsd'}},
+    consultar_situacao_lote_rps: {
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_situacao_lote_rps_envio.xsd' }},
+    consultar_nfse_por_rps: { 
+      action: 'ConsultarNfseRpsEnvio',
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_envio.xsd'}},
+    consultar_nfse: { 
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd' }},
+    cancelar_nfse: { 
+      namespace: { 
+        'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_cancelar_nfse_envio.xsd' }}
+  }
+
+  inject_builder_methods @operations, @options
+
   private
 
   # prepara um hash para ser convertido a xml com o Gyoku
-  def prepare_hash(hash)
+  def alter_data_before_builder(hash)
     hash = camelize_hash(hash)
     hash = wrap_rps(hash)
     hash = wrap_periodo_emissao(hash)
@@ -62,66 +97,6 @@ module Rnfse::XMLBuilder::IssNet100
     else
       hash
     end
-  end
-
-  # namespace dos tipos complexos
-  def xmlns_tc
-    'http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd'
-  end  
-
-  # namespace dos tipos simples
-  def xmlns_ts
-    'http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd'
-  end
-
-  # namespaces do xml recepcionar_lote_rps
-  def build_recepcionar_lote_rps_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd',
-      'xmlns:tc' => xmlns_tc
-    }
-  end
-
-  # namespaces do xml consultar_situacao_lote_rps
-  def build_consultar_situacao_lote_rps_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_situacao_lote_rps_envio.xsd',
-      'xmlns:tc' => xmlns_tc
-    }
-  end
-
-  # namespaces do xml consultar_lote_rps
-  def build_consultar_lote_rps_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_lote_rps_envio.xsd',
-      'xmlns:tc' => xmlns_tc,
-      'xmlns:ts' => xmlns_ts
-    }
-  end
-
-  # namespaces do xml consultar_nfse_por_xml
-  def build_consultar_nfse_por_rps_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_envio.xsd',
-      'xmlns:tc' => xmlns_tc,
-      'xmlns:ts' => xmlns_ts
-    }
-  end
-
-  # namespaces do xml consultar_nfse
-  def build_consultar_nfse_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd',
-      'xmlns:tc' => xmlns_tc
-    }
-  end
-
-  # namespaces do xml cancelar_nfse
-  def build_cancelar_nfse_xmlns
-    {
-      'xmlns' => 'http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_cancelar_nfse_envio.xsd',
-      'xmlns:tc' => xmlns_tc
-    }
   end
 
 end
