@@ -14,17 +14,39 @@ module Rnfse::XMLBuilder::Base
   #   Caso não informado infere chamando <tt>get_action_from<tt>
   # * <tt>:namespace<tt> - Define namespaces no xml encapsulado pela soap action.
   #   Caso não informado infere chamando <tt>get_namespace_from<tt>
+  # * <tt>:operation<tt> - Define a operação soap
+  #
+  # ==== Examples
+  #
+  #   build_xml({test: :data}, action: 'EnviarLoteRpsEnvio', operation: recepcionar_lote_rps)
+  #
+  #   Constroi o xml utilizando o Gyoku com o hash, neste caso {test: :data}
+  #
+  #   Chama o método <tt>alter_data_before_builder(data)<tt>
+  #   para alterar o valor de data. Por default não altera nada.
+  # 
+  #   Também chama, caso exista, o método "alter_data_before_#{operation}".
+  #   Onde +operation+ é a opção informada, no exemplo seria alter_data_before_recepcionar_lote_rps
+  #
+  #   build_xml({test: :data}) do |data|
+  #     ::Gyoku.xml(data, key_converter: :none)
+  #   end
+  #
+  #   Ao passar um bloco, as chamadas alter_data_before... não são
+  #   executadas e o retorno esperado é uma string com o xml a ser
+  #   encapsulado.
   def build_xml(data, options = {})
-    caller = Rnfse::CallChain.caller_method
+    caller = Rnfse::CallChain.caller_method(2)
     options = Rnfse::Hash.new(options).stringify_keys
-    data = alter_data_before_builder(Rnfse::Hash.new(data).stringify_keys)
-
     namespace = options['namespace'] || get_namespace_from(caller)
     action = options['action'] || get_action_from(caller)
 
     inner_xml = if block_given? 
                   yield(data)
                 else
+                  data = alter_data_before_builder(Rnfse::Hash.new(data).stringify_keys)
+                  caller_hook = "alter_data_before_#{options['operation']}"
+                  data = send(caller_hook, data) if respond_to?(caller_hook)
                   ::Gyoku.xml(data, key_converter: :none)
                 end
 
@@ -138,7 +160,8 @@ module Rnfse::XMLBuilder::Base
       define_method(method) do |hash = {}|
         options = {
           action: get_action_from(__callee__, operation_options),
-          namespace: get_namespace_from(__callee__, operation_options)
+          namespace: get_namespace_from(__callee__, operation_options),
+          operation: get_operation_from(__callee__)
         }
         if block_given?
           build_xml(hash, options, &Proc.new)
