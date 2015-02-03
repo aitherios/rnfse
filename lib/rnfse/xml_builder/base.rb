@@ -44,17 +44,16 @@ module Rnfse::XMLBuilder::Base
     inner_xml = if block_given? 
                   yield(data)
                 else
-                  data = alter_data_before_builder(Rnfse::Hash.new(data).stringify_keys)
+                  data = alter_data_before_builder(Rnfse::Hash.new(data).symbolize_keys!)
                   caller_hook = "alter_data_before_#{options['operation']}"
                   data = send(caller_hook, data) if respond_to?(caller_hook)
                   ::Gyoku.xml(data, key_converter: :none)
                 end
 
-    Nokogiri::XML::Builder.new(encoding: 'utf-8') do |xml|
-      xml.send(action, namespace) do
-        xml << inner_xml
-      end
-    end.doc
+    Nokogiri::XML(::Gyoku.xml( 
+      "#{action}!" => inner_xml, 
+      :attributes! => { "#{action}!" => namespace }
+    ))
   end
 
   # Infere o nome da soap action.

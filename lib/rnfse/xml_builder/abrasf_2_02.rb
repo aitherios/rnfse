@@ -22,6 +22,7 @@
 #   Para mais detalhes veja a seção de documentação do README.md
 module Rnfse::XMLBuilder::Abrasf202
   include Rnfse::XMLBuilder::Base
+  include Rnfse::XMLBuilder::Helper
 
   @operations = [
     :recepcionar_lote_rps, :recepcionar_lote_rps_sincrono, :gerar_nfse,

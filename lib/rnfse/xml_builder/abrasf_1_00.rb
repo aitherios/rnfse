@@ -18,6 +18,7 @@
 #   Para mais detalhes veja a seção de documentação do README.md
 module Rnfse::XMLBuilder::Abrasf100
   include Rnfse::XMLBuilder::Base
+  include Rnfse::XMLBuilder::Helper
 
   @operations = [ 
     :recepcionar_lote_rps, :consultar_situacao_lote_rps, 
@@ -89,11 +90,6 @@ module Rnfse::XMLBuilder::Abrasf100
     Rnfse::Hash.transform_values(hash, regex) { |val| val.gsub(/\D/, '') }
   end
   
-  # converte as chaves do hash para CamelCase
-  def camelize_hash(hash)
-    Rnfse::Hash.camelize_and_symbolize_keys(hash)
-  end
-
   # encapsula as rps dentro de listaRps com Rps/InfRps
   def wrap_rps(hash)
     if hash[:LoteRps]

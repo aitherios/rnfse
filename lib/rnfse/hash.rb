@@ -38,6 +38,28 @@ module Rnfse
       self.class.symbolize_keys(self)
     end
 
+    def symbolize_keys!
+      self.replace(self.symbolize_keys)
+    end
+
+    def self.camelize_keys(obj, uppercase_first_letter = true)
+      self.transform_keys(obj) do |key|
+        begin
+          str = String.camelize(key.to_s, uppercase_first_letter)
+          key.kind_of?(::Symbol) ? str.to_sym : str
+        rescue key
+        end
+      end
+    end
+
+    def camelize_keys(uppercase_first_letter = true)
+      self.class.camelize_keys(self, uppercase_first_letter)
+    end
+
+    def camelize_keys!(uppercase_first_letter = true)
+      self.replace(self.camelize_keys(uppercase_first_letter))
+    end
+
     def self.camelize_and_symbolize_keys(obj, uppercase_first_letter = true)
       self.transform_keys(obj) do |key|
         String.camelize(key.to_s, uppercase_first_letter).to_sym rescue key
@@ -46,6 +68,24 @@ module Rnfse
 
     def camelize_and_symbolize_keys(uppercase_first_letter = true)
       self.class.camelize_and_symbolize_keys(self, uppercase_first_letter)
+    end
+
+    def self.gsub_keys(obj, pattern, replacement)
+      self.transform_keys(obj) do |key|
+        begin
+          str = key.to_s.gsub(pattern, replacement)
+          key.kind_of?(::Symbol) ? str.to_sym : str
+        rescue key
+        end
+      end
+    end
+
+    def gsub_keys(pattern, replacement)
+      self.class.gsub_keys(self, pattern, replacement)
+    end
+
+    def gsub_keys!(pattern, replacement)
+      self.replace(self.gsub_keys(pattern, replacement))
     end
 
     def self.underscore_and_symbolize_keys(obj)

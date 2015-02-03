@@ -51,6 +51,12 @@ describe Rnfse::Hash do
     it { expect(hash.symbolize_keys).to eq(transformed_hash) }
   end
 
+  describe '#symbolize_keys!' do
+    let(:hash) { Rnfse::Hash.new({ 'name' => 'Rob', 'age' => '28' }) }
+    let(:transformed_hash) { { name: 'Rob', age: '28' } }
+    it { expect{hash.symbolize_keys!}.to change{hash}.to(transformed_hash) }
+  end
+
   describe '::stringify_keys' do
     let(:hash) { { name: 'Rob', age: '28' } }
     let(:transformed_hash) { { 'name' => 'Rob', 'age' => '28' } }
@@ -73,6 +79,50 @@ describe Rnfse::Hash do
     let(:hash) { Rnfse::Hash.new({ 'first_name' => 'Rob', 'current_age' => '28' }) }
     let(:transformed_hash) { { FirstName: 'Rob', CurrentAge: '28' } }
     it { expect(hash.camelize_and_symbolize_keys).to eq(transformed_hash) }
+  end
+
+  describe '::camelize_keys' do
+    let(:hash) { { 'first_name' => 'Rob', :current_age => '28' } }
+    let(:transformed_hash) { { 'FirstName' => 'Rob', :CurrentAge => '28' } }
+    it { expect(Rnfse::Hash.camelize_keys(hash)).to eq(transformed_hash) }
+  end
+
+  describe '#camelize_keys' do
+    let(:hash) { Rnfse::Hash.new({ 'first_name' => 'Rob', :current_age => '28' }) }
+    let(:transformed_hash) { { 'FirstName' => 'Rob', :CurrentAge => '28' } }
+    it { expect(hash.camelize_keys).to eq(transformed_hash) }
+  end
+
+  describe '#camelize_keys!' do
+    let(:hash) { Rnfse::Hash.new({ 'first_name' => 'Rob', :current_age => '28' }) }
+    let(:transformed_hash) { { 'FirstName' => 'Rob', :CurrentAge => '28' } }
+    it { expect{hash.camelize_keys!}.to change{hash}.to(transformed_hash) }
+  end
+
+  describe '::gsub_keys' do
+    context 'with string,' do
+      let(:hash) { { :cep => '12345-010', 'cep' => '12345-010' } }
+      let(:transformed_hash) { { :CEP => '12345-010', 'CEP' => '12345-010' } }
+      it { expect(Rnfse::Hash.gsub_keys(hash, 'cep', 'CEP')).to eq(transformed_hash) }
+    end
+
+    context 'with regex,' do
+      let(:hash) { { :cep => '12345-010', 'cep' => '12345-010' } }
+      let(:transformed_hash) { { :CEP => '12345-010', 'CEP' => '12345-010' } }
+      it { expect(Rnfse::Hash.gsub_keys(hash, /\Acep\Z/, 'CEP')).to eq(transformed_hash) }
+    end
+  end
+
+  describe '#gsub_keys' do
+    let(:hash) { Rnfse::Hash.new({ :cep => '12345-010', 'cep' => '12345-010' }) }
+    let(:transformed_hash) { { :CEP => '12345-010', 'CEP' => '12345-010' } }
+    it { expect(hash.gsub_keys('cep', 'CEP')).to eq(transformed_hash) }
+  end
+
+  describe '#gsub_keys!' do
+    let(:hash) { Rnfse::Hash.new({ :cep => '12345-010', 'cep' => '12345-010' }) }
+    let(:transformed_hash) { { :CEP => '12345-010', 'CEP' => '12345-010' } }
+    it { expect{hash.gsub_keys!('cep', 'CEP')}.to change{hash}.to(transformed_hash) }
   end
 
   describe '::underscore_and_symbolize_keys' do

@@ -23,6 +23,7 @@ require 'rnfse/api/speed_gov_1_00'
 
 require 'rnfse/xml_builder'
 require 'rnfse/xml_builder/base'
+require 'rnfse/xml_builder/helper'
 require 'rnfse/xml_builder/abrasf_1_00'
 require 'rnfse/xml_builder/abrasf_2_02'
 require 'rnfse/xml_builder/iss_net_1_00'
