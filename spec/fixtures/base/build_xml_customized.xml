@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreviousMethodEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <custom-xml-handling>
+<custom-xml-handling>
+  <PreviousMethodEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
     <tag>content</tag>
-  </custom-xml-handling>
-</PreviousMethodEnvio>
+  </PreviousMethodEnvio>
+</custom-xml-handling>

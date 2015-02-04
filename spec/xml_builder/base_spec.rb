@@ -40,8 +40,8 @@ describe Rnfse::XMLBuilder::Base do
     context 'when a block to customize the inner xml is called' do
       subject do
         builder.send(:build_xml, *options) do |data|
-          data = ::Gyoku.xml(data, key_converter: :none)
-          "<custom-xml-handling>#{data}</custom-xml-handling>"
+          xml = ::Gyoku.xml(data, key_converter: :none)
+          "<custom-xml-handling>#{xml}</custom-xml-handling>"
         end
       end
       before do

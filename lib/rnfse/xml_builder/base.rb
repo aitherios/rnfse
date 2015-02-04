@@ -36,24 +36,44 @@ module Rnfse::XMLBuilder::Base
   #   executadas e o retorno esperado é uma string com o xml a ser
   #   encapsulado.
   def build_xml(data, options = {})
-    caller = Rnfse::CallChain.caller_method(2)
+    caller = Rnfse::CallChain.caller_method(1)
     options = Rnfse::Hash.new(options).stringify_keys
     namespace = options['namespace'] || get_namespace_from(caller)
     action = options['action'] || get_action_from(caller)
+    operation = options['operation'] || get_operation_from(caller)
+    data = Rnfse::Hash.new(data)
 
-    inner_xml = if block_given? 
-                  yield(data)
-                else
-                  data = alter_data_before_builder(Rnfse::Hash.new(data).symbolize_keys!)
-                  caller_hook = "alter_data_before_#{options['operation']}"
-                  data = send(caller_hook, data) if respond_to?(caller_hook)
-                  ::Gyoku.xml(data, key_converter: :none)
-                end
+    xml = if block_given? 
+            wrapper = { "#{action}!" => data.to_hash, 
+                        :attributes! => { "#{action}!" => namespace } }
+            yield(wrapper)
+          else
+            alter_data_with_before_hooks(data, operation)
+            wrapper = { "#{action}!" => data.to_hash, 
+                        :attributes! => { "#{action}!" => namespace } }
+            ::Gyoku.xml(wrapper, key_converter: :none)
+          end
+    Nokogiri::XML::DocumentFragment.parse(xml)
+  end
 
-    Nokogiri::XML(::Gyoku.xml( 
-      "#{action}!" => inner_xml, 
-      :attributes! => { "#{action}!" => namespace }
-    ))
+  # Chama os métodos convencionados para alterar os dados antes da
+  # construção do xml.
+  #
+  # Recebe +data+ (hash que vai ser convertido em xml) e +operation+
+  # (para chamar o hook específico da função)
+  #
+  # Chama primeiro o método alter_data_before_builder(data), que
+  # altera +data+ em qualquer operação do xmlbuilder.
+  #
+  # Depois chama, se existir, alter_data_before_+operation+(data) (operation é
+  # o parametro passado). Esse é um hook específico para cada operação
+  # executada.
+  def alter_data_with_before_hooks(data, operation = '')
+    caller_hook = "alter_data_before_#{operation}"
+    
+    data.symbolize_keys!
+    data.replace(alter_data_before_builder(data))
+    data.replace(send(caller_hook, data)) if respond_to?(caller_hook)
   end
 
   # Infere o nome da soap action.
@@ -162,6 +182,7 @@ module Rnfse::XMLBuilder::Base
           namespace: get_namespace_from(__callee__, operation_options),
           operation: get_operation_from(__callee__)
         }
+
         if block_given?
           build_xml(hash, options, &Proc.new)
         else

@@ -273,4 +273,10 @@ describe Rnfse::Hash do
     }
   end
 
+  describe '#to_hash' do
+    let(:hash) { Rnfse::Hash.new({ name: 'Rob', age: '28' }) }
+    it { expect(hash.to_hash).to be_a(::Hash) }
+    it { expect(hash.to_hash).not_to be_a(Rnfse::Hash) }
+  end
+
 end

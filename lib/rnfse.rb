@@ -18,8 +18,10 @@ require 'rnfse/call_chain'
 
 require 'rnfse/api'
 require 'rnfse/api/abrasf_1_00'
+require 'rnfse/api/abrasf_2_02'
 require 'rnfse/api/iss_net_1_00'
 require 'rnfse/api/speed_gov_1_00'
+require 'rnfse/api/sia_2_01'
 
 require 'rnfse/xml_builder'
 require 'rnfse/xml_builder/base'

@@ -197,5 +197,11 @@ module Rnfse
       self.class.replace_key_values(self, key, &block)
     end
 
+    def to_hash
+      new_hash = {}
+      each { |key, value| new_hash[key] = value }
+      new_hash
+    end
+
   end
 end
