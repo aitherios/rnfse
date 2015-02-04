@@ -53,7 +53,7 @@ module Rnfse::XMLBuilder::Base
                         :attributes! => { "#{action}!" => namespace } }
             ::Gyoku.xml(wrapper, key_converter: :none)
           end
-    Nokogiri::XML::DocumentFragment.parse(xml)
+    Nokogiri::XML(xml)
   end
 
   # Chama os métodos convencionados para alterar os dados antes da
