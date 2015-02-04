@@ -7,8 +7,8 @@ module Rnfse::API::Sia201
     xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
 
     xml.search('ListaRps/Rps').each do |elem|
-      xml_string = elem.to_xml(
-        save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
+      xml_string = elem.first_element_child.to_xml(
+                     save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
       doc = Nokogiri::XML(xml_string)
       doc.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
       doc.root.last_element_child.xpath('//text()').each { |n| n.remove if n.content =~ /^\s*$/ }
@@ -16,7 +16,8 @@ module Rnfse::API::Sia201
       doc.root.last_element_child.traverse { |node| reference = node if node.name == 'Reference' }
       id = doc.at('InfDeclaracaoPrestacaoServico')['Id']
       reference['URI'] = "##{id}"
-      elem.replace(doc.root)
+
+      elem.add_child(doc.root.last_element_child.unlink)
     end
     xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
     xml.root.last_element_child.xpath('//text()').each { |n| n.remove if n.content =~ /^\s*$/ }
@@ -24,7 +25,6 @@ module Rnfse::API::Sia201
     xml.root.last_element_child.traverse { |node| reference = node if node.name == 'Reference' }
     id = xml.at('LoteRps')['Id']
     reference['URI'] = "##{id}"
-    
     
     plain_xml = xml.to_xml(save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
     xml = Nokogiri::XML::DocumentFragment.parse(plain_xml)

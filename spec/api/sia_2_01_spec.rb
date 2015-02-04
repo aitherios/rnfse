@@ -2,8 +2,11 @@
 require 'spec_helper'
 
 describe Rnfse::API::Sia201 do
-  let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
-  let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
+  # let(:certificate) { File.join($ROOT, 'spec', 'fixtures', 'certificate.pem') }
+  # let(:key) { File.join($ROOT, 'spec', 'fixtures', 'key.pem') }
+  let(:certificate) { File.join($ROOT, 'certificate.pem') }
+  let(:key) { File.join($ROOT, 'key.pem') }
+
   let(:client) do
     Rnfse::API.new(padrao: :sia_2_01,
                    namespace: 'http://ws.issweb.fiorilli.com.br/',

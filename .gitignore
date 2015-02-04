@@ -4,7 +4,6 @@ Gemfile.lock
 
 # And because this is Ruby, ignore the following
 #  (source: https://github.com/github/gitignore/blob/master/Ruby.gitignore):
-
 *.gem
 *.rbc
 .bundle
@@ -23,3 +22,8 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Embarrassing mistake avoidance
+*.p12
+*.pfx
+*.pem
