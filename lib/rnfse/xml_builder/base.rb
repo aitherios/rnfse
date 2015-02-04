@@ -53,7 +53,7 @@ module Rnfse::XMLBuilder::Base
                         :attributes! => { "#{action}!" => namespace } }
             ::Gyoku.xml(wrapper, key_converter: :none)
           end
-    Nokogiri::XML(xml)
+    Nokogiri::XML(xml) { |config| config.noblanks }
   end
 
   # Chama os métodos convencionados para alterar os dados antes da
@@ -182,7 +182,6 @@ module Rnfse::XMLBuilder::Base
           namespace: get_namespace_from(__callee__, operation_options),
           operation: get_operation_from(__callee__)
         }
-
         if block_given?
           build_xml(hash, options, &Proc.new)
         else

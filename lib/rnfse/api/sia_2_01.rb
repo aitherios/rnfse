@@ -7,11 +7,24 @@ module Rnfse::API::Sia201
     xml = xml_builder.build_recepcionar_lote_rps_xml(hash)
 
     xml.search('ListaRps/Rps').each do |elem|
-      doc = Nokogiri::XML(elem.to_xml)
+      xml_string = elem.to_xml(
+        save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
+      doc = Nokogiri::XML(xml_string)
       doc.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+      doc.root.last_element_child.xpath('//text()').each { |n| n.remove if n.content =~ /^\s*$/ }
+      reference = nil
+      doc.root.last_element_child.traverse { |node| reference = node if node.name == 'Reference' }
+      id = doc.at('InfDeclaracaoPrestacaoServico')['Id']
+      reference['URI'] = "##{id}"
       elem.replace(doc.root)
     end
     xml.sign!(certificate: File.read(self.certificate), key: File.read(self.key))
+    xml.root.last_element_child.xpath('//text()').each { |n| n.remove if n.content =~ /^\s*$/ }
+    reference = nil
+    xml.root.last_element_child.traverse { |node| reference = node if node.name == 'Reference' }
+    id = xml.at('LoteRps')['Id']
+    reference['URI'] = "##{id}"
+    
     
     plain_xml = xml.to_xml(save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION).strip
     xml = Nokogiri::XML::DocumentFragment.parse(plain_xml)
