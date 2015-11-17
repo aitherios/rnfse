@@ -8,10 +8,10 @@ require 'rnfse/version'
 Gem::Specification.new do |s|
   s.name          = 'rnfse'
   s.version       = Rnfse::VERSION
-  s.summary       = %q{Biblioteca para a API de Nota Fiscal de Serviços 
+  s.summary       = %q{Biblioteca para a API de Nota Fiscal de Serviços
     eletrônica (NFS-e) da ABRASF.}
   s.description   = %q{Biblioteca para integração com as várias implementações
-    municipais de Nota Fiscal de Serviços eletrônica (NFS-e) que utilizam uma 
+    municipais de Nota Fiscal de Serviços eletrônica (NFS-e) que utilizam uma
     das versões ou variações dos padrões
     [ABRASF](http://www.abrasf.org.br/paginas_multiplas_detalhes.php?cod_pagina=1).}
 
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'json-schema',                           '~> 2.0'
   s.add_dependency 'gyoku',                                 '~> 1.0'
   s.add_dependency 'nori',                                  '~> 2.0'
-  s.add_dependency 'nokogiri-xmlsec1',                      '~> 0.0.7'
+  s.add_dependency 'nokogiri-xmlsec1',                      '~> 0.0.11'
   s.add_dependency 'savon',                                 '~> 2.2'
 
   s.add_development_dependency 'bundler',                   '~> 1.3'
